@@ -64,6 +64,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\fonts\fontawesome-webfont.svg" />
+    <Content Include="content\styles\fontiran.css" />
+    <Content Include="content\styles\main.css" />
     <Content Include="css.css" />
     <Content Include="HtmlPage1.html" />
     <Content Include="img\2.jpg" />
@@ -76,6 +79,56 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\fonts\eot\IRANSansWeb%28FaNum%29.eot" />
+    <Content Include="content\fonts\eot\IRANSansWeb%28FaNum%29_Black.eot" />
+    <Content Include="content\fonts\eot\IRANSansWeb%28FaNum%29_Bold.eot" />
+    <Content Include="content\fonts\eot\IRANSansWeb%28FaNum%29_Light.eot" />
+    <Content Include="content\fonts\eot\IRANSansWeb%28FaNum%29_Medium.eot" />
+    <Content Include="content\fonts\eot\IRANSansWeb%28FaNum%29_UltraLight.eot" />
+    <Content Include="content\fonts\eot\IRANSansWeb.eot" />
+    <Content Include="content\fonts\eot\IRANSansWeb_Bold.eot" />
+    <Content Include="content\fonts\eot\IRANSansWeb_Light.eot" />
+    <Content Include="content\fonts\eot\IRANSansWeb_Medium.eot" />
+    <Content Include="content\fonts\eot\IRANSansWeb_UltraLight.eot" />
+    <Content Include="content\fonts\fontawesome-webfont.eot" />
+    <Content Include="content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="content\fonts\fontawesome-webfont.woff" />
+    <Content Include="content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="content\fonts\FontAwesome.otf" />
+    <Content Include="content\fonts\IranianSerifWeb-Regular.woff" />
+    <Content Include="content\fonts\ttf\IRANSansWeb%28FaNum%29.ttf" />
+    <Content Include="content\fonts\ttf\IRANSansWeb%28FaNum%29_Black.ttf" />
+    <Content Include="content\fonts\ttf\IRANSansWeb%28FaNum%29_Bold.ttf" />
+    <Content Include="content\fonts\ttf\IRANSansWeb%28FaNum%29_Light.ttf" />
+    <Content Include="content\fonts\ttf\IRANSansWeb%28FaNum%29_Medium.ttf" />
+    <Content Include="content\fonts\ttf\IRANSansWeb%28FaNum%29_UltraLight.ttf" />
+    <Content Include="content\fonts\ttf\IRANSansWeb.ttf" />
+    <Content Include="content\fonts\ttf\IRANSansWeb_Bold.ttf" />
+    <Content Include="content\fonts\ttf\IRANSansWeb_Light.ttf" />
+    <Content Include="content\fonts\ttf\IRANSansWeb_Medium.ttf" />
+    <Content Include="content\fonts\ttf\IRANSansWeb_UltraLight.ttf" />
+    <Content Include="content\fonts\woff2\IRANSansWeb%28FaNum%29.woff2" />
+    <Content Include="content\fonts\woff2\IRANSansWeb%28FaNum%29_Black.woff2" />
+    <Content Include="content\fonts\woff2\IRANSansWeb%28FaNum%29_Bold.woff2" />
+    <Content Include="content\fonts\woff2\IRANSansWeb%28FaNum%29_Light.woff2" />
+    <Content Include="content\fonts\woff2\IRANSansWeb%28FaNum%29_Medium.woff2" />
+    <Content Include="content\fonts\woff2\IRANSansWeb%28FaNum%29_UltraLight.woff2" />
+    <Content Include="content\fonts\woff2\IRANSansWeb.woff2" />
+    <Content Include="content\fonts\woff2\IRANSansWeb_Bold.woff2" />
+    <Content Include="content\fonts\woff2\IRANSansWeb_Light.woff2" />
+    <Content Include="content\fonts\woff2\IRANSansWeb_Medium.woff2" />
+    <Content Include="content\fonts\woff2\IRANSansWeb_UltraLight.woff2" />
+    <Content Include="content\fonts\woff\IRANSansWeb%28FaNum%29.woff" />
+    <Content Include="content\fonts\woff\IRANSansWeb%28FaNum%29_Black.woff" />
+    <Content Include="content\fonts\woff\IRANSansWeb%28FaNum%29_Bold.woff" />
+    <Content Include="content\fonts\woff\IRANSansWeb%28FaNum%29_Light.woff" />
+    <Content Include="content\fonts\woff\IRANSansWeb%28FaNum%29_Medium.woff" />
+    <Content Include="content\fonts\woff\IRANSansWeb%28FaNum%29_UltraLight.woff" />
+    <Content Include="content\fonts\woff\IRANSansWeb.woff" />
+    <Content Include="content\fonts\woff\IRANSansWeb_Bold.woff" />
+    <Content Include="content\fonts\woff\IRANSansWeb_Light.woff" />
+    <Content Include="content\fonts\woff\IRANSansWeb_Medium.woff" />
+    <Content Include="content\fonts\woff\IRANSansWeb_UltraLight.woff" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -83,6 +136,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="content\images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
