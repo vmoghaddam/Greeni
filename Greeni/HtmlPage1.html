@@ -36,6 +36,10 @@
         .ep-image {
             max-width: 80%;
         }
+        .w3-button{
+            transition: 0.3s !important;
+        }
+        .w3-button:hover{color:#000!important;background-color:green!important}
         /* Remove margins from "page content" on small screens */
         @media only screen and (max-width: 600px) {
             #main {
@@ -52,23 +56,25 @@
 <body class="w3-black" style="        direction: rtl">
 
     <!-- Icon Bar (Sidebar - hidden on small screens) -->
-    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" style="overflow:hidden !important">
         <!-- Avatar image in top left corner -->
-       
-        <a  class="w3-bar-item w3-button w3-padding-large w3-black">
-            <p>GREENIMAX 1</p>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+        <a class="w3-bar-item w3-button w3-padding-large w3-black" style="padding: 16px 15px !important">
+            <i class="fas fa-cannabis" style="font-size:32px;color:#3cb371"></i>
+            <span style="font-size:13px;color:white;font-weight:bold">GREEN<span style="color: red;    font-style: italic;    font-size: 17px;    display: inline;    padding: 0 3px 0 1px;    font-weight: bold;    position: relative;    top: 1px;">i</span>MAX 1</span>
+
         </a>
-        <a  class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-            <i ></i>
-            <p>GREENIMAX 2</p>
+        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
+            <i class="fas fa-seedling" style="font-size:32px;color:#cc0066"></i>
+            <span style="font-size:13px;color:white;font-weight:bold">GREEN<span style="color: red;    font-style: italic;    font-size: 17px;    display: inline;    padding: 0 3px 0 1px;    font-weight: bold;    position: relative;    top: 1px;">i</span>MAX 2</span>
+
         </a>
-        <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-            <i ></i>
-            <p>PHOTOS</p>
-        </a>
-        <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-            <i ></i>
-            <p>CONTACT</p>
+        <a class="w3-bar-item w3-button w3-padding-large">
+            <i class="fas fa-info-circle" style="font-size:35px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">درباره ما</span>
+
         </a>
     </nav>
 
@@ -86,89 +92,28 @@
     <div class="w3-padding-large" id="main">
         <!-- Header/Home -->
         <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-            <h1 class="w3-jumbo">GREENiMAX</h1>
-            <p>ba in kood mameie shoma mishekofad</p>
+            <h1 class="w3-jumbo" ><span style="font-size:60px">GREEN<span style="color:red;font-style:italic;font-size:70px; font-weight:bold; padding:0px 6px 0px 0px">i</span>MAX</span></h1>
+            
             <!--<img src="https://www.w3schools.com/w3images/man_smoke.jpg" alt="boy" class="w3-image" width="992" height="1108">-->
             <img src="img/g1.png" alt="boy" class="w3-image" style="width: 400px;  height: auto">
         </header>
 
         <!-- About Section -->
         <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-            <h2 class="w3-text-light-grey">My Name</h2>
-            <hr style="        width: 200px" class="w3-opacity">
             <p dir="rtl" style="color:white">
-                ورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر گرفته شده‌است. از آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه رعایت حق تکثیر متون را ندارند و در همان حال کار آنها به نوعی وابسته به متن می‌باشد آنها با استفاده از محتویات ساختگی، صفحه گرافیکی خود را صفحه‌آرایی می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند.
+                لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر گرفته شده‌است. از آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه رعایت حق تکثیر متون را ندارند و در همان حال کار آنها به نوعی وابسته به متن می‌باشد آنها با استفاده از محتویات ساختگی، صفحه گرافیکی خود را صفحه‌آرایی می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند.
             </p>
-           
-
-            <!-- Grid for pricing tables -->
-            <h3 class="w3-padding-16 w3-text-light-grey">My Price</h3>
-            <div class="w3-row-padding"   style=" margin:auto ; align-self:center ">
-                <div class="w3-half w3-margin-bottom">
-                    <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
-                        <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
-                        <li class="w3-padding-16">Web Design</li>
-                        <li class="w3-padding-16">Photography</li>
-                        <li class="w3-padding-16">5GB Storage</li>
-                        <li class="w3-padding-16">Mail Support</li>
-                        <li class="w3-padding-16">
-                            <h2>$ 10</h2>
-                            <span class="w3-opacity">per month</span>
-                        </li>
-                        <li class="w3-light-grey w3-padding-24">
-                            <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
-                        </li>
-                    </ul>
-                </div>
-
-             
-                <!-- End Grid/Pricing tables -->
             </div>
 
-            <!-- Testimonials -->
-            <h3 class="w3-padding-24 w3-text-light-grey">My Reputation</h3>
-            <img src="/w3images/bandmember.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="        width: 80px">
-            <p><span class="w3-large w3-margin-right">Chris Fox.</span> CEO at Mighty Schools.</p>
-            <p>Jane Doe saved us from a web disaster.</p><br>
-
-            <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="        width: 80px">
-            <p><span class="w3-large w3-margin-right">Rebecca Flex.</span> CEO at Company.</p>
-            <p>No one is better than Jane Doe.</p>
-            <!-- End About Section -->
-        </div>
-
-        <!-- Portfolio Section -->
-        <div class="w3-padding-64 w3-content" id="photos">
-            <h2 class="w3-text-light-grey">My Photos</h2>
-            <hr style="        width: 200px" class="w3-opacity">
-
-            <!-- Grid for photos -->
-            <div class="w3-row-padding" style="        margin: 0 -16px">
-                <div class="w3-half">
-                    <img src="/w3images/wedding.jpg" style="        width: 100%">
-                    <img src="/w3images/rocks.jpg" style="        width: 100%">
-                    <img src="/w3images/sailboat.jpg" style="        width: 100%">
-                </div>
-
-                <div class="w3-half">
-                    <img src="/w3images/underwater.jpg" style="        width: 100%">
-                    <img src="/w3images/chef.jpg" style="        width: 100%">
-                    <img src="/w3images/wedding.jpg" style="        width: 100%">
-                    <img src="/w3images/p6.jpg" style="        width: 100%">
-                </div>
-                <!-- End photo grid -->
-            </div>
-            <!-- End Portfolio Section -->
-        </div>
-
+            
         <!-- Contact Section -->
         <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
             <h2 class="w3-text-light-grey">Contact Me</h2>
             <hr style="        width: 200px" class="w3-opacity">
 
             <div class="w3-section">
-                <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Chicago, US</p>
-                <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +00 151515</p>
+                <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Mashhad, IR</p>
+                <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +98 0000000</p>
                 <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
             </div><br>
             <p>Lets get in touch. Send me a message:</p>
@@ -189,17 +134,10 @@
 
         <!-- Footer -->
         <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-            <i class="fa fa-facebook-official w3-hover-opacity"></i>
-            <i class="fa fa-instagram w3-hover-opacity"></i>
-            <i class="fa fa-snapchat w3-hover-opacity"></i>
-            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-            <i class="fa fa-twitter w3-hover-opacity"></i>
-            <i class="fa fa-linkedin w3-hover-opacity"></i>
-            <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-            <!-- End footer -->
-        </footer>
-
-        <!-- END PAGE CONTENT -->
+            <i class="fab fa-telegram-plane" style="font-size:30px;padding-left:6px"></i>
+            <i class="fab fa-instagram" style="font-size:30px;padding-left:6px"></i>
+            <i class="fab fa-whatsapp" style="font-size:30px"></i>
+         </footer>
     </div>
 
 </body>
