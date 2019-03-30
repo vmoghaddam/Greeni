@@ -65,8 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\fonts\fontawesome-webfont.svg" />
+    <Content Include="content\scripts\scripts.js" />
+    <Content Include="content\styles\bootstrap.css" />
     <Content Include="content\styles\fontiran.css" />
     <Content Include="content\styles\main.css" />
+    <Content Include="content\video\greenivideo.mp4" />
     <Content Include="css.css" />
     <Content Include="HtmlPage1.html" />
     <Content Include="img\2.jpg" />

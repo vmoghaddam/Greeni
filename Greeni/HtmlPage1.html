@@ -6,9 +6,11 @@
     <link rel="shortcut icon" type="image/gif/png" href="img/رشد.png" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="content/styles/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="content/styles/main.css" rel="stylesheet" />
 
     <style>
@@ -36,10 +38,15 @@
         .ep-image {
             max-width: 80%;
         }
-        .w3-button{
+
+        .w3-button {
             transition: 0.3s !important;
         }
-        .w3-button:hover{color:#000!important;background-color:green!important}
+
+            .w3-button:hover {
+                color: #000 !important;
+                background-color: green !important
+            }
         /* Remove margins from "page content" on small screens */
         @media only screen and (max-width: 600px) {
             #main {
@@ -53,10 +60,11 @@
     </style>
 </head>
 
-<body class="w3-black" style="        direction: rtl">
+<body class="w3-black" style="      direction: rtl">
 
     <!-- Icon Bar (Sidebar - hidden on small screens) -->
-    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" style="overflow:hidden !important">
+    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" style="overflow:hidden !important" data-aos="fade-left" data-aos-duration="1500">
+
         <!-- Avatar image in top left corner -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
@@ -64,27 +72,42 @@
         <a class="w3-bar-item w3-button w3-padding-large w3-black" style="padding: 16px 15px !important">
             <i class="fas fa-cannabis" style="font-size:32px;color:#3cb371"></i>
             <span style="font-size:13px;color:white;font-weight:bold">GREEN<span style="color: red;    font-style: italic;    font-size: 17px;    display: inline;    padding: 0 3px 0 1px;    font-weight: bold;    position: relative;    top: 1px;">i</span>MAX 1</span>
+        </a>
+
+        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
+            <i class="fas fa-info-circle" style="font-size:32px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block">معرفی</span>
 
         </a>
+
+        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
+            <i class="fas fa-question-circle" style="font-size:32px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block">راهنما</span>
+
+        </a>
+
+        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
+            <i class="fas fa-file-alt" style="font-size:32px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block">مجوز ها </span>
+
+        </a>
+
+
         <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
             <i class="fas fa-seedling" style="font-size:32px;color:#cc0066"></i>
             <span style="font-size:13px;color:white;font-weight:bold">GREEN<span style="color: red;    font-style: italic;    font-size: 17px;    display: inline;    padding: 0 3px 0 1px;    font-weight: bold;    position: relative;    top: 1px;">i</span>MAX 2</span>
 
         </a>
-        <a class="w3-bar-item w3-button w3-padding-large">
-            <i class="fas fa-info-circle" style="font-size:35px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">درباره ما</span>
 
-        </a>
     </nav>
 
     <!-- Navbar on small screens (Hidden on medium and large screens) -->
-    <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
-        <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-            <a href="#" class="w3-bar-item w3-button" style="        width: 25% !important">HOME</a>
-            <a href="#about" class="w3-bar-item w3-button" style="        width: 25% !important">ABOUT</a>
-            <a href="#photos" class="w3-bar-item w3-button" style="        width: 25% !important">PHOTOS</a>
-            <a href="#contact" class="w3-bar-item w3-button" style="        width: 25% !important">CONTACT</a>
+    <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar" style="text-align:center;background:black;opacity:1">
+        <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small" style="display:inline-block;width:auto;background:black;opacity:1">
+            <a href="#" class="w3-bar-item w3-button" style="color:white;font-weight:bold;font-size:12px">GREENIMAX 1</a>
+            <a href="#about" class="w3-bar-item w3-button" style="color:white;font-weight:bold;font-size:12px">GREENIMAX 2</a>
+            <a href="#photos" class="w3-bar-item w3-button" style="color:white;font-weight:bold;font-size:12px">وبلاگ</a>
+            <a href="#photos" class="w3-bar-item w3-button" style="color:white;font-weight:bold;font-size:12px">درباره ما</a>
         </div>
     </div>
 
@@ -92,20 +115,43 @@
     <div class="w3-padding-large" id="main">
         <!-- Header/Home -->
         <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-            <h1 class="w3-jumbo" ><span style="font-size:60px">GREEN<span style="color:red;font-style:italic;font-size:70px; font-weight:bold; padding:0px 6px 0px 0px">i</span>MAX</span></h1>
-            
+            <h1 class="w3-jumbo  hidden-xs"><span style="font-size:60px">GREEN<span style="color:red;font-style:italic;font-size:70px; font-weight:bold; padding:0px 6px 0px 0px">i</span>MAX</span></h1>
+            <h1 class="w3-jumbo  hidden-lg hidden-md hidden-sm"><span style="font-size:40px">GREEN<span style="color:red;font-style:italic;font-size:50px; font-weight:bold; padding:0px 6px 0px 0px">i</span>MAX</span></h1>
+
             <!--<img src="https://www.w3schools.com/w3images/man_smoke.jpg" alt="boy" class="w3-image" width="992" height="1108">-->
-            <img src="img/g1.png" alt="boy" class="w3-image" style="width: 400px;  height: auto">
+            <img src="img/g1.png" alt="boy" class="w3-image" style="width: 400px;  height: auto" data-aos="zoom-in" data-aos-duration="500">
         </header>
 
         <!-- About Section -->
-        <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-            <p dir="rtl" style="color:white">
-                لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر گرفته شده‌است. از آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه رعایت حق تکثیر متون را ندارند و در همان حال کار آنها به نوعی وابسته به متن می‌باشد آنها با استفاده از محتویات ساختگی، صفحه گرافیکی خود را صفحه‌آرایی می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند.
-            </p>
-            </div>
+        <div class="w3-content w3-justify w3-text-grey" id="about">
+            <div style="color: white ; font-size: 20px;padding: 0 0 7px 0; margin-bottom: 30px; font-weight: bold; border-bottom: 1px solid white">
 
-            
+                کود مایع گیاهان آپارتمانی برگ زینتی   
+            </div>
+            <div class="col-lg-7" data-aos="fade-up" data-aos-duration="1500" style="padding:0;">
+                <video controls loop="" playsinline="">
+
+
+                    <source src="content/video/greenivideo.mp4"
+                            type="video/mp4">
+
+                    Sorry, your browser doesn't support embedded videos.
+                </video>
+            </div>
+            <div class="col-lg-5" data-aos="fade-up"  style="padding:0;">
+                <p dir="rtl" style="color:white;padding:0 0 0 30px;line-height:30px">
+                    گرینی مکس 2   کود مایع با ترکیب مناسب برای گیاهان آپارتمانی گلدار نظیر شمعدانی ، ختمی ، رز ، شب بو، اطلسی و غیره تهیه شده است. این محصول تامین کننده عناصر غذایی شامل نیتروژن، فسفر، پتاسیم وآهن   بوده که برای رشد و نمو گیاه ضروریست .
+                    همچنین وجود اسید هیومیک و جلبک دریایی در این محصول باعث غنی تر شدن آن از نظر غذایی شده است.مصرف این کود همراه با آب آبیاری حجم ریشه های موئین ، فعالیت فتو سنتزی و تولید گل در گیاه را افزایش میدهد. این محصول به طور اختصاصی برای گیاهان گلدار ساخته شده است.
+                </p>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="w3-padding-64 w3-content w3-text-grey ep-section" id="video" style="text-align:center" >
+
+           
+        </div>
+
+
         <!-- Contact Section -->
         <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
             <h2 class="w3-text-light-grey">Contact Me</h2>
@@ -137,8 +183,10 @@
             <i class="fab fa-telegram-plane" style="font-size:30px;padding-left:6px"></i>
             <i class="fab fa-instagram" style="font-size:30px;padding-left:6px"></i>
             <i class="fab fa-whatsapp" style="font-size:30px"></i>
-         </footer>
+        </footer>
     </div>
-
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="content/scripts/scripts.js"></script>
 </body>
 </html>
