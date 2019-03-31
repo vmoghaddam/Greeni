@@ -71,11 +71,13 @@
     <Content Include="content\styles\main.css" />
     <Content Include="content\video\greenivideo.mp4" />
     <Content Include="css.css" />
+    <Content Include="GreeniMax2.html" />
     <Content Include="HtmlPage1.html" />
     <Content Include="img\2.jpg" />
     <Content Include="img\g1.png" />
-    <Content Include="img\greeni1 %281%29.png" />
+    <Content Include="img\g2.png" />
     <Content Include="img\greeni1.png" />
+    <Content Include="img\greenimax2.png" />
     <Content Include="img\paul-green-120592-unsplash.jpg" />
     <Content Include="img\رشد.png" />
     <Content Include="Web.config" />
