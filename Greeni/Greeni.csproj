@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AboutUs.html" />
     <Content Include="content\fonts\fontawesome-webfont.svg" />
     <Content Include="content\scripts\scripts.js" />
     <Content Include="content\styles\bootstrap.css" />
