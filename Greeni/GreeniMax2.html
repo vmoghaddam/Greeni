@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="content/styles/main.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
 
     <style>
         body, h1, h2, h3, h4, h5, h6 {
@@ -67,6 +68,36 @@
                 font-size: 40px !important;
             }
         }
+
+        .button span {
+            position: relative;
+        }
+
+            .button span:after {
+                width: 90px;
+                height: 90px;
+                position: absolute;
+                right: -146px;
+                top: -34px;
+                background: hsla(0,0%,100%,.21);
+                content: "";
+                border-radius: 50%;
+                transition: 1s;
+            }
+
+        .button:hover {
+            position: relative;
+        }
+
+            .button:hover span:after {
+                width: 900px;
+                height: 90px;
+                right: -450px;
+                top: -30px;
+                background: hsla(0,0%,100%,.21);
+                content: "";
+                transform: unset;
+            }
     </style>
 </head>
 
@@ -86,10 +117,10 @@
 
         <a class="w3-bar-item w3-button w3-padding-large  w3-black" style="padding: 16px 15px !important">
             <!--<i class="fas fa-seedling" style="font-size:32px;color:#cc0066"></i>
-    <span style="font-size:13px;color:white;font-weight:bold">GREEN<span style="color: red;    font-style: italic;    font-size: 17px;    display: inline;    padding: 0 3px 0 1px;    font-weight: bold;    position: relative;    top: 1px;">i</span>MAX 2</span>-->
+            <span style="font-size:13px;color:white;font-weight:bold">GREEN<span style="color: red;    font-style: italic;    font-size: 17px;    display: inline;    padding: 0 3px 0 1px;    font-weight: bold;    position: relative;    top: 1px;">i</span>MAX 2</span>-->
             <img src="img/greenimax2.png" style="width:100px" />
         </a>
-        
+
         <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
             <!--<i class="fas fa-cannabis" style="font-size:32px;color:#3cb371"></i>
             <span style="font-size:13px;color:white;font-weight:bold">GREEN<span style="color: red;    font-style: italic;    font-size: 17px;    display: inline;    padding: 0 3px 0 1px;    font-weight: bold;    position: relative;    top: 1px;">i</span>MAX 1</span>-->
@@ -260,7 +291,28 @@
             <a href="#" class="link-button1" style="display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none">
                 اشتراک در خبرنامه
             </a>
+
+            <div style="text-align:center;color: white ; font-size: 20px;padding: 40px 0 10px 0; margin-bottom: 30px; font-weight: bold; border-bottom: 1px solid white">
+
+                سفارش دهید
+            </div>
+
+            <table style="width: 350px;
+    margin: 20px auto 0 auto;
+    display: block; text-align:center">
+                <tr data-ng-app="CountApp" data-ng-controller="CountCtrl">
+                    <td> <button ng-click="plusCount()" style="width:35px;height:33px;padding:4px 0 0 2px;border-radius:50%;background-color:white;border-radius:50%;text-align:center;font-size:17px">+</button></td>
+                    <td><input readonly  min="1"  ng-model="count" style="padding: 7px 10px 5px 0;font-size:20px;background-color:white;width:280px;height:30px;border-radius:30px" /></td>
+                    <td><button  ng-click="minusCount()" style="width:35px;height:33px;padding:4px 0 0 2px;border-radius:50%;background-color:white;border-radius:50%;text-align:center;font-size:17px">-</button></td>
+                </tr>
+            </table>
+            <a class="button" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
+                <span>سفارش دهید</span>
+                <i class="fas fa-shopping-cart" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
+            </a>
+
         </div>
+
 
 
         <!-- Footer -->
@@ -270,8 +322,29 @@
             <i class="fab fa-whatsapp" style="font-size:30px"></i>
         </footer>
     </div>
+    <script>
+
+        var app = angular.module('CountApp', []);
+        
+        app.controller('CountCtrl', function ($scope) {
+            
+            $scope.count = 1;
+            $scope.plusCount = function () {
+                $scope.count = parseInt($scope.count) + 1;
+            }
+      
+            $scope.minusCount = function () {
+                $scope.count = parseInt($scope.count) - 1;
+            }
+        });
+
+
+    </script>
+
+
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="content/scripts/scripts.js"></script>
+
 </body>
 </html>

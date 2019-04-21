@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="content/styles/main.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
 
     <style>
         body, h1, h2, h3, h4, h5, h6 {
@@ -86,14 +87,14 @@
 
         <a class="w3-bar-item w3-button w3-padding-large w3-black" style="padding: 16px 15px !important">
             <!--<i class="fas fa-cannabis" style="font-size:32px;color:#3cb371"></i>
-        <span style="font-size:13px;color:white;font-weight:bold">GREEN<span style="color: red;    font-style: italic;    font-size: 17px;    display: inline;    padding: 0 3px 0 1px;    font-weight: bold;    position: relative;    top: 1px;">i</span>MAX 1</span>-->
+            <span style="font-size:13px;color:white;font-weight:bold">GREEN<span style="color: red;    font-style: italic;    font-size: 17px;    display: inline;    padding: 0 3px 0 1px;    font-weight: bold;    position: relative;    top: 1px;">i</span>MAX 1</span>-->
             <img src="img/greeni1.png" style="width:100px" />
 
         </a>
 
         <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
             <!--<i class="fas fa-seedling" style="font-size:32px;color:#cc0066"></i>
-    <span style="font-size:13px;color:white;font-weight:bold">GREEN<span style="color: red;    font-style: italic;    font-size: 17px;    display: inline;    padding: 0 3px 0 1px;    font-weight: bold;    position: relative;    top: 1px;">i</span>MAX 2</span>-->
+            <span style="font-size:13px;color:white;font-weight:bold">GREEN<span style="color: red;    font-style: italic;    font-size: 17px;    display: inline;    padding: 0 3px 0 1px;    font-weight: bold;    position: relative;    top: 1px;">i</span>MAX 2</span>-->
             <img src="img/greenimax2.png" style="width:100px" />
         </a>
         <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
@@ -135,8 +136,8 @@
         <!-- Header/Home -->
         <header class="w3-container w3-padding-48 w3-center w3-black" id="home" style="padding-top:20px !important">
             <!--<h1 class="w3-jumbo  hidden-xs"><span style="font-size:60px">GREEN<span style="color:red;font-style:italic;font-size:70px; font-weight:bold; padding:0px 6px 0px 0px">i</span>MAX</span></h1>
-    <h1 class="w3-jumbo  hidden-lg hidden-md hidden-sm"><span style="font-size:40px">GREEN<span style="color:red;font-style:italic;font-size:50px; font-weight:bold; padding:0px 6px 0px 0px">i</span>MAX</span></h1>-->
-            <img src="img/greeni1.png" style="display:block;margin:0 auto 20px auto;width:400px"/>
+            <h1 class="w3-jumbo  hidden-lg hidden-md hidden-sm"><span style="font-size:40px">GREEN<span style="color:red;font-style:italic;font-size:50px; font-weight:bold; padding:0px 6px 0px 0px">i</span>MAX</span></h1>-->
+            <img src="img/greeni1.png" style="display:block;margin:0 auto 20px auto;width:400px" />
 
             <!--<img src="https://www.w3schools.com/w3images/man_smoke.jpg" alt="boy" class="w3-image" width="992" height="1108">-->
             <img src="img/g1.png" alt="boy" class="w3-image" style="width: 400px;  height: auto" data-aos="zoom-in" data-aos-duration="500">
@@ -245,7 +246,7 @@
             <p dir="rtl" style="color:white;padding:0 0 0 0px;line-height:30px" data-aos="fade-up">
                 این کود تنها قابلیت جذب از طریق ریشه را دارد. بدین منظور 5 میلی لیتر (سی سی) از آن را در یک لیتر آب حل نموده (پنج در هزار) و گیاهان را با آن آبیاری نمایید. این کار را در فصل بهار و تابستان هر هفته یک بار تکرار نمایید.
             </p>
-           
+
         </div>
         <div class="w3-content w3-justify w3-text-grey" id="about" data-aos="fade-up" style="text-align:center">
             <div style="text-align:center;color: white ; font-size: 20px;padding: 40px 0 10px 0; margin-bottom: 30px; font-weight: bold; border-bottom: 1px solid white">
@@ -257,9 +258,28 @@
             <a href="#" class="link-button1" style="display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none">
                 اشتراک در خبرنامه
             </a>
+
+            <table style="width: 350px;
+    margin: 20px auto 0 auto;
+    display: block; text-align:center">
+                <tr data-ng-app="CountApp" data-ng-controller="CountCtrl">
+                    <td> <button ng-click="plusCount()" style="width:35px;height:33px;padding:4px 0 0 2px;border-radius:50%;background-color:white;border-radius:50%;text-align:center;font-size:17px">+</button></td>
+                    <td><input readonly min="1" ng-model="count" style="padding: 7px 10px 5px 0;font-size:20px;background-color:white;width:280px;height:30px;border-radius:30px" /></td>
+                    <td><button ng-click="minusCount()" style="width:35px;height:33px;padding:4px 0 0 2px;border-radius:50%;background-color:white;border-radius:50%;text-align:center;font-size:17px">-</button></td>
+                </tr>
+            </table>
+            <a class="button" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
+                <span>سفارش دهید</span>
+                <i class="fas fa-shopping-cart" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
+            </a>
+
         </div>
+
        
 
+    </div>
+
+    <div>
         <!-- Footer -->
         <footer class="w3-content w3-padding-16 w3-text-grey w3-xlarge" style="border-top:1px solid gray;margin-top:20px;text-align:center">
             <i class="fab fa-telegram-plane" style="font-size:30px;padding-left:6px"></i>
@@ -267,6 +287,25 @@
             <i class="fab fa-whatsapp" style="font-size:30px"></i>
         </footer>
     </div>
+
+    <script>
+
+        var app = angular.module('CountApp', []);
+
+        app.controller('CountCtrl', function ($scope) {
+
+            $scope.count = 1;
+            $scope.plusCount = function () {
+                $scope.count = parseInt($scope.count) + 1;
+            }
+
+            $scope.minusCount = function () {
+                $scope.count = parseInt($scope.count) - 1;
+            }
+        });
+
+
+    </script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="content/scripts/scripts.js"></script>
