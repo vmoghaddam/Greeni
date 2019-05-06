@@ -81,6 +81,7 @@
     <Content Include="img\greenimax2.png" />
     <Content Include="img\paul-green-120592-unsplash.jpg" />
     <Content Include="img\رشد.png" />
+    <Content Include="page1.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
