@@ -1,14 +1,24 @@
-﻿<div class="box home" style="direction:rtl;text-align:right">
+﻿<style>
+    .mobile .dx-placeholder{
+        left:132px;
+    }
+    .name .dx-placeholder {
+        left: 0 !important;
+        text-align:center !important;
+    }
+</style>
+
+<div class="box home" style="direction:rtl;text-align:right">
     <!-- Icon Bar (Sidebar - hidden on small screens) -->
     <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" style="overflow:hidden !important">
 
         <!-- Avatar image in top left corner -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
-            <i class="fas fa-user" style="font-size:32px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">ورود/ثبت نام  </span>
-
+        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket" style="padding: 16px 15px !important;position:relative;">
+            <i class="fas fa-shopping-cart" style="font-size:40px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سبد خرید  </span>
+            <div ng-show="isBasketNoVisible" class="basket-no">{{basketCount}}</div>
         </a>
 
         <a class="w3-bar-item w3-button w3-padding-large w3-black" style="padding: 16px 15px !important">
@@ -79,9 +89,8 @@
                 <video loop="" playsinline="" autoplay>
 
 
-                    <source src="content/video/greenivideo.mp4"
-                            type="video/mp4">
-
+                    <!--<source src="content/video/greenivideo.mp4"
+                            type="video/mp4">-->
                     Sorry, your browser doesn't support embedded videos.
                 </video>
             </div>
@@ -174,28 +183,38 @@
             </p>
 
         </div>
-        <div class="w3-content w3-justify w3-text-grey" id="about" data-aos="fade-up" style="text-align:center">
+        <div class="w3-content w3-justify w3-text-grey" id="about" data-aos="fade-up" style="text-align:center !important">
             <div style="text-align:center;color: white ; font-size: 20px;padding: 40px 0 10px 0; margin-bottom: 30px; font-weight: bold; border-bottom: 1px solid white">
 
                 با ما همراه باشید
             </div>
-            <input placeholder="نام" class="input" style="width:350px;margin:0 auto 0 auto;display:block" />
-            <input placeholder="موبایل" class="input" style="width:350px;margin:20px auto 0 auto;display:block" />
-            <a href="#" class="link-button1" style="display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none">
-                اشتراک در خبرنامه
+           <!-- <input placeholder="نام" class="input" style="width:350px;margin:0 auto 0 auto;display:block" />-->
+            <div style="width:350px;margin:0px auto 0 auto;display:inline-block;padding:0px 0 0 0">
+                <div dx-text-box="txt_name" class="center name" style="background:white"></div>
+            </div>
+            <div></div>
+            <div style="width:350px;margin:20px auto 0 auto;display:inline-block;padding:0px 0 0 0">
+                <div dx-number-box="num_mobile" class="center mobile" style="background:white"></div>
+            </div>
+            <!-- <input placeholder="موبایل" class="input" style="width:350px;margin:20px auto 0 auto;display:block" />-->
+            <!--<a href="#" class="link-button1" style="display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none">
+        اشتراک در خبرنامه
+    </a>-->
+            <a class="button" href="" ng-click="subscribe()" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
+                <span>اشتراک در خبرنامه</span>
+                <i class="fas fa-rss" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
             </a>
+            <div style="text-align:center;color: white ; font-size: 20px;padding: 40px 0 10px 0; margin-bottom: 30px; font-weight: bold; border-bottom: 1px solid white">
 
-            <table style="width: 350px;
-    margin: 20px auto 0 auto;
-    display: block; text-align:center">
-                <tr data-ng-app="CountApp" data-ng-controller="CountCtrl">
-                    <td> <button ng-click="plusCount()" style="width:35px;height:33px;padding:4px 0 0 2px;border-radius:50%;background-color:white;border-radius:50%;text-align:center;font-size:17px">+</button></td>
-                    <td><input readonly min="1" ng-model="count" style="padding: 7px 10px 5px 0;font-size:20px;background-color:white;width:280px;height:30px;border-radius:30px" /></td>
-                    <td><button ng-click="minusCount()" style="width:35px;height:33px;padding:4px 0 0 2px;border-radius:50%;background-color:white;border-radius:50%;text-align:center;font-size:17px">-</button></td>
-                </tr>
-            </table>
-            <a class="button" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
-                <span>سفارش دهید</span>
+                سفارش دهید
+            </div>
+
+
+            <div style="width:350px;margin:0 auto 0 auto;display:inline-block;padding:0px 0 0 0">
+                <div dx-number-box="num_order" class="center" style="background:white"></div>
+            </div>
+            <a class="button" href="" ng-click="addToBasket()" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
+                <span>افزودن به سبد خرید</span>
                 <i class="fas fa-shopping-cart" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
             </a>
 

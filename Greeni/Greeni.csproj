@@ -73,6 +73,7 @@
     <Content Include="app\controllers\indexController.js" />
     <Content Include="app\services\appService.js" />
     <Content Include="app\services\personService.js" />
+    <Content Include="app\views\basket.html" />
     <Content Include="app\views\greeni1.html" />
     <Content Include="app\views\greeni2.html" />
     <Content Include="app\views\home.html" />
