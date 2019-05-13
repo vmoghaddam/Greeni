@@ -23,75 +23,75 @@ namespace API.Controllers
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
 
-        [Route("api/reviews/{id}")]
-        public async Task<IHttpActionResult> GetPersonReview(int id)
-        {
-            var review = await unitOfWork.ReviewRepository.GetViewReviewById(id);
-            if (review == null)
-                return NotFound();
+        //[Route("api/reviews/{id}")]
+        //public async Task<IHttpActionResult> GetPersonReview(int id)
+        //{
+        //    var review = await unitOfWork.ReviewRepository.GetViewReviewById(id);
+        //    if (review == null)
+        //        return NotFound();
              
 
 
-            return Ok(review);
-        }
+        //    return Ok(review);
+        //}
 
-        [Route("api/reviews/update")]
-        [AcceptVerbs("POST")]
-        public async Task<IHttpActionResult> PostUpdateReview(ViewModels.ReviewDto dto)
-        {
-            // return Ok(client);
-            if (dto == null)
-                return Exceptions.getNullException(ModelState);
-            if (!ModelState.IsValid)
-            {
-                // return BadRequest(ModelState);
-                return Exceptions.getModelValidationException(ModelState);
-            }
-            // var validate = unitOfWork.PersonMiscRepository.Validate(dto);
-            // if (validate.Code != HttpStatusCode.OK)
-            //      return validate;
+        //[Route("api/reviews/update")]
+        //[AcceptVerbs("POST")]
+        //public async Task<IHttpActionResult> PostUpdateReview(ViewModels.ReviewDto dto)
+        //{
+        //    // return Ok(client);
+        //    if (dto == null)
+        //        return Exceptions.getNullException(ModelState);
+        //    if (!ModelState.IsValid)
+        //    {
+        //        // return BadRequest(ModelState);
+        //        return Exceptions.getModelValidationException(ModelState);
+        //    }
+        //    // var validate = unitOfWork.PersonMiscRepository.Validate(dto);
+        //    // if (validate.Code != HttpStatusCode.OK)
+        //    //      return validate;
 
-            Review entity = await unitOfWork.ReviewRepository.GetByID(dto.Id);
-
-            
-            if (entity == null)
-                return Exceptions.getNotFoundException();
-
-            entity.Body = dto.Body;
-
-
-            var saveResult = await unitOfWork.SaveAsync();
-            if (saveResult.Code != HttpStatusCode.OK)
-                return saveResult;
+        //    Review entity = await unitOfWork.ReviewRepository.GetByID(dto.Id);
 
             
-            var review = await unitOfWork.ReviewRepository.GetViewReviewById(dto.Id);
-            return Ok(review.BodyAbs);
-        }
+        //    if (entity == null)
+        //        return Exceptions.getNotFoundException();
+
+        //    entity.Body = dto.Body;
 
 
-        [Route("api/reviews/delete")]
-        [AcceptVerbs("POST")]
-        public async Task<IHttpActionResult> DeleteUserPublication(ViewModels.ReviewDto dto)
-        {
-            var entity = await unitOfWork.ReviewRepository.GetByID(dto.Id);
+        //    var saveResult = await unitOfWork.SaveAsync();
+        //    if (saveResult.Code != HttpStatusCode.OK)
+        //        return saveResult;
 
-            if (entity == null)
-            {
-                return NotFound();
-            }
-            //var canDelete = unitOfWork.PersonRepository.CanDelete(entity);
-            //if (canDelete.Code != HttpStatusCode.OK)
-            //    return canDelete;
+            
+        //    var review = await unitOfWork.ReviewRepository.GetViewReviewById(dto.Id);
+        //    return Ok(review.BodyAbs);
+        //}
 
-            unitOfWork.ReviewRepository.Delete(entity);
 
-            var saveResult = await unitOfWork.SaveAsync();
-            if (saveResult.Code != HttpStatusCode.OK)
-                return saveResult;
-            var activity = (await unitOfWork.PersonRepository.GetPersonContentActivity(dto.UserId)).data;
-            return Ok(activity);
-        }
+        //[Route("api/reviews/delete")]
+        //[AcceptVerbs("POST")]
+        //public async Task<IHttpActionResult> DeleteUserPublication(ViewModels.ReviewDto dto)
+        //{
+        //    var entity = await unitOfWork.ReviewRepository.GetByID(dto.Id);
+
+        //    if (entity == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    //var canDelete = unitOfWork.PersonRepository.CanDelete(entity);
+        //    //if (canDelete.Code != HttpStatusCode.OK)
+        //    //    return canDelete;
+
+        //    unitOfWork.ReviewRepository.Delete(entity);
+
+        //    var saveResult = await unitOfWork.SaveAsync();
+        //    if (saveResult.Code != HttpStatusCode.OK)
+        //        return saveResult;
+        //    var activity = (await unitOfWork.PersonRepository.GetPersonContentActivity(dto.UserId)).data;
+        //    return Ok(activity);
+        //}
 
         protected override void Dispose(bool disposing)
         {

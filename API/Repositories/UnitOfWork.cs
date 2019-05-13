@@ -31,60 +31,35 @@ namespace API.Repositories
         }
 
 
-        private ReviewRepository reviewRepository;
-        public ReviewRepository ReviewRepository
-        {
-            get
-            {
+        //private ReviewRepository reviewRepository;
+        //public ReviewRepository ReviewRepository
+        //{
+        //    get
+        //    {
 
-                if (this.reviewRepository == null)
-                {
-                    this.reviewRepository = new ReviewRepository(context);
-                }
-                return reviewRepository;
-            }
-        }
+        //        if (this.reviewRepository == null)
+        //        {
+        //            this.reviewRepository = new ReviewRepository(context);
+        //        }
+        //        return reviewRepository;
+        //    }
+        //}
 
-        private GenericRepository<ViewOption> viewOptionRepository;
-        public GenericRepository<ViewOption> ViewOptionRepository
-        {
-            get
-            {
+        //private GenericRepository<ViewOption> viewOptionRepository;
+        //public GenericRepository<ViewOption> ViewOptionRepository
+        //{
+        //    get
+        //    {
 
-                if (this.viewOptionRepository == null)
-                {
-                    this.viewOptionRepository = new GenericRepository<ViewOption>(context);
-                }
-                return viewOptionRepository;
-            }
-        }
+        //        if (this.viewOptionRepository == null)
+        //        {
+        //            this.viewOptionRepository = new GenericRepository<ViewOption>(context);
+        //        }
+        //        return viewOptionRepository;
+        //    }
+        //}
 
-        private GenericRepository<ViewCountry> viewCountryRepository;
-        public GenericRepository<ViewCountry> ViewCountryRepository
-        {
-            get
-            {
-
-                if (this.viewCountryRepository == null)
-                {
-                    this.viewCountryRepository = new GenericRepository<ViewCountry>(context);
-                }
-                return viewCountryRepository;
-            }
-        }
-        private GenericRepository<AssignedRole> assignedRoleRepository;
-        public GenericRepository<AssignedRole> AssignedRoleRepository
-        {
-            get
-            {
-
-                if (this.assignedRoleRepository == null)
-                {
-                    this.assignedRoleRepository = new GenericRepository<AssignedRole>(context);
-                }
-                return assignedRoleRepository;
-            }
-        }
+      
 
         public async Task<CustomActionResult> SaveAsync()
         {

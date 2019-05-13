@@ -12,15 +12,9 @@ namespace API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UserContentActivity
+    public partial class AspNetUserRole
     {
-        public int Id { get; set; }
-        public Nullable<int> ReviewId { get; set; }
-        public string Remark { get; set; }
-        public System.DateTime Date { get; set; }
-        public Nullable<int> PersonId { get; set; }
-    
-        public virtual Review Review { get; set; }
-        public virtual Person Person { get; set; }
+        public string UserId { get; set; }
+        public string RoleId { get; set; }
     }
 }

@@ -1,6 +1,11 @@
 ﻿'use strict';
-app.controller('basketController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
-    
+app.controller('basketController', ['$scope', '$rootScope', '$location', '$route', 'orderService', function ($scope, $rootScope, $location, $route, orderService) {
+    $rootScope.setOrderNo(null);
+    $scope.orderNo = $rootScope.getOrderNo();
+    if (!$scope.orderNo)
+        $('.info').fadeIn();
+        else
+        $('.confirmed').fadeIn();
 
     $scope.basketCount = 0;
     $scope.isBasketNoVisible = $scope.basketCount > 0;
@@ -39,6 +44,58 @@ app.controller('basketController', ['$scope', '$rootScope', '$location', functio
     };
 
     $scope.bind();
+    ///////////////////////////////
+    $scope.confirm_order = function () {
+        //$scope.loadingVisible = true;
+        $scope.orderNo = 33412;
+        $rootScope.setOrderNo($scope.orderNo);
+        
+        $('.info').fadeOut(400, function () {
+            $('.confirmed').fadeIn();
+        });
+     
+    };
+    ///////////////////////////////
+    $scope.loadingVisible = false;
+    $scope.loadPanel = {
+        message: 'لطفا صبر کنید',
+        rtlEnabled:true,
+        showIndicator: true,
+        showPane: true,
+        shading: true,
+        closeOnOutsideClick: false,
+        shadingColor: "rgba(0,0,0,0.4)",
+        // position: { of: "body" },
+        onShown: function () {
+
+        },
+        onHidden: function () {
+
+        },
+        bindingOptions: {
+            visible: 'loadingVisible'
+        }
+    };
+    ////////////////////////////////
+    $scope.mobile = null;
+    $scope.num_mobile = {
+        width: '100%',
+        height: 45,
+        placeholder: 'شماره موبایل',
+        bindingOptions: {
+            value: 'mobile',
+        }
+    };
+    $scope.name = null;
+    $scope.txt_name = {
+        rtlEnabled: true,
+        width: '100%',
+        height: 45,
+        placeholder: 'نام',
+        bindingOptions: {
+            value: 'name',
+        }
+    };
     ////////////////////////////////////
     AOS.init({
         easing: 'ease-out-back',

@@ -126,6 +126,19 @@ app.run([  '$rootScope', '$location' , function ( $rootScope, $location ) {
         localStorage.setItem("epa_greeni", JSON.stringify(greeni));
     };
 
+    $rootScope.setOrderNo = function (no) {
+        var greeni = $rootScope.getGreeni();
+        greeni.basket.orderNo = no;
+
+
+        localStorage.setItem("epa_greeni", JSON.stringify(greeni));
+    };
+    $rootScope.getOrderNo = function () {
+        var greeni = $rootScope.getGreeni();
+        return greeni.basket.orderNo;
+
+    };
+
     
 
     

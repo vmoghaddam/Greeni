@@ -20,11 +20,11 @@ namespace API.Repositories
        
 
         
-        public async Task<ViewPersonReview> GetViewReviewById(int id)
-        {
+        //public async Task<ViewPersonReview> GetViewReviewById(int id)
+        //{
 
-            return await this.context.ViewPersonReviews.FirstOrDefaultAsync(q => q.Id == id);
-        }
+        //    return await this.context.ViewPersonReviews.FirstOrDefaultAsync(q => q.Id == id);
+        //}
         
 
 

@@ -47,14 +47,11 @@ namespace API.Models
         public string DateJoinStr { get; set; }
         public string Name { get; set; }
         public Nullable<int> FieldOfStudyId { get; set; }
-        public string Position { get; set; }
         public string FieldOfStudy { get; set; }
         public string Degree { get; set; }
         public string CountrySortName { get; set; }
         public string Country { get; set; }
         public string Location { get; set; }
         public string Education { get; set; }
-        public string Networks { get; set; }
-        public string NetworkIds { get; set; }
     }
 }

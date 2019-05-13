@@ -14,19 +14,6 @@ namespace API.Models
     
     public partial class Person
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Person()
-        {
-            this.PersonNetworks = new HashSet<PersonNetwork>();
-            this.PersonAwards = new HashSet<PersonAward>();
-            this.PersonCertifications = new HashSet<PersonCertification>();
-            this.PersonPatents = new HashSet<PersonPatent>();
-            this.PersonProjects = new HashSet<PersonProject>();
-            this.PersonPublications = new HashSet<PersonPublication>();
-            this.Reviews = new HashSet<Review>();
-            this.UserContentActivities = new HashSet<UserContentActivity>();
-        }
-    
         public int Id { get; set; }
         public System.DateTime DateCreate { get; set; }
         public int SexId { get; set; }
@@ -61,22 +48,5 @@ namespace API.Models
         public string Education2 { get; set; }
         public string Location2 { get; set; }
         public string Position2 { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonNetwork> PersonNetworks { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonAward> PersonAwards { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonCertification> PersonCertifications { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonPatent> PersonPatents { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonProject> PersonProjects { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonPublication> PersonPublications { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Review> Reviews { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserContentActivity> UserContentActivities { get; set; }
     }
 }
