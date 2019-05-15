@@ -26,12 +26,12 @@
 
             <img src="img/greenimax2.png" style="width:100%" />
         </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket menu-selected" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/basket','basket',1)">
+        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket " style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/basket','basket',1)">
             <i class="fas fa-shopping-cart" style="font-size:40px;color:white"></i>
             <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سبد خرید  </span>
             <div ng-show="isBasketNoVisible" class="basket-no">{{basketCount}}</div>
         </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/orders','orders',1)">
+        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket menu-selected" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/orders','orders',1)">
             <i class="fas fa-boxes" style="font-size:40px;color:white"></i>
             <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سفارش ها  </span>
 
@@ -74,14 +74,75 @@
     <!-- Page Content -->
     <div class="w3-padding-large" id="main">
         <!-- Header/Home -->
-        <header class="w3-container w3-padding-48 w3-center w3-black" id="home" style="padding-top:20px !important">
+        <header class="w3-container w3-padding-48 w3-center w3-black" id="home" style="padding-top:20px !important;padding-bottom:20px !important;">
             <!--<h1 class="w3-jumbo  hidden-xs"><span style="font-size:60px">GREEN<span style="color:red;font-style:italic;font-size:70px; font-weight:bold; padding:0px 6px 0px 0px">i</span>MAX</span></h1>
             <h1 class="w3-jumbo  hidden-lg hidden-md hidden-sm"><span style="font-size:40px">GREEN<span style="color:red;font-style:italic;font-size:50px; font-weight:bold; padding:0px 6px 0px 0px">i</span>MAX</span></h1>-->
-            <h1 class="w3-jumbo  hidden-xs">سبد خرید</h1>
+            <h1 class="w3-jumbo  hidden-xs">سفارش ها</h1>
         </header>
 
         <div class="col-lg-12" style="padding:0 0px 0 20px;text-align:center">
-            <table style="background:#3cb371;color:white;padding:0;width:100%;max-width:800px;border:1px solid #3cb371;margin:0 auto 0 auto;display:none" class="info">
+            <div class="w3-content w3-justify w3-text-grey info" style="text-align:center !important;margin-top:0px;margin-bottom:40px">
+
+                <div style="width:300px;margin:20px auto 0 auto;display:inline-block;padding:0px 0 0 0">
+                    <div dx-number-box="num_mobile" class="center mobile" style="background:white"></div>
+                </div>
+                <a class="button" href="" ng-click="show_orders()" style="overflow:hidden;display:block;width:300px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
+                    <span>نمایش</span>
+                    <i class="fas fa-boxes" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
+                </a>
+            </div>
+
+            <div ng-repeat='item in orders' style="background:#3cb371;color:white;padding:0;width:100%;max-width:800px;border:1px solid #3cb371;margin:20px auto 0 auto; ">
+                <table style="width:100%;background: rgb(60, 179, 113)">
+                    <tr>
+                        <td style="width:20%;direction:ltr;text-align:right;font-weight:bold;font-size:16px;padding:10px"> <span style="display:inline-block;font-size:16px;">{{item.DateStr}}</span></td>
+                        <td style="direction:rtl;text-align:left;padding-left:10px;font-weight:bold;padding:10px"><span style="font-size:16px;display:inline-block">شماره: </span><span style="font-size:16px;display:inline-block">{{item.Id}}</span></td>
+                        <!-- <td style="width:30%;text-align:left;padding-left:10px"><span>قیمت:  </span><span style="display:inline-block;margin:0 0 0 10px">{{item.Value}}</span><span>تومان</span></td>-->
+                    </tr>
+                </table>
+                <table style="background:#bbb;color:white;padding:0;width:100%;max-width:800px;border:1px solid #3cb371;margin:0px auto 0px auto; " class="info">
+                    <thead>
+                        <tr>
+
+                            <th style="text-align:right; padding:12px 10px 12px 10px; " colspan="2">محصول</th>
+
+                            <th style=" text-align:center;padding:12px 10px 12px 10px;width:150px">تعداد</th>
+                            <th style=" text-align:center;padding:12px 10px 12px 10px;width:150px">تخفیف (درصد)</th>
+                            <th style="text-align:center;padding:12px 10px 12px 10px;width:200px">قیمت (تومان)</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr ng-repeat='x in item.Items'>
+
+                            <td style="background-color:black;text-align:right; padding:12px 10px 12px 10px; " colspan="2">{{x.Product}}</td>
+
+                            <td style=" background-color:black;text-align:center;padding:12px 10px 12px 10px;width:150px">{{x.Quantity}}</td>
+                            <td style=" background-color:black;text-align:center;padding:12px 10px 12px 10px;width:150px">{{x.DiscountUnit}}</td>
+                            <td style="background-color:black;text-align:center;padding:12px 10px 12px 10px;width:200px">{{x.FinalPriceUnit}}</td>
+
+                        </tr>
+
+
+
+
+                    </tbody>
+
+
+                </table>
+                <table style="width:100%;background:black">
+                    <tr>
+                        <td style="direction:ltr;text-align:left;font-weight:bold;font-size:16px;padding:10px"> <span style="display:inline-block;font-size:16px;">جمع کل</span></td>
+                        <td style="width:200px;direction:rtl;text-align:center; font-weight:bold;padding:10px"> <span style="font-size:16px;display:inline-block">{{item.Value}}</span></td>
+                        <!-- <td style="width:30%;text-align:left;padding-left:10px"><span>قیمت:  </span><span style="display:inline-block;margin:0 0 0 10px"></span><span>تومان</span></td>-->
+                    </tr>
+                </table>
+            </div>
+
+
+            <table style="background:#3cb371;color:white;padding:0;width:100%;max-width:600px;border:1px solid #3cb371;margin:0 auto 0 auto;display:none" class="info">
                 <thead>
                     <tr>
                         <th style="width:50px"></th>
@@ -89,7 +150,6 @@
                         <th style="text-align:right;padding:12px 10px 12px 10px" colspan="2">محصول</th>
 
                         <th style="width:100px;text-align:center;padding:12px 10px 12px 10px">تعداد</th>
-                        <th style="width:150px;text-align:center;padding:12px 10px 12px 10px">تخفیف (درصد)</th>
                         <th style="width:200px;text-align:center;padding:12px 10px 12px 10px">قیمت (تومان)</th>
 
                     </tr>
@@ -113,7 +173,6 @@
                         <td style="background-color:black;text-align:right;padding:12px 10px 12px 10px" colspan="2">{{item.name}}</td>
 
                         <td style="background-color:black;width:100px;text-align:center;padding:12px 10px 12px 10px">{{item.total}}</td>
-                        <td style="background-color:black;width:150px;text-align:center;padding:12px 10px 12px 10px">{{item.discount}}</td>
                         <td style="background-color:black;width:200px;text-align:center;padding:12px 10px 12px 10px">{{item.total_price}}</td>
                     </tr>
 
@@ -122,7 +181,7 @@
                 </tbody>
                 <tfoot>
                     <tr style="border-top:1px solid #3cb371;">
-                        <td colspan="4" style="background-color:black;"></td>
+                        <td colspan="3" style="background-color:black;"></td>
                         <td style="background-color:black;width:100px;text-align:center;padding:12px 10px 12px 10px">جمع کل</td>
                         <td style="background-color:black;width:200px;text-align:center;padding:12px 10px 12px 10px;font-size:16px">{{invoice_price}}</td>
 
@@ -130,45 +189,8 @@
                 </tfoot>
 
             </table>
-            <div class="w3-content w3-justify w3-text-grey info" style="text-align:center !important;margin-top:40px;display:none">
-                <div style="width:350px;margin:0px auto 0 auto;display:inline-block;padding:0px 0 0 0">
-                    <div dx-text-box="txt_name" class="center name" style="background:white"></div>
-                </div>
-                <div></div>
-                <div style="width:350px;margin:20px auto 0 auto;display:inline-block;padding:0px 0 0 0">
-                    <div dx-number-box="num_mobile" class="center mobile" style="background:white"></div>
-                </div>
-                <a class="button" href="" ng-click="confirm_order()" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
-                    <span>تایید سفارش</span>
-                    <i class="far fa-check-circle" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
-                </a>
-            </div>
-            <div class="w3-content w3-justify w3-text-grey confirmed" style="text-align:center !important;margin-top:40px;display:none">
-                <p style="color:white;font-size:18px;max-width:600px;margin:0 auto 0 auto;line-height:40px">
-                    سفارش شما با شماره
-                    {{orderNo}}
-                    ثبت شده است. به زودی کارشناسان بخش فروش ما با شما برای پیگیری تماس خواهند گرفت.
-                    از خرید شما متشکریم
-                </p>
-                <a class="button" href="" ng-click="confirm_order()" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
-                    <span>پیگیری سفارش ها</span>
-                    <i class="fas fa-boxes" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
-                </a>
-            </div>
-            <div class="w3-content w3-justify w3-text-grey signin" style="text-align:center !important;margin-top:40px;display:none">
-                <p style="color:white;font-size:18px;max-width:600px;margin:0 auto 0 auto;line-height:40px">
-                    برای تایید سفارش لطفا وارد حساب کاربری خود شوید.
-                </p>
-            </div>
-            <div class="w3-content w3-justify w3-text-grey empty" style="text-align:center !important;margin-top:40px;display:none">
-                <p style="color:white;font-size:18px;max-width:600px;margin:0 auto 0 auto;line-height:40px">
-                    در حال حاضر سبد خرید شما خالی است.
-                </p>
-                <a class="button" href="" ng-click="confirm_order()" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
-                    <span>پیگیری سفارش ها</span>
-                    <i class="fas fa-boxes" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
-                </a>
-            </div>
+
+
 
         </div>
         <div style="clear:both"></div>

@@ -27,6 +27,12 @@ namespace API.Repositories
 
             return await this.context.ViewPersons.FirstOrDefaultAsync(q => q.UserId == id);
         }
+        public async Task<Person> GetViewPersonByMobile(string mobile)
+        {
+
+            return await this.context.People.FirstOrDefaultAsync(q => q.Mobile == mobile);
+        }
+       
         //public async Task<ViewPerson> GetViewPersonById(int id)
         //{
 

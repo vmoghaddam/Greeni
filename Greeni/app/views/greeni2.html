@@ -20,30 +20,34 @@
         <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">ورود/ثبت نام  </span>
 
     </a>-->
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important;position:relative;">
+        <a class="w3-bar-item w3-button w3-padding-large " style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni1','greeni1',1)">
+            <img src="img/g1.png" style="height:70px" />
+            <img src="img/greeni1.png" style="width:100%" />
+
+        </a>
+
+        <a class="w3-bar-item w3-button w3-padding-large menu-selected" style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni2','greeni2',1)">
+            <img src="img/g2.png" style="height:70px" />
+
+            <img src="img/greenimax2.png" style="width:100%" />
+        </a>
+        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/basket','basket',1)">
             <i class="fas fa-shopping-cart" style="font-size:32px;color:white"></i>
             <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سبد خرید  </span>
             <div></div>
         </a>
-
-        <a class="w3-bar-item w3-button w3-padding-large  w3-black" style="padding: 16px 15px !important">
-            <!--<i class="fas fa-seedling" style="font-size:32px;color:#cc0066"></i>
-        <span style="font-size:13px;color:white;font-weight:bold">GREEN<span style="color: red;    font-style: italic;    font-size: 17px;    display: inline;    padding: 0 3px 0 1px;    font-weight: bold;    position: relative;    top: 1px;">i</span>MAX 2</span>-->
-            <img src="img/greenimax2.png" style="width:100px" />
-        </a>
-
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
-            <!--<i class="fas fa-cannabis" style="font-size:32px;color:#3cb371"></i>
-        <span style="font-size:13px;color:white;font-weight:bold">GREEN<span style="color: red;    font-style: italic;    font-size: 17px;    display: inline;    padding: 0 3px 0 1px;    font-weight: bold;    position: relative;    top: 1px;">i</span>MAX 1</span>-->
-            <img src="img/greeni1.png" style="width:100px" />
+        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/orders','orders',1)">
+            <i class="fas fa-boxes" style="font-size:40px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سفارش ها  </span>
 
         </a>
 
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
+
+        <!--<a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
             <i class="fas fa-file-alt" style="font-size:32px;color:white"></i>
             <span style="font-size:13px;color:white;font-weight:bold;display:block">مجوز ها  </span>
 
-        </a>
+        </a>-->
 
         <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
             <i class="fas fa-pen-fancy" style="font-size:32px;color:white"></i>
@@ -147,7 +151,7 @@
                             <td style="text-align:center;width:70px;padding:8px 10px 8px 10px;background-color:black">1</td>
                             <td style="width:80px;text-align:center;padding:8px 10px 8px 10px;background-color:black">g/cm3</td>
                         </tr>
-                        <tr>
+                        <tr style="height:48px">
                             <td style="text-align:right;background-color:black;padding:12px 10px 12px 10px">pH</td>
                             <td style="text-align:center;width:60px;padding:10px;background-color:black">4.6</td>
                             <td style="width:80px;text-align:center;padding:10px;background-color:black"></td>

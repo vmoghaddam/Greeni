@@ -16,14 +16,22 @@
         <EntityTypeShape EntityType="EPAGRIFFINModel.City" Width="1.5" PointX="2.75" PointY="6.75" />
         <EntityTypeShape EntityType="EPAGRIFFINModel.Country" Width="1.5" PointX="4.75" PointY="6.75" />
         <EntityTypeShape EntityType="EPAGRIFFINModel.Option" Width="1.5" PointX="6.75" PointY="5.75" />
-        <EntityTypeShape EntityType="EPAGRIFFINModel.Person" Width="1.5" PointX="8.75" PointY="0.75" />
         <EntityTypeShape EntityType="EPAGRIFFINModel.Review" Width="1.5" PointX="0.75" PointY="9.75" />
         <EntityTypeShape EntityType="EPAGRIFFINModel.State" Width="1.5" PointX="2.75" PointY="9.75" />
         <EntityTypeShape EntityType="EPAGRIFFINModel.ViewCountry" Width="1.5" PointX="4.75" PointY="9.75" />
         <EntityTypeShape EntityType="EPAGRIFFINModel.ViewOption" Width="1.5" PointX="6.75" PointY="9.75" />
         <EntityTypeShape EntityType="EPAGRIFFINModel.RefreshToken" Width="1.5" PointX="9.375" PointY="9.75" />
         <EntityTypeShape EntityType="EPAGRIFFINModel.ViewPerson" Width="1.5" PointX="11.375" PointY="0.75" />
-      </Diagram>
+        <EntityTypeShape EntityType="EPAGRIFFINModel.Product" Width="1.5" PointX="11.375" PointY="15.5" />
+        <EntityTypeShape EntityType="EPAGRIFFINModel.OrderItem" Width="1.5" PointX="13.625" PointY="12.625" />
+        <AssociationConnector Association="EPAGRIFFINModel.fk_orderi_product" />
+        <EntityTypeShape EntityType="EPAGRIFFINModel.Person" Width="1.5" PointX="9.125" PointY="18.25" />
+        <EntityTypeShape EntityType="EPAGRIFFINModel.Order" Width="1.5" PointX="11.375" PointY="20.375" />
+        <AssociationConnector Association="EPAGRIFFINModel.fk_order_person" />
+        <AssociationConnector Association="EPAGRIFFINModel.fk_orderi_order" />
+        <EntityTypeShape EntityType="EPAGRIFFINModel.ViewOrderItem" Width="1.5" PointX="5.375" PointY="12.75" />
+        <EntityTypeShape EntityType="EPAGRIFFINModel.ViewOrder" Width="1.5" PointX="7.375" PointY="12.75" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

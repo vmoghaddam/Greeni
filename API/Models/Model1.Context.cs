@@ -36,12 +36,17 @@ namespace API.Models
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Option> Options { get; set; }
-        public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<ViewCountry> ViewCountries { get; set; }
         public virtual DbSet<ViewOption> ViewOptions { get; set; }
         public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
         public virtual DbSet<ViewPerson> ViewPersons { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<OrderItem> OrderItems { get; set; }
+        public virtual DbSet<Person> People { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<ViewOrderItem> ViewOrderItems { get; set; }
+        public virtual DbSet<ViewOrder> ViewOrders { get; set; }
     }
 }

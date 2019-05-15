@@ -14,9 +14,15 @@ namespace API.Models
     
     public partial class Person
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Person()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+    
         public int Id { get; set; }
         public System.DateTime DateCreate { get; set; }
-        public int SexId { get; set; }
+        public Nullable<int> SexId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Nullable<System.DateTime> DateBirth { get; set; }
@@ -48,5 +54,8 @@ namespace API.Models
         public string Education2 { get; set; }
         public string Location2 { get; set; }
         public string Position2 { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

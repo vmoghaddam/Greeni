@@ -31,6 +31,21 @@ namespace API.Repositories
         }
 
 
+        private OrderRepository orderRepository;
+        public OrderRepository OrderRepository
+        {
+            get
+            {
+
+                if (this.orderRepository == null)
+                {
+                    this.orderRepository = new OrderRepository(context);
+                }
+                return orderRepository;
+            }
+        }
+
+
         //private ReviewRepository reviewRepository;
         //public ReviewRepository ReviewRepository
         //{
@@ -59,7 +74,7 @@ namespace API.Repositories
         //    }
         //}
 
-      
+
 
         public async Task<CustomActionResult> SaveAsync()
         {

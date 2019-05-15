@@ -155,23 +155,44 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.Option' does not have a primar
           <Property Name="CreatorId" Type="int" />
           <Property Name="Prop1" Type="varchar" MaxLength="255" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.Person' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateG" Type="datetime" />
+          <Property Name="Date" Type="numeric" Precision="20" Scale="0" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="500" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Tax" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Transport" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="PersonId" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="PriceUnit" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="DiscountUnit" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+          <Property Name="StatusId" Type="int" />
+        </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="DateCreate" />
-            <PropertyRef Name="SexId" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="LastName" />
-            <PropertyRef Name="IsActive" />
-            <PropertyRef Name="IsDeleted" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DateCreate" Type="datetime" Nullable="false" />
-          <Property Name="SexId" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="500" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="SexId" Type="int" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="500" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="500" />
           <Property Name="DateBirth" Type="date" />
           <Property Name="Email" Type="nvarchar" MaxLength="500" />
           <Property Name="Mobile" Type="nvarchar" MaxLength="500" />
@@ -201,6 +222,14 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.Person' does not have a primar
           <Property Name="Education2" Type="varchar" MaxLength="500" />
           <Property Name="Location2" Type="varchar" MaxLength="500" />
           <Property Name="Position2" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="RefreshToken">
           <Key>
@@ -274,6 +303,60 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewOption' does not have a pr
           <Property Name="IsSystem" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'epatrinc_greeni.dbo.ViewOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateG" Type="datetime" />
+          <Property Name="Date" Type="numeric" Precision="20" Scale="0" />
+          <Property Name="DateStr" Type="varchar" MaxLength="16" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="500" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Tax" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Transport" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'epatrinc_greeni.dbo.ViewOrderItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewOrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="PriceUnit" />
+            <PropertyRef Name="DiscountUnit" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="OrderStatus" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="PriceUnit" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="DiscountUnit" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="FinalPriceUnit" Type="numeric" Precision="29" Scale="11" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="OrderStatusId" Type="int" />
+          <Property Name="Product" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Date" Type="numeric" Precision="20" Scale="0" />
+          <Property Name="DateStr" Type="varchar" MaxLength="16" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="500" />
+          <Property Name="Person" Type="nvarchar" MaxLength="500" />
+          <Property Name="OrderStatus" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Tax" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="OrderDiscount" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Transport" Type="decimal" Precision="18" Scale="8" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewPerson">
           <Key>
@@ -326,7 +409,47 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="Location" Type="varchar" MaxLength="500" />
           <Property Name="Education" Type="varchar" MaxLength="500" />
         </EntityType>
+        <Association Name="fk_order_person">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_orderi_order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_orderi_product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="EPAGRIFFINModelStoreContainer">
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RefreshToken" EntityType="Self.RefreshToken" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -424,44 +547,6 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
     [Option].[Prop1] AS [Prop1]
     FROM [dbo].[Option] AS [Option]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Person" EntityType="Self.Person" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Person].[Id] AS [Id], 
-    [Person].[DateCreate] AS [DateCreate], 
-    [Person].[SexId] AS [SexId], 
-    [Person].[FirstName] AS [FirstName], 
-    [Person].[LastName] AS [LastName], 
-    [Person].[DateBirth] AS [DateBirth], 
-    [Person].[Email] AS [Email], 
-    [Person].[Mobile] AS [Mobile], 
-    [Person].[Address] AS [Address], 
-    [Person].[IsActive] AS [IsActive], 
-    [Person].[IsDeleted] AS [IsDeleted], 
-    [Person].[Remark] AS [Remark], 
-    [Person].[Nickname] AS [Nickname], 
-    [Person].[IDNo] AS [IDNo], 
-    [Person].[UserId] AS [UserId], 
-    [Person].[ImageUrl] AS [ImageUrl], 
-    [Person].[CountryId] AS [CountryId], 
-    [Person].[ZIPCode] AS [ZIPCode], 
-    [Person].[State] AS [State], 
-    [Person].[City] AS [City], 
-    [Person].[Company] AS [Company], 
-    [Person].[University] AS [University], 
-    [Person].[Website] AS [Website], 
-    [Person].[Twitter] AS [Twitter], 
-    [Person].[LinkedIn] AS [LinkedIn], 
-    [Person].[Headline] AS [Headline], 
-    [Person].[DegreeId] AS [DegreeId], 
-    [Person].[PositionId] AS [PositionId], 
-    [Person].[DateJoin] AS [DateJoin], 
-    [Person].[FieldOfStudyId] AS [FieldOfStudyId], 
-    [Person].[TempId] AS [TempId], 
-    [Person].[Education2] AS [Education2], 
-    [Person].[Location2] AS [Location2], 
-    [Person].[Position2] AS [Position2]
-    FROM [dbo].[Person] AS [Person]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="Review" EntityType="Self.Review" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Review].[Id] AS [Id], 
@@ -499,6 +584,46 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
     [ViewOption].[OrderIndex] AS [OrderIndex], 
     [ViewOption].[IsSystem] AS [IsSystem]
     FROM [dbo].[ViewOption] AS [ViewOption]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewOrder" EntityType="Self.ViewOrder" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewOrder].[Id] AS [Id], 
+    [ViewOrder].[DateG] AS [DateG], 
+    [ViewOrder].[Date] AS [Date], 
+    [ViewOrder].[DateStr] AS [DateStr], 
+    [ViewOrder].[Mobile] AS [Mobile], 
+    [ViewOrder].[Name] AS [Name], 
+    [ViewOrder].[Remark] AS [Remark], 
+    [ViewOrder].[Tax] AS [Tax], 
+    [ViewOrder].[Discount] AS [Discount], 
+    [ViewOrder].[Transport] AS [Transport], 
+    [ViewOrder].[StatusId] AS [StatusId], 
+    [ViewOrder].[PersonId] AS [PersonId], 
+    [ViewOrder].[Status] AS [Status]
+    FROM [dbo].[ViewOrder] AS [ViewOrder]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewOrderItem" EntityType="Self.ViewOrderItem" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewOrderItem].[Id] AS [Id], 
+    [ViewOrderItem].[OrderId] AS [OrderId], 
+    [ViewOrderItem].[ProductId] AS [ProductId], 
+    [ViewOrderItem].[Quantity] AS [Quantity], 
+    [ViewOrderItem].[PriceUnit] AS [PriceUnit], 
+    [ViewOrderItem].[DiscountUnit] AS [DiscountUnit], 
+    [ViewOrderItem].[FinalPriceUnit] AS [FinalPriceUnit], 
+    [ViewOrderItem].[Remark] AS [Remark], 
+    [ViewOrderItem].[StatusId] AS [StatusId], 
+    [ViewOrderItem].[OrderStatusId] AS [OrderStatusId], 
+    [ViewOrderItem].[Product] AS [Product], 
+    [ViewOrderItem].[Date] AS [Date], 
+    [ViewOrderItem].[DateStr] AS [DateStr], 
+    [ViewOrderItem].[Mobile] AS [Mobile], 
+    [ViewOrderItem].[Person] AS [Person], 
+    [ViewOrderItem].[OrderStatus] AS [OrderStatus], 
+    [ViewOrderItem].[Tax] AS [Tax], 
+    [ViewOrderItem].[OrderDiscount] AS [OrderDiscount], 
+    [ViewOrderItem].[Transport] AS [Transport]
+    FROM [dbo].[ViewOrderItem] AS [ViewOrderItem]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ViewPerson" EntityType="Self.ViewPerson" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -543,6 +668,18 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
     [ViewPerson].[Education] AS [Education]
     FROM [dbo].[ViewPerson] AS [ViewPerson]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="fk_order_person" Association="Self.fk_order_person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="fk_orderi_order" Association="Self.fk_orderi_order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="fk_orderi_product" Association="Self.fk_orderi_product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -560,14 +697,31 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
           <EntitySet Name="Cities" EntityType="EPAGRIFFINModel.City" />
           <EntitySet Name="Countries" EntityType="EPAGRIFFINModel.Country" />
           <EntitySet Name="Options" EntityType="EPAGRIFFINModel.Option" />
-          <EntitySet Name="People" EntityType="EPAGRIFFINModel.Person" />
           <EntitySet Name="Reviews" EntityType="EPAGRIFFINModel.Review" />
           <EntitySet Name="States" EntityType="EPAGRIFFINModel.State" />
           <EntitySet Name="ViewCountries" EntityType="EPAGRIFFINModel.ViewCountry" />
           <EntitySet Name="ViewOptions" EntityType="EPAGRIFFINModel.ViewOption" />
           <EntitySet Name="RefreshTokens" EntityType="EPAGRIFFINModel.RefreshToken" />
           <EntitySet Name="ViewPersons" EntityType="EPAGRIFFINModel.ViewPerson" />
-        </EntityContainer>
+          <EntitySet Name="Products" EntityType="EPAGRIFFINModel.Product" />
+          <EntitySet Name="OrderItems" EntityType="EPAGRIFFINModel.OrderItem" />
+          <AssociationSet Name="fk_orderi_product" Association="EPAGRIFFINModel.fk_orderi_product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <EntitySet Name="People" EntityType="EPAGRIFFINModel.Person" />
+          <EntitySet Name="Orders" EntityType="EPAGRIFFINModel.Order" />
+          <AssociationSet Name="fk_order_person" Association="EPAGRIFFINModel.fk_order_person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="fk_orderi_order" Association="EPAGRIFFINModel.fk_orderi_order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <EntitySet Name="ViewOrderItems" EntityType="EPAGRIFFINModel.ViewOrderItem" />
+          <EntitySet Name="ViewOrders" EntityType="EPAGRIFFINModel.ViewOrder" />
+          </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -696,51 +850,6 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="CreatorId" Type="Int32" />
           <Property Name="Prop1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Person">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="DateCreate" />
-            <PropertyRef Name="SexId" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="LastName" />
-            <PropertyRef Name="IsActive" />
-            <PropertyRef Name="IsDeleted" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SexId" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="DateBirth" Type="DateTime" Precision="0" />
-          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="Remark" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="Nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IDNo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="CountryId" Type="Int32" />
-          <Property Name="ZIPCode" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="State" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="City" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Company" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="University" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="Website" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="Twitter" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="LinkedIn" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="Headline" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
-          <Property Name="DegreeId" Type="Int32" />
-          <Property Name="PositionId" Type="Int32" />
-          <Property Name="DateJoin" Type="DateTime" Precision="3" />
-          <Property Name="FieldOfStudyId" Type="Int32" />
-          <Property Name="TempId" Type="Int32" />
-          <Property Name="Education2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Location2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Position2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Review">
           <Key>
             <PropertyRef Name="Id" />
@@ -854,6 +963,174 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="Country" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Location" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Education" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderItems" Relationship="EPAGRIFFINModel.fk_orderi_product" FromRole="Product" ToRole="OrderItem" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="PriceUnit" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
+          <Property Name="DiscountUnit" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StatusId" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="EPAGRIFFINModel.fk_orderi_product" FromRole="OrderItem" ToRole="Product" />
+          <NavigationProperty Name="Order" Relationship="EPAGRIFFINModel.fk_orderi_order" FromRole="OrderItem" ToRole="Order" />
+        </EntityType>
+        <Association Name="fk_orderi_product">
+          <End Type="EPAGRIFFINModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="EPAGRIFFINModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SexId" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DateBirth" Type="DateTime" Precision="0" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDNo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="ZIPCode" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="University" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Twitter" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="LinkedIn" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Headline" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="DegreeId" Type="Int32" />
+          <Property Name="PositionId" Type="Int32" />
+          <Property Name="DateJoin" Type="DateTime" Precision="3" />
+          <Property Name="FieldOfStudyId" Type="Int32" />
+          <Property Name="TempId" Type="Int32" />
+          <Property Name="Education2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Location2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Position2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Orders" Relationship="EPAGRIFFINModel.fk_order_person" FromRole="Person" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateG" Type="DateTime" Precision="3" />
+          <Property Name="Date" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Transport" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="PersonId" Type="Int32" />
+          <NavigationProperty Name="Person" Relationship="EPAGRIFFINModel.fk_order_person" FromRole="Order" ToRole="Person" />
+          <NavigationProperty Name="OrderItems" Relationship="EPAGRIFFINModel.fk_orderi_order" FromRole="Order" ToRole="OrderItem" />
+        </EntityType>
+        <Association Name="fk_order_person">
+          <End Type="EPAGRIFFINModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="EPAGRIFFINModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_orderi_order">
+          <End Type="EPAGRIFFINModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="EPAGRIFFINModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ViewOrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="PriceUnit" />
+            <PropertyRef Name="DiscountUnit" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="OrderStatus" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="PriceUnit" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+          <Property Name="DiscountUnit" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
+          <Property Name="FinalPriceUnit" Type="Decimal" Precision="29" Scale="11" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="OrderStatusId" Type="Int32" />
+          <Property Name="Product" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="DateStr" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Person" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="OrderDiscount" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Transport" Type="Decimal" Precision="18" Scale="8" />
+        </EntityType>
+        <EntityType Name="ViewOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateG" Type="DateTime" Precision="3" />
+          <Property Name="Date" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="DateStr" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Transport" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -979,46 +1256,6 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="People">
-            <EntityTypeMapping TypeName="EPAGRIFFINModel.Person">
-              <MappingFragment StoreEntitySet="Person">
-                <ScalarProperty Name="Position2" ColumnName="Position2" />
-                <ScalarProperty Name="Location2" ColumnName="Location2" />
-                <ScalarProperty Name="Education2" ColumnName="Education2" />
-                <ScalarProperty Name="TempId" ColumnName="TempId" />
-                <ScalarProperty Name="FieldOfStudyId" ColumnName="FieldOfStudyId" />
-                <ScalarProperty Name="DateJoin" ColumnName="DateJoin" />
-                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
-                <ScalarProperty Name="DegreeId" ColumnName="DegreeId" />
-                <ScalarProperty Name="Headline" ColumnName="Headline" />
-                <ScalarProperty Name="LinkedIn" ColumnName="LinkedIn" />
-                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="University" ColumnName="University" />
-                <ScalarProperty Name="Company" ColumnName="Company" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="ZIPCode" ColumnName="ZIPCode" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="IDNo" ColumnName="IDNo" />
-                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="DateBirth" ColumnName="DateBirth" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="SexId" ColumnName="SexId" />
-                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Reviews">
             <EntityTypeMapping TypeName="EPAGRIFFINModel.Review">
               <MappingFragment StoreEntitySet="Review">
@@ -1118,6 +1355,130 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="SexId" ColumnName="SexId" />
                 <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItem">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="DiscountUnit" ColumnName="DiscountUnit" />
+                <ScalarProperty Name="PriceUnit" ColumnName="PriceUnit" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="Position2" ColumnName="Position2" />
+                <ScalarProperty Name="Location2" ColumnName="Location2" />
+                <ScalarProperty Name="Education2" ColumnName="Education2" />
+                <ScalarProperty Name="TempId" ColumnName="TempId" />
+                <ScalarProperty Name="FieldOfStudyId" ColumnName="FieldOfStudyId" />
+                <ScalarProperty Name="DateJoin" ColumnName="DateJoin" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="DegreeId" ColumnName="DegreeId" />
+                <ScalarProperty Name="Headline" ColumnName="Headline" />
+                <ScalarProperty Name="LinkedIn" ColumnName="LinkedIn" />
+                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ZIPCode" ColumnName="ZIPCode" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IDNo" ColumnName="IDNo" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateBirth" ColumnName="DateBirth" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SexId" ColumnName="SexId" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Transport" ColumnName="Transport" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DateG" ColumnName="DateG" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewOrderItems">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.ViewOrderItem">
+              <MappingFragment StoreEntitySet="ViewOrderItem">
+                <ScalarProperty Name="Transport" ColumnName="Transport" />
+                <ScalarProperty Name="OrderDiscount" ColumnName="OrderDiscount" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="Person" ColumnName="Person" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="DateStr" ColumnName="DateStr" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="FinalPriceUnit" ColumnName="FinalPriceUnit" />
+                <ScalarProperty Name="DiscountUnit" ColumnName="DiscountUnit" />
+                <ScalarProperty Name="PriceUnit" ColumnName="PriceUnit" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewOrders">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.ViewOrder">
+              <MappingFragment StoreEntitySet="ViewOrder">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Transport" ColumnName="Transport" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="DateStr" ColumnName="DateStr" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DateG" ColumnName="DateG" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

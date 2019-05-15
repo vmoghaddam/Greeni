@@ -71,6 +71,7 @@
     <Content Include="app\controllers\greeni2Controller.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\indexController.js" />
+    <Content Include="app\controllers\ordersController.js" />
     <Content Include="app\services\appService.js" />
     <Content Include="app\services\orderService.js" />
     <Content Include="app\services\personService.js" />
@@ -78,6 +79,7 @@
     <Content Include="app\views\greeni1.html" />
     <Content Include="app\views\greeni2.html" />
     <Content Include="app\views\home.html" />
+    <Content Include="app\views\orders.html" />
     <Content Include="content\fonts\fontawesome-webfont.svg" />
     <Content Include="content\scripts\scripts.js" />
     <Content Include="content\styles\bootstrap-4.min.css" />
@@ -325,6 +327,7 @@
     <Content Include="content\styles\icons\dxiconsmaterial.woff" />
     <Content Include="content\styles\icons\dxiconsmaterial.woff2" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

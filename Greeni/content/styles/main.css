@@ -5,7 +5,9 @@
     font-size: 14px;
 }
 
-
+.dx-texteditor-input{
+    font-family:IRANSans !important;
+}
 /* W3.CSS 4.12 November 2018 by Jan Egil and Borge Refsnes */
 html {
     box-sizing: border-box
@@ -1810,6 +1812,9 @@ video {
 }
 .transition {
     transition: all 0.4s ease-in-out;
+}
+.menu-selected {
+   background: #ccc !important
 }
  
 @media only screen and (max-width: 768px) {

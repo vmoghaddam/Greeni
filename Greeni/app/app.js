@@ -21,6 +21,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/basket.html?v=" + version
     });
 
+    $routeProvider.when("/orders", {
+        controller: "ordersController",
+        templateUrl: "/app/views/orders.html?v=" + version
+    });
+
     
     $routeProvider.otherwise({ redirectTo: "/greeni1" });
 
@@ -29,10 +34,11 @@ app.config(function ($routeProvider) {
  
  
  
- 
+var serviceBase = 'http://localhost:58909/';
+//var serviceBase = 'http://api.greeni.epatrin.ir/';
  
 app.run([  '$rootScope', '$location' , function ( $rootScope, $location ) {
-   
+    $rootScope.serviceUrl = serviceBase;
     $rootScope.$on('$viewContentLoaded', function () {
         
         
@@ -72,7 +78,12 @@ app.run([  '$rootScope', '$location' , function ( $rootScope, $location ) {
         else
             return w;//$jq(window).width();
     };
+    $rootScope.navigate2 = function (target, key, module) {
+ 
+        $location.path(target);
 
+
+    };
     $rootScope.getGreeni = function () {
         var epa_greeni = localStorage.getItem("epa_greeni");
         if (!epa_greeni) {
@@ -125,6 +136,11 @@ app.run([  '$rootScope', '$location' , function ( $rootScope, $location ) {
        
         localStorage.setItem("epa_greeni", JSON.stringify(greeni));
     };
+    $rootScope.emptyBasket = function () {
+        var greeni = $rootScope.getGreeni();
+        greeni.basket.items = [];
+        localStorage.setItem("epa_greeni", JSON.stringify(greeni));
+    };
 
     $rootScope.setOrderNo = function (no) {
         var greeni = $rootScope.getGreeni();
@@ -137,6 +153,36 @@ app.run([  '$rootScope', '$location' , function ( $rootScope, $location ) {
         var greeni = $rootScope.getGreeni();
         return greeni.basket.orderNo;
 
+    };
+
+    $rootScope.getOrderDto = function (name, mobile) {
+        var greeni = $rootScope.getGreeni();
+        var basket = greeni.basket;
+        var dto = {};
+        dto.Id = -1;//basket.orderNo ? basket.orderNo : -1;
+        dto.Mobile = mobile;
+        dto.Name = name;
+        dto.StatusId = -1;
+     
+
+        dto.OrderItems= [];
+        var basket_items = greeni.basket.items;
+        $.each(basket_items, function (_i, _d) {
+            var product = Enumerable.From($rootScope.products).Where('$.id==' + _d.productId).FirstOrDefault();
+            var item = {
+                ProductId: product.id,
+                DiscountUnit: product.discount,
+                 OrderId:-1,
+                StatusId:-1,
+                Quantity: _d.total,
+                PriceUnit: product.price,
+                Id:-1,
+            };
+         
+
+            dto.OrderItems.push(item);
+        });
+        return dto;
     };
 
     

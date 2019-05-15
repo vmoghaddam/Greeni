@@ -41,6 +41,9 @@ app.controller('greeni2Controller', ['$scope', '$rootScope', '$location', functi
 
 
     };
+    angular.element(function () {
+        AOS.refresh();
+    });
     ////////////////////////////////////
     AOS.init({
         easing: 'ease-out-back',

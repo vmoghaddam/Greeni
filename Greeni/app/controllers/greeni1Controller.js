@@ -47,12 +47,26 @@ app.controller('greeni1Controller', ['$scope', '$rootScope', '$location', functi
     $scope.addToBasket = function () {
         $rootScope.addToBasket($scope.productId, $scope.orderValue);
         $scope.updateBasketCount();
-      
+        var _message = $scope.orderValue + ' عدد گرینی مکس 1 به سبد خرید اضافه شد';
+        DevExpress.ui.notify({ message: _message, shading: true, rtlEnabled: true,width:'100%' }, "success", 500);
+        $scope.orderValue = 1;
          
     };
-    ////////////////////////////////////
+    $scope.ref = function () {
+        AOS.refresh();
+    };
+     
+    $scope.$on('$viewContentLoaded', function () {
+        //alert(1);
+       
+    });
+    angular.element(function () {
+        AOS.refresh();
+    });
     AOS.init({
         easing: 'ease-out-back',
         duration: 1000
     });
+    ////////////////////////////////////
+    
 }]);
