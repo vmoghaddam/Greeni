@@ -8,33 +8,29 @@
         text-align: center !important;
     }
 </style>
+
+
 <div class="box home" style="direction:rtl;text-align:right">
     <!-- Icon Bar (Sidebar - hidden on small screens) -->
-    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" style="overflow:hidden !important">
+    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-hide-medium w3-center" style="overflow:hidden !important">
 
         <!-- Avatar image in top left corner -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-        <!--<a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
-        <i class="fas fa-user" style="font-size:32px;color:white"></i>
-        <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">ورود/ثبت نام  </span>
-
-    </a>-->
-        <a class="w3-bar-item w3-button w3-padding-large " style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni1','greeni1',1)">
+        <a class="w3-bar-item w3-button w3-padding-large menu-selected" style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni1','greeni1',1)">
             <img src="img/g1.png" style="height:70px" />
             <img src="img/greeni1.png" style="width:100%" />
 
         </a>
 
-        <a class="w3-bar-item w3-button w3-padding-large menu-selected" style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni2','greeni2',1)">
+        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni2','greeni2',1)">
             <img src="img/g2.png" style="height:70px" />
 
             <img src="img/greenimax2.png" style="width:100%" />
         </a>
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/basket','basket',1)">
-            <i class="fas fa-shopping-cart" style="font-size:32px;color:white"></i>
+        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/basket','basket',1)">
+            <i class="fas fa-shopping-cart" style="font-size:40px;color:white"></i>
             <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سبد خرید  </span>
-            <div></div>
+            <div ng-show="isBasketNoVisible" class="basket-no">{{basketCount}}</div>
         </a>
         <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/orders','orders',1)">
             <i class="fas fa-boxes" style="font-size:40px;color:white"></i>
@@ -67,46 +63,38 @@
 
     </nav>
 
-    <!-- Navbar on small screens (Hidden on medium and large screens) -->
-    <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar" style="text-align:center;background:black;opacity:1">
-        <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small" style="display:inline-block;width:auto;background:black;opacity:1">
-            <a href="#" class="w3-bar-item w3-button" style="color:white;font-weight:bold;font-size:12px">GREENIMAX 1</a>
-            <a href="#about" class="w3-bar-item w3-button" style="color:white;font-weight:bold;font-size:12px">GREENIMAX 2</a>
-            <a href="#photos" class="w3-bar-item w3-button" style="color:white;font-weight:bold;font-size:12px">وبلاگ</a>
-            <a href="#photos" class="w3-bar-item w3-button" style="color:white;font-weight:bold;font-size:12px">درباره ما</a>
-        </div>
-    </div>
+
+
 
     <!-- Page Content -->
     <div class="w3-padding-large" id="main">
         <!-- Header/Home -->
         <header class="w3-container w3-padding-48 w3-center w3-black" id="home" style="padding-top:20px !important">
-            <!--<h1 class="w3-jumbo  hidden-xs"><span style="font-size:60px">GREEN<span style="color:red;font-style:italic;font-size:70px; font-weight:bold; padding:0px 6px 0px 0px">i</span>MAX</span></h1>
-            <h1 class="w3-jumbo  hidden-lg hidden-md hidden-sm"><span style="font-size:40px">GREEN<span style="color:red;font-style:italic;font-size:50px; font-weight:bold; padding:0px 6px 0px 0px">i</span>MAX</span></h1>-->
-            <img src="img/greenimax2.png" style="display:block;margin:0 auto 20px auto;width:400px" />
+            <!--mobile-->
+            <img src="../../img/greenimax2.png" style="display:block;margin:0 auto 20px auto; width:400px; " class="w3-hide-small" />
+            <img src="../../img/greenimax2.png" style="display:block;margin:0 auto 20px auto; width:250px; " class="w3-hide-large" />
 
             <!--<img src="https://www.w3schools.com/w3images/man_smoke.jpg" alt="boy" class="w3-image" width="992" height="1108">-->
-            <img src="img/g2.png" alt="boy" class="w3-image" style="width: 400px;  height: auto" data-aos="zoom-in" data-aos-duration="500">
+            <img src="../../img/g2.png" alt="boy" class="w3-image" style="width: 400px;  height: auto" data-aos="zoom-in" data-aos-duration="500">
         </header>
 
         <!-- About Section -->
         <div class="w3-content w3-justify w3-text-grey" id="about" data-aos="fade-up">
-            <div style="color: white ; font-size: 20px;padding: 0 0 10px 0; margin-bottom: 30px; font-weight: bold; border-bottom: 1px solid white">
+            <div style="color: white ; font-size: 20px;padding: 0 0 10px 0; margin-bottom: 20px; font-weight: bold; border-bottom: 1px solid white">
 
                 کود مایع گیاهان آپارتمانی گلدار
             </div>
-            <div class="col-lg-8" data-aos-duration="1500" style="padding:0;">
+            <div class="col-lg-8" data-aos-duration="1500" style="padding:5px;">
                 <video loop="" playsinline="" autoplay>
 
 
                     <source src="content/video/greenivideo.mp4"
                             type="video/mp4">
-
                     Sorry, your browser doesn't support embedded videos.
                 </video>
             </div>
 
-            <div class="col-lg-4" style="padding:0 0px 0 20px">
+            <div class="col-lg-4" style="padding:5px">
                 <table style="background:#3cb371;color:white;padding:0;width:100%;border:1px solid #3cb371">
                     <thead>
                         <tr>
@@ -118,12 +106,12 @@
                     <tbody>
                         <tr>
                             <td style="text-align:right;background-color:black;padding:9px 10px 9px 10px">نیتروژن</td>
-                            <td style="text-align:center;width:60px;padding:8px 10px 8px 10px;background-color:black">5</td>
+                            <td style="text-align:center;width:60px;padding:8px 10px 8px 10px;background-color:black">3</td>
                             <td style="width:80px;text-align:center;padding:8px 10px 8px 10px;background-color:black">%</td>
                         </tr>
                         <tr>
                             <td style="text-align:right;background-color:black;padding:8px 10px 8px 10px">فسفر</td>
-                            <td style="text-align:center;width:60px;padding:8px 10px 8px 10px;background-color:black">1.5</td>
+                            <td style="text-align:center;width:60px;padding:8px 10px 8px 10px;background-color:black">1</td>
                             <td style="width:80px;text-align:center;padding:8px 10px 8px 10px;background-color:black">%</td>
                         </tr>
                         <tr>
@@ -151,9 +139,9 @@
                             <td style="text-align:center;width:70px;padding:8px 10px 8px 10px;background-color:black">1</td>
                             <td style="width:80px;text-align:center;padding:8px 10px 8px 10px;background-color:black">g/cm3</td>
                         </tr>
-                        <tr style="height:48px">
-                            <td style="text-align:right;background-color:black;padding:12px 10px 12px 10px">pH</td>
-                            <td style="text-align:center;width:60px;padding:10px;background-color:black">4.6</td>
+                        <tr style="height:43px">
+                            <td style="text-align:right;background-color:black;padding:10px 10px 12px 10px">pH</td>
+                            <td style="text-align:center;width:60px;padding:10px;background-color:black">3.3</td>
                             <td style="width:80px;text-align:center;padding:10px;background-color:black"></td>
                         </tr>
 
@@ -166,13 +154,16 @@
         <div class="w3-padding-32 w3-content w3-text-grey ep-section" id="video" style="text-align:right">
             <div style="padding:0;">
                 <p dir="rtl" style="color:white;padding:0 0 0 0px;line-height:30px" data-aos="fade-up">
+
                     گرینی مکس 2   کود مایع با ترکیب مناسب برای گیاهان آپارتمانی گلدار نظیر شمعدانی ، ختمی ، رز ، شب بو، اطلسی و غیره تهیه شده است. این محصول تامین کننده عناصر غذایی شامل نیتروژن، فسفر، پتاسیم وآهن   بوده که برای رشد و نمو گیاه ضروریست .
                     همچنین وجود اسید هیومیک و جلبک دریایی در این محصول باعث غنی تر شدن آن از نظر غذایی شده است.مصرف این کود همراه با آب آبیاری حجم ریشه های موئین ، فعالیت فتو سنتزی و تولید گل در گیاه را افزایش میدهد. این محصول به طور اختصاصی برای گیاهان گلدار ساخته شده است.
+
                     <div style="color: white ; font-size: 16px;padding: 5px 0 10px 15px;  font-weight: bold; text-align:left" data-aos="fade-up">
+
                         شماره ثبت کود: 40913
                     </div>
                 </p>
-                <div style="color:gray ; font-size: 18px;padding: 10px 0 10px 0; margin-bottom: 10px; font-weight: bold; border-bottom: 1px solid gray" data-aos="fade-up">
+                <div style="color:white ; font-size: 18px;padding: 10px 0 10px 0; margin-bottom: 10px; font-weight: bold; border-bottom: 1px solid gray" data-aos="fade-up">
 
                     مزایا
                 </div>
@@ -187,33 +178,30 @@
 
         </div>
 
-        <div class="w3-content w3-justify w3-text-grey" id="about" data-aos="fade-up">
-            <div style="color: white ; font-size: 20px;padding: 0 0 10px 0; margin-bottom: 10px; font-weight: bold; border-bottom: 1px solid white">
-                دستورالعمل مصرف
-            </div>
-            <p dir="rtl" style="color:white;padding:0 0 0 0px;line-height:30px" data-aos="fade-up">
-                این کود تنها قابلیت جذب از طریق ریشه را دارد. بدین منظور 5 میلی لیتر (سی سی) از آن را در یک لیتر آب حل نموده (پنج در هزار) و گیاهان را با آن آبیاری نمایید. این کار را در فصل بهار و تابستان هر هفته یک بار تکرار نمایید.
-            </p>
-
+    <div class="w3-content w3-justify w3-text-grey" id="about" data-aos="fade-up">
+        <div style="color: white ; font-size: 20px;padding: 0 0 10px 0; margin-bottom: 10px; font-weight: bold; border-bottom: 1px solid white">
+            دستورالعمل مصرف
         </div>
+        <p dir="rtl" style="color:white;padding:0 0 0 0px;line-height:30px" data-aos="fade-up">
+            این کود تنها قابلیت جذب از طریق ریشه را دارد. بدین منظور 5 میلی لیتر (سی سی) از آن را در یک لیتر آب حل نموده (پنج در هزار) و گیاهان را با آن آبیاری نمایید. این کار را در فصل بهار و تابستان هر هفته یک بار تکرار نمایید.
+        </p>
+
+    </div>
         <div class="w3-content w3-justify w3-text-grey" id="about" data-aos="fade-up" style="text-align:center !important">
             <div style="text-align:center;color: white ; font-size: 20px;padding: 40px 0 10px 0; margin-bottom: 30px; font-weight: bold; border-bottom: 1px solid white">
 
                 با ما همراه باشید
             </div>
             <!-- <input placeholder="نام" class="input" style="width:350px;margin:0 auto 0 auto;display:block" />-->
-            <div style="width:350px;margin:0px auto 0 auto;display:inline-block;padding:0px 0 0 0">
+            <div style="width:100%;max-width:350px;margin:0px auto 0 auto;display:inline-block;padding:0px 0 0 0;">
                 <div dx-text-box="txt_name" class="center name" style="background:white"></div>
             </div>
             <div></div>
-            <div style="width:350px;margin:20px auto 0 auto;display:inline-block;padding:0px 0 0 0">
+            <div style="width:100%;max-width:350px;margin:20px auto 0 auto;display:inline-block;padding:0px 0 0 0">
                 <div dx-number-box="num_mobile" class="center mobile" style="background:white"></div>
             </div>
-            <!-- <input placeholder="موبایل" class="input" style="width:350px;margin:20px auto 0 auto;display:block" />-->
-            <!--<a href="#" class="link-button1" style="display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none">
-        اشتراک در خبرنامه
-    </a>-->
-            <a class="button" href="" ng-click="subscribe()" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
+
+            <a class="button" href="" ng-click="subscribe()" style="width:100%;max-width:350px;overflow:hidden;display:block; margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
                 <span>اشتراک در خبرنامه</span>
                 <i class="fas fa-rss" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
             </a>
@@ -223,23 +211,66 @@
             </div>
 
 
-            <div style="width:350px;margin:0 auto 0 auto;display:inline-block;padding:0px 0 0 0">
+            <div style="width:100%;max-width:350px;margin:0 auto 0 auto;display:inline-block;padding:0px 0 0 0">
                 <div dx-number-box="num_order" class="center" style="background:white"></div>
             </div>
-            <a class="button" href="" ng-click="addToBasket()" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
+            <a class="button" href="" ng-click="addToBasket()" style="width:100%;max-width:350px;overflow:hidden;display:block; margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
                 <span>افزودن به سبد خرید</span>
                 <i class="fas fa-shopping-cart" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
             </a>
 
         </div>
 
-
-
         <!-- Footer -->
-        <footer class="w3-content w3-padding-16 w3-text-grey w3-xlarge" style="border-top:1px solid gray;margin-top:20px;text-align:center">
+        <footer class="w3-content w3-padding-16 w3-text-grey w3-xlarge" style="border-top:1px solid gray;margin-top:20px;margin-bottom:30px;text-align:center">
             <i class="fab fa-telegram-plane" style="font-size:30px;padding-left:6px"></i>
             <i class="fab fa-instagram" style="font-size:30px;padding-left:6px"></i>
             <i class="fab fa-whatsapp" style="font-size:30px"></i>
         </footer>
+
+
+
     </div>
+
+
+
+
+</div>
+<div class="navbar w3-hide-large  " style="border-bottom:#3cb371 2px solid;border-top:#3cb371 2px solid;padding:7px 0 7px 0">
+    <table style="width:100%">
+        <tr>
+            <td style="text-align:center;width:22%">
+                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/greeni1','greeni1',1)">
+                    <img src="img/g1.png" style="height:40px" />
+                </a>
+            </td>
+            <td style="text-align:center;width:22%">
+                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/greeni2','greeni1',1)">
+                    <img src="img/g2.png" style="height:40px" />
+                </a>
+            </td>
+
+
+            <td style="text-align:center;width:20%" data-ng-click="navigate2('/basket','basket',1)">
+                <a style="padding: 0px 0px !important;">
+                    <i class="fas fa-shopping-cart" style="font-size:24px;color:white"></i>
+                </a>
+            </td>
+
+
+            <td style="text-align:center;width:18%">
+                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/orders','orders',1)">
+                    <i class="fas fa-pen-fancy" style="font-size:24px;color:white"></i>
+                </a>
+            </td>
+            <td style="text-align:center;width:18%">
+                <a style="padding: 0px 0px !important;">
+                    <i class="fas fa-info-circle" style="font-size:24px;color:white"></i>
+
+
+                </a>
+            </td>
+        </tr>
+
+    </table>
 </div>
