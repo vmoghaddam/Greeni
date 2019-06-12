@@ -4,7 +4,7 @@
     angular
         .module('app')
         .controller('AboutUscontroller', AboutUscontroller);
-
+    app.controller('AboutUsController', ['$scope', '$rootScope', '$location', '$route', 'orderService', function ($scope, $rootScope, $location, $route, orderService) {
     AboutUscontroller.$inject = ['$location'];
 
     function AboutUscontroller($location) {
