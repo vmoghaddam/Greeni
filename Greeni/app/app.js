@@ -25,10 +25,12 @@ app.config(function ($routeProvider) {
         controller: "ordersController",
         templateUrl: "/app/views/orders.html?v=" + version
     });
-    $routeProvider.when("/AboutUs", {
-        controller: "AboutUsController",
-        templateUrl: "/app/views/AboutUS.html?v=" + version
+
+    $routeProvider.when("/about", {
+        controller: "aboutController",
+        templateUrl: "/app/views/about.html?v=" + version
     });
+
     
     $routeProvider.otherwise({ redirectTo: "/greeni1" });
 

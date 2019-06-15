@@ -1,0 +1,182 @@
+﻿<style>
+    .mobile .dx-placeholder {
+        left: 132px;
+    }
+
+    .name .dx-placeholder {
+        left: 0 !important;
+        text-align: center !important;
+    }
+</style>
+
+
+<div class="box home" style="direction:rtl;text-align:right">
+    <!-- Icon Bar (Sidebar - hidden on small screens) -->
+    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-hide-medium w3-center" style="overflow:hidden !important">
+
+        <!-- Avatar image in top left corner -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <a class="w3-bar-item w3-button w3-padding-large " style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni1','greeni1',1)">
+            <img src="img/g1.png" style="height:70px" />
+            <img src="img/greeni1.png" style="width:100%" />
+
+        </a>
+
+        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni2','greeni2',1)">
+            <img src="img/g2.png" style="height:70px" />
+
+            <img src="img/greenimax2.png" style="width:100%" />
+        </a>
+        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/basket','basket',1)">
+            <i class="fas fa-shopping-cart" style="font-size:40px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سبد خرید  </span>
+            <div ng-show="isBasketNoVisible" class="basket-no">{{basketCount}}</div>
+        </a>
+        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/orders','orders',1)">
+            <i class="fas fa-boxes" style="font-size:40px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سفارش ها  </span>
+
+        </a>
+
+
+        <!--<a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
+            <i class="fas fa-file-alt" style="font-size:32px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block">مجوز ها  </span>
+
+        </a>-->
+
+        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
+            <i class="fas fa-pen-fancy" style="font-size:32px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block">وبلاگ</span>
+
+        </a>
+
+        <a class="w3-bar-item w3-button w3-padding-large menu-selected" style="padding: 16px 15px !important;">
+            <i class="fas fa-info-circle" style="font-size:32px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px;">درباره ما</span>
+
+        </a>
+
+
+
+
+
+    </nav>
+
+
+
+
+    <!-- Page Content -->
+    <div class="w3-padding-large" id="main">
+        <!-- Header/Home -->
+        <header class="w3-container w3-padding-48 w3-center w3-black" id="home" style="padding-top:20px !important;padding-bottom:20px !important">
+            <!--mobile-->
+            <img src="img/roshd.png" style="display:block;margin:0 auto 20px auto; width:300px; " class="w3-hide-small" />
+            <img src="img/roshd.png" style="display:block;margin:0 auto 20px auto; width:250px; " class="w3-hide-large" />
+
+
+
+        </header>
+
+
+        <div class="w3-padding-32 w3-content w3-text-grey ep-section" id="video" style="text-align:right;padding-top:0 !important">
+            <div style="padding:0;">
+                <p dir="rtl" style="color:white;padding:0 0 0 0px;line-height:30px;text-align:justify;font-size:16px;line-height:35px;" data-aos="fade-up">
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="w3-content w3-justify w3-text-grey" id="about" data-aos="fade-up">
+            <div style="color: white ; font-size: 20px;padding: 0 0 10px 0; margin-bottom: 10px; font-weight: bold; border-bottom: 1px solid white">
+                تماس با ما
+            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d804.7862020285812!2d59.6350978291685!3d36.2116750808117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDEyJzQyLjAiTiA1OcKwMzgnMDguMyJF!5e0!3m2!1sen!2s!4v1554650284214!5m2!1sen!2s" width="100%" height="400" frameborder="0" style="border:0 ; padding:0" allowfullscreen></iframe>
+            <p style="color:white;font-size:15px;text-align:center;padding:25px;padding-bottom:0;">
+                خراسان رضوی، مشهد، بزرگراه سردار شوشتری، مرکز تحقیقات آموزش کشاورزی و منابع طبیعی خراسان رضوی، جنب بخش تحقیقات خاک وآب، شرکت رشد رهنمون طوس
+            </p>
+            <p style="color:white;font-size:18px;text-align:center;padding:15px;padding-bottom:0;margin-bottom:0">
+                051-33409117
+            </p>
+            <p style="color:white;font-size:18px;text-align:center;padding:15px;padding-top:5px;padding-bottom:0">
+                0915-7648894
+            </p>
+
+        </div>
+        <div class="w3-content w3-justify w3-text-grey" id="about" data-aos="fade-up" style="text-align:center !important">
+            <div style="text-align:center;color: white ; font-size: 20px;padding: 40px 0 10px 0; margin-bottom: 30px; font-weight: bold; border-bottom: 1px solid white">
+
+                با ما همراه باشید
+            </div>
+            <!-- <input placeholder="نام" class="input" style="width:350px;margin:0 auto 0 auto;display:block" />-->
+            <div style="width:100%;max-width:350px;margin:0px auto 0 auto;display:inline-block;padding:0px 0 0 0;">
+                <div dx-text-box="txt_name" class="center name" style="background:white"></div>
+            </div>
+            <div></div>
+            <div style="width:100%;max-width:350px;margin:20px auto 0 auto;display:inline-block;padding:0px 0 0 0">
+                <div dx-number-box="num_mobile" class="center mobile" style="background:white"></div>
+            </div>
+
+            <a class="button" href="" ng-click="subscribe()" style="width:100%;max-width:350px;overflow:hidden;display:block; margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
+                <span>اشتراک در خبرنامه</span>
+                <i class="fas fa-rss" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
+            </a>
+            
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="w3-content w3-padding-16 w3-text-grey w3-xlarge" style="border-top:1px solid gray;margin-top:20px;margin-bottom:30px;text-align:center">
+            <i class="fab fa-telegram-plane" style="font-size:30px;padding-left:6px"></i>
+            <i class="fab fa-instagram" style="font-size:30px;padding-left:6px"></i>
+            <i class="fab fa-whatsapp" style="font-size:30px"></i>
+        </footer>
+
+
+
+    </div>
+
+
+
+
+</div>
+<div class="navbar w3-hide-large  " style="border-bottom:#3cb371 2px solid;border-top:#3cb371 2px solid;padding:7px 0 7px 0">
+    <table style="width:100%">
+        <tr>
+            <td style="text-align:center;width:22%">
+                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/greeni1','greeni1',1)">
+                    <img src="img/g1.png" style="height:40px" />
+                </a>
+            </td>
+            <td style="text-align:center;width:22%">
+                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/greeni2','greeni1',1)">
+                    <img src="img/g2.png" style="height:40px" />
+                </a>
+            </td>
+
+
+            <td style="text-align:center;width:20%" data-ng-click="navigate2('/basket','basket',1)">
+                <a style="padding: 0px 0px !important;">
+                    <i class="fas fa-shopping-cart" style="font-size:24px;color:white"></i>
+                </a>
+            </td>
+
+
+            <td style="text-align:center;width:18%">
+                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/orders','orders',1)">
+                    <i class="fas fa-pen-fancy" style="font-size:24px;color:white"></i>
+                </a>
+            </td>
+            <td style="text-align:center;width:18%">
+                <a style="padding: 0px 0px !important;" >
+                    <i class="fas fa-info-circle" style="font-size:24px;color:white"></i>
+
+
+                </a>
+            </td>
+        </tr>
+
+    </table>
+</div>
