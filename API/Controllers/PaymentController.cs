@@ -37,7 +37,21 @@ namespace API.Controllers
 
 
         }
+        [Route("api/payment/sale")]
+        [AcceptVerbs("POST")]
+        public async Task<IHttpActionResult> PostSale(dynamic dto)
+        {
 
+            var amount = Convert.ToDouble(dto.Amount);
+
+
+
+            return Ok(dto);
+
+
+
+
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
