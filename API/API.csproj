@@ -59,9 +59,6 @@
     <Reference Include="Kavenegar, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Kavenegar.1.1.4\lib\net35\Kavenegar.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.OData, Version=7.0.1.20718, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.OData.7.0.1\lib\net45\Microsoft.AspNet.OData.dll</HintPath>
     </Reference>
@@ -386,6 +383,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Connected Services\ParsianConfirmRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ParsianRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -529,6 +531,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Connected Services\ParsianConfirmRef\API.ParsianConfirmRef.ClientConfirmResponseData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ParsianConfirmRef\API.ParsianConfirmRef.ConfirmPaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ParsianConfirmRef\API.ParsianConfirmRef.ConfirmPaymentWithAmountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ParsianConfirmRef\configuration91.svcinfo" />
+    <None Include="Connected Services\ParsianConfirmRef\configuration.svcinfo" />
+    <None Include="Connected Services\ParsianConfirmRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Connected Services\ParsianRef\API.ParsianRef.ClientPaymentResponseDataBase.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -544,6 +561,8 @@
     <Content Include="Connected Services\ParsianRef\API.ParsianRef.UDSalePaymentRequestResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Connected Services\ParsianConfirmRef\ConfirmService.wsdl" />
+    <None Include="Connected Services\ParsianRef\SaleService.disco" />
     <None Include="Connected Services\ParsianRef\configuration91.svcinfo" />
     <None Include="Connected Services\ParsianRef\configuration.svcinfo" />
     <None Include="Connected Services\ParsianRef\Reference.svcmap">
@@ -645,6 +664,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ParsianConfirmRef\" />
     <WCFMetadataStorage Include="Connected Services\ParsianRef\" />
   </ItemGroup>
   <PropertyGroup>

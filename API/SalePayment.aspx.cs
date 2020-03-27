@@ -1,5 +1,5 @@
 ﻿using API.ParsianRef;
-using log4net;
+
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -12,73 +12,79 @@ namespace API
 {
     public partial class SalePayment : System.Web.UI.Page
     {
-		private readonly static ILog logger = LogManager.GetLogger(typeof(SalePayment));
+		
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			Title = "Parsian IPG Sale Payment sample form";
-		}
+            long token = 0;
+            short paymentStatus = Int16.MinValue;
 
-		protected void btnPay_Click(object sender, EventArgs e)
-		{
-			long token = 0;
-			short paymentStatus = Int16.MinValue;
+            //ایجاد یک نمونه از سرویس درخواست پرداخت قبض درگاه پرداخت اینترنتی پارسیان
+            using (var service = new ParsianRef.SaleServiceSoapClient())
+            {
+                //بی خیال شدن اس اس ال جهت ارتباط امن با سرویس پرداخت قبض 
+                System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback((o, xc, xch, sslP) => true);
 
-			using (var service = new ParsianRef.SaleServiceSoapClient())
-			{
-				System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback((o, xc, xch, sslP) => true);
+                //تعیین مسیر صحیح وب سرویس درخواست پرداخت قبض پارسیان
+              //  service.Utl = PecPGW.Samples.Common.ConfigHelper.ParsianPGWSaleServiceUrl;
 
-				service.Url = "https://pec.shaparak.ir/NewIPGServices/Sale/SaleService.asmx";
+                //ایجاد یک نمونه از نوع پارامتر ورودی به متد درخواست پرداخت مبلغ خرید کالا یا خدمات وب سرویس درخواست پرداخت خرید
+                var paymentRequest = new ParsianRef.ClientSaleRequestData();
 
-				var paymentRequest = new ParsianRef.ClientSaleRequestData();
+                //شناسه پذیرندگی در درگاه پرداخت اینترنتی پارسیان
+                paymentRequest.LoginAccount = "IXE2U0hp0H3linqxkY26"; //txtLoginAccount.Text.Trim();
 
-				paymentRequest.LoginAccount = txtLoginAccount.Text.Trim();
-
-				//make sure you set the CallBackUrl property. because after user has completed Payment on IPG page, it will be redirected to the callback url you provided
-				//to get you back result of the user Payment on IPG.
+                //make sure you set the CallBackUrl property. because after user has completed Payment on IPG page, it will be redirected to the callback url you provided
+                //to get you back result of the user Payment on IPG.
 
 
-				//Amount is not used. you should not assign a value to this property.
-				paymentRequest.Amount = long.Parse(txtAmount.Text);
+                paymentRequest.CallBackUrl = "http://api.greenimax.ir/SalePaymentCallback.aspx";
 
-				//Order Id MUST be UNIQUE at all times. if a duplicated Order Id is received from your request, you will get Status=-112
-				paymentRequest.OrderId = DateTime.Now.Ticks;
+                //Amount is not used. you should not assign a value to this property.
+                paymentRequest.Amount = 10000;
 
-				paymentRequest.AdditionalData = txtAddData.Text;
-				ClientPaymentResponseDataBase response = service.SalePaymentRequest(paymentRequest);
+                //Order Id MUST be UNIQUE at all times. if a duplicated Order Id is received from your request, you will get Status=-112
+                paymentRequest.OrderId = DateTime.Now.Ticks;
 
-				if (response == null)
-				{
-					return;
-				}
+                paymentRequest.AdditionalData = "vahid";
+                ClientPaymentResponseDataBase response = service.SalePaymentRequest(paymentRequest);
 
-				paymentStatus = response.Status;
+                if (response == null)
+                {
+                    return;
+                }
 
-				//check Status property of the response object to see if the operation was successful.
-				if (response.Status == API.Models.Constants.ParsianPaymentGateway.Successful)
-				{
-					//if everything is OK (LoginAccount and your IP address is valid in the Parsian PGW), save the token in a data store
-					// to use it for redirectgion of your web site's user to the Parsian IPG (Internet Payment Gateway) page to complete payment.
-					token = response.Token;
+                paymentStatus = response.Status;
 
-					//you must save the token in a data store for further support and rosolving 
-					Session["Token"] = token;
-				}
-				else
-				{
-					logger.Error($"Parsian PGW service call status code : {response.Status}");
-				}
-			}
+                //check Status property of the response object to see if the operation was successful.
+                if (response.Status == 0)
+                {
+                    //if everything is OK (LoginAccount and your IP address is valid in the Parsian PGW), save the token in a data store
+                    // to use it for redirectgion of your web site's user to the Parsian IPG (Internet Payment Gateway) page to complete payment.
+                    token = response.Token;
 
-			if (paymentStatus == API.Models.Constants.ParsianPaymentGateway.Successful && token != 0L)
-			{
-				var redirectUrl = string.Format(ConfigHelper.ParsianIPGPageUrl, token);
-				Response.Redirect(redirectUrl);
-			}
-			else
-			{
-				Server.TransferRequest("~/Error.aspx");
-			}
-		}
+                    //you must save the token in a data store for further support and rosolving 
+                    Session["Token"] = token;
+                }
+                else
+                {
+                    //logger.Error($"Parsian PGW service call status code : {response.Status}");
+                }
+            }
+
+            if (paymentStatus == 0 && token != 0L)
+            {
+                //first, save token to your database to be able to track payment process with your business.
+                //after successfully retrieved a token from Parsian PGW, redirect user to Parsian IPG to complete the payment operation.
+                var redirectUrl = string.Format("https://pec.shaparak.ir/NewIPG/?token={0}", token);
+                Response.Redirect(redirectUrl);
+            }
+            else
+            {
+                Server.TransferRequest("~/Error.aspx");
+            }
+        }
+
+		
 	}
 }
