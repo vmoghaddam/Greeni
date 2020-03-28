@@ -6,21 +6,7 @@
     <edmx:StorageModels>
     <Schema Namespace="EPAGRIFFINModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.__MigrationHistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-            <PropertyRef Name="ContextKey" />
-            <PropertyRef Name="Model" />
-            <PropertyRef Name="ProductVersion" />
-          </Key>
-          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
-          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.AspNetRoleClaims' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.AspNetRoleClaims' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AspNetRoleClaims">
           <Key>
             <PropertyRef Name="Id" />
@@ -30,18 +16,15 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.AspNetRoleClaims' does not hav
           <Property Name="ClaimValue" Type="varchar" MaxLength="255" />
           <Property Name="RoleId" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.AspNetRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="Name" />
           </Key>
           <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.AspNetUserClaims' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.AspNetUserClaims' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AspNetUserClaims">
           <Key>
             <PropertyRef Name="Id" />
@@ -53,7 +36,7 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.AspNetUserClaims' does not hav
           <Property Name="ClaimValue" Type="nvarchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.AspNetUserLogins' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.AspNetUserLogins' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AspNetUserLogins">
           <Key>
             <PropertyRef Name="LoginProvider" />
@@ -65,7 +48,7 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.AspNetUserLogins' does not hav
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.AspNetUserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.AspNetUserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AspNetUserRoles">
           <Key>
             <PropertyRef Name="UserId" />
@@ -74,17 +57,9 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.AspNetUserRoles' does not have
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.AspNetUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="EmailConfirmed" />
-            <PropertyRef Name="PhoneNumberConfirmed" />
-            <PropertyRef Name="TwoFactorEnabled" />
-            <PropertyRef Name="LockoutEnabled" />
-            <PropertyRef Name="AccessFailedCount" />
-            <PropertyRef Name="UserName" />
           </Key>
           <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="256" />
@@ -100,7 +75,7 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.AspNetUsers' does not have a p
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.AspNetUserTokens' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.AspNetUserTokens' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AspNetUserTokens">
           <Key>
             <PropertyRef Name="UserId" />
@@ -112,7 +87,7 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.AspNetUserTokens' does not hav
           <Property Name="Value" Type="varchar" MaxLength="500" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.City' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.City' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="Id" />
@@ -125,8 +100,33 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.City' does not have a primary 
           <Property Name="Latitude" Type="decimal" Precision="18" Scale="4" />
           <Property Name="Longitude" Type="decimal" Precision="18" Scale="4" />
         </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email" Type="nvarchar" MaxLength="500" />
+          <Property Name="Website" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Url" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DateVerified" Type="datetime" />
+          <Property Name="Twitter" Type="nvarchar" MaxLength="500" />
+          <Property Name="LinkedIn" Type="nvarchar" MaxLength="500" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="DateJoin" Type="datetime" Nullable="false" />
+          <Property Name="ZIPCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" MaxLength="255" />
+          <Property Name="State" Type="nvarchar" MaxLength="255" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="Network" Type="nvarchar" MaxLength="1000" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="256" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.Country' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.Country' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="Id" />
@@ -139,7 +139,7 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.Country' does not have a prima
           <Property Name="PhoneCode" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.Option' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.Option' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Option">
           <Key>
             <PropertyRef Name="Id" />
@@ -243,7 +243,7 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.Option' does not have a primar
           <Property Name="ProtectedTicket" Type="varchar" MaxLength="2000" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.Review' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.Review' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Review">
           <Key>
             <PropertyRef Name="Id" />
@@ -264,7 +264,7 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.Review' does not have a primar
           <Property Name="ToReviewId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.State' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.State' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="State">
           <Key>
             <PropertyRef Name="Id" />
@@ -276,7 +276,45 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.State' does not have a primary
           <Property Name="CountryId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.ViewCountry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.ViewCompany' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewCompany">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="IsVerified" />
+            <PropertyRef Name="DateJoin" />
+            <PropertyRef Name="CountrySortName" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Location" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email" Type="nvarchar" MaxLength="500" />
+          <Property Name="Website" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Url" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DateVerified" Type="datetime" />
+          <Property Name="DateVerifiedStr" Type="nvarchar" MaxLength="4000" />
+          <Property Name="IsVerified" Type="int" Nullable="false" />
+          <Property Name="Twitter" Type="nvarchar" MaxLength="500" />
+          <Property Name="LinkedIn" Type="nvarchar" MaxLength="500" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ImageUrl2" Type="nvarchar" MaxLength="1021" />
+          <Property Name="DateJoin" Type="datetime" Nullable="false" />
+          <Property Name="DateJoinStr" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ZIPCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" MaxLength="255" />
+          <Property Name="State" Type="nvarchar" MaxLength="255" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="CountrySortName" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Network" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'greenim1_greeni.dbo.ViewCountry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewCountry">
           <Key>
             <PropertyRef Name="Id" />
@@ -288,7 +326,7 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewCountry' does not have a p
           <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.ViewOption' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.ViewOption' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewOption">
           <Key>
             <PropertyRef Name="Id" />
@@ -303,7 +341,7 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewOption' does not have a pr
           <Property Name="IsSystem" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.ViewOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.ViewOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewOrder">
           <Key>
             <PropertyRef Name="Id" />
@@ -324,7 +362,7 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewOrder' does not have a pri
           <Property Name="Status" Type="varchar" MaxLength="1" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.ViewOrderItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.ViewOrderItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewOrderItem">
           <Key>
             <PropertyRef Name="Id" />
@@ -342,7 +380,7 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewOrderItem' does not have a
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="PriceUnit" Type="decimal" Precision="10" Scale="0" Nullable="false" />
           <Property Name="DiscountUnit" Type="decimal" Precision="10" Scale="3" Nullable="false" />
-          <Property Name="FinalPriceUnit" Type="numeric" Precision="29" Scale="11" />
+          <Property Name="FinalPriceUnit" Type="numeric" Precision="38" Scale="9" />
           <Property Name="Remark" Type="nvarchar" MaxLength="500" />
           <Property Name="StatusId" Type="int" />
           <Property Name="OrderStatusId" Type="int" />
@@ -357,7 +395,7 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewOrderItem' does not have a
           <Property Name="Transport" Type="decimal" Precision="18" Scale="8" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewPerson">
           <Key>
             <PropertyRef Name="Id" />
@@ -409,6 +447,34 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="Location" Type="varchar" MaxLength="500" />
           <Property Name="Education" Type="varchar" MaxLength="500" />
         </EntityType>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_order_person">
           <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
@@ -446,19 +512,14 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="EPAGRIFFINModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RefreshToken" EntityType="Self.RefreshToken" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [__MigrationHistory].[MigrationId] AS [MigrationId], 
-    [__MigrationHistory].[ContextKey] AS [ContextKey], 
-    [__MigrationHistory].[Model] AS [Model], 
-    [__MigrationHistory].[ProductVersion] AS [ProductVersion]
-    FROM [dbo].[__MigrationHistory] AS [__MigrationHistory]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="AspNetRoleClaims" EntityType="Self.AspNetRoleClaims" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [AspNetRoleClaims].[Id] AS [Id], 
@@ -466,12 +527,6 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
     [AspNetRoleClaims].[ClaimValue] AS [ClaimValue], 
     [AspNetRoleClaims].[RoleId] AS [RoleId]
     FROM [dbo].[AspNetRoleClaims] AS [AspNetRoleClaims]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AspNetRoles].[Id] AS [Id], 
-    [AspNetRoles].[Name] AS [Name]
-    FROM [dbo].[AspNetRoles] AS [AspNetRoles]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -493,22 +548,6 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
     [AspNetUserRoles].[UserId] AS [UserId], 
     [AspNetUserRoles].[RoleId] AS [RoleId]
     FROM [dbo].[AspNetUserRoles] AS [AspNetUserRoles]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AspNetUsers].[Id] AS [Id], 
-    [AspNetUsers].[Email] AS [Email], 
-    [AspNetUsers].[EmailConfirmed] AS [EmailConfirmed], 
-    [AspNetUsers].[PasswordHash] AS [PasswordHash], 
-    [AspNetUsers].[SecurityStamp] AS [SecurityStamp], 
-    [AspNetUsers].[PhoneNumber] AS [PhoneNumber], 
-    [AspNetUsers].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
-    [AspNetUsers].[TwoFactorEnabled] AS [TwoFactorEnabled], 
-    [AspNetUsers].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
-    [AspNetUsers].[LockoutEnabled] AS [LockoutEnabled], 
-    [AspNetUsers].[AccessFailedCount] AS [AccessFailedCount], 
-    [AspNetUsers].[UserName] AS [UserName]
-    FROM [dbo].[AspNetUsers] AS [AspNetUsers]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="AspNetUserTokens" EntityType="Self.AspNetUserTokens" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -568,6 +607,35 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
     [State].[Name] AS [Name], 
     [State].[CountryId] AS [CountryId]
     FROM [dbo].[State] AS [State]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewCompany" EntityType="Self.ViewCompany" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewCompany].[Id] AS [Id], 
+    [ViewCompany].[Name] AS [Name], 
+    [ViewCompany].[Address] AS [Address], 
+    [ViewCompany].[Phone] AS [Phone], 
+    [ViewCompany].[Email] AS [Email], 
+    [ViewCompany].[Website] AS [Website], 
+    [ViewCompany].[Url] AS [Url], 
+    [ViewCompany].[DateVerified] AS [DateVerified], 
+    [ViewCompany].[DateVerifiedStr] AS [DateVerifiedStr], 
+    [ViewCompany].[IsVerified] AS [IsVerified], 
+    [ViewCompany].[Twitter] AS [Twitter], 
+    [ViewCompany].[LinkedIn] AS [LinkedIn], 
+    [ViewCompany].[ImageUrl] AS [ImageUrl], 
+    [ViewCompany].[ImageUrl2] AS [ImageUrl2], 
+    [ViewCompany].[DateJoin] AS [DateJoin], 
+    [ViewCompany].[DateJoinStr] AS [DateJoinStr], 
+    [ViewCompany].[ZIPCode] AS [ZIPCode], 
+    [ViewCompany].[City] AS [City], 
+    [ViewCompany].[State] AS [State], 
+    [ViewCompany].[CountryId] AS [CountryId], 
+    [ViewCompany].[CountrySortName] AS [CountrySortName], 
+    [ViewCompany].[Country] AS [Country], 
+    [ViewCompany].[Location] AS [Location], 
+    [ViewCompany].[Network] AS [Network], 
+    [ViewCompany].[Remark] AS [Remark]
+    FROM [dbo].[ViewCompany] AS [ViewCompany]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ViewCountry" EntityType="Self.ViewCountry" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -668,6 +736,14 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
     [ViewPerson].[Education] AS [Education]
     FROM [dbo].[ViewPerson] AS [ViewPerson]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
           <AssociationSet Name="fk_order_person" Association="Self.fk_order_person">
             <End Role="Person" EntitySet="Person" />
             <End Role="Order" EntitySet="Order" />
@@ -686,14 +762,6 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
     <edmx:ConceptualModels>
       <Schema Namespace="EPAGRIFFINModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="EPAGRIFFINEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="C__MigrationHistory" EntityType="EPAGRIFFINModel.C__MigrationHistory" />
-          <EntitySet Name="AspNetRoleClaims" EntityType="EPAGRIFFINModel.AspNetRoleClaim" />
-          <EntitySet Name="AspNetRoles" EntityType="EPAGRIFFINModel.AspNetRole" />
-          <EntitySet Name="AspNetUserClaims" EntityType="EPAGRIFFINModel.AspNetUserClaim" />
-          <EntitySet Name="AspNetUserLogins" EntityType="EPAGRIFFINModel.AspNetUserLogin" />
-          <EntitySet Name="AspNetUserRoles" EntityType="EPAGRIFFINModel.AspNetUserRole" />
-          <EntitySet Name="AspNetUsers" EntityType="EPAGRIFFINModel.AspNetUser" />
-          <EntitySet Name="AspNetUserTokens" EntityType="EPAGRIFFINModel.AspNetUserToken" />
           <EntitySet Name="Cities" EntityType="EPAGRIFFINModel.City" />
           <EntitySet Name="Countries" EntityType="EPAGRIFFINModel.Country" />
           <EntitySet Name="Options" EntityType="EPAGRIFFINModel.Option" />
@@ -721,97 +789,19 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
           </AssociationSet>
           <EntitySet Name="ViewOrderItems" EntityType="EPAGRIFFINModel.ViewOrderItem" />
           <EntitySet Name="ViewOrders" EntityType="EPAGRIFFINModel.ViewOrder" />
+          <EntitySet Name="AspNetRoles" EntityType="EPAGRIFFINModel.AspNetRole" />
+          <EntitySet Name="AspNetUsers" EntityType="EPAGRIFFINModel.AspNetUser" />
+          <EntitySet Name="Companies" EntityType="EPAGRIFFINModel.Company" />
+          <EntitySet Name="AspNetRoleClaims" EntityType="EPAGRIFFINModel.AspNetRoleClaim" />
+          <EntitySet Name="AspNetUserClaims" EntityType="EPAGRIFFINModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="EPAGRIFFINModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUserTokens" EntityType="EPAGRIFFINModel.AspNetUserToken" />
+          <EntitySet Name="ViewCompanies" EntityType="EPAGRIFFINModel.ViewCompany" />
+          <AssociationSet Name="AspNetUserRoles" Association="EPAGRIFFINModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
           </EntityContainer>
-        <EntityType Name="C__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-            <PropertyRef Name="ContextKey" />
-            <PropertyRef Name="Model" />
-            <PropertyRef Name="ProductVersion" />
-          </Key>
-          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AspNetRoleClaim">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="ClaimValue" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="RoleId" Type="Int32" />
-        </EntityType>
-        <EntityType Name="AspNetRole">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Name" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AspNetUserClaim">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AspNetUserLogin">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AspNetUserRole">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AspNetUser">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="EmailConfirmed" />
-            <PropertyRef Name="PhoneNumberConfirmed" />
-            <PropertyRef Name="TwoFactorEnabled" />
-            <PropertyRef Name="LockoutEnabled" />
-            <PropertyRef Name="AccessFailedCount" />
-            <PropertyRef Name="UserName" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AspNetUserToken">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="LoginProvider" />
-          </Key>
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="LoginProvider" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Value" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="Id" />
@@ -1099,7 +1089,7 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="PriceUnit" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
           <Property Name="DiscountUnit" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="FinalPriceUnit" Type="Decimal" Precision="29" Scale="11" />
+          <Property Name="FinalPriceUnit" Type="Decimal" Precision="38" Scale="9" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="StatusId" Type="Int32" />
           <Property Name="OrderStatusId" Type="Int32" />
@@ -1132,95 +1122,142 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="PersonId" Type="Int32" />
           <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="EPAGRIFFINModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetRoles" Relationship="EPAGRIFFINModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="DateVerified" Type="DateTime" Precision="3" />
+          <Property Name="Twitter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LinkedIn" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="DateJoin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ZIPCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="Network" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetRoleClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ClaimValue" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RoleId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserToken">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LoginProvider" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LoginProvider" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ViewCompany">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="IsVerified" />
+            <PropertyRef Name="DateJoin" />
+            <PropertyRef Name="CountrySortName" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Location" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="DateVerified" Type="DateTime" Precision="3" />
+          <Property Name="DateVerifiedStr" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="IsVerified" Type="Int32" Nullable="false" />
+          <Property Name="Twitter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LinkedIn" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl2" Type="String" MaxLength="1021" FixedLength="false" Unicode="true" />
+          <Property Name="DateJoin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateJoinStr" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ZIPCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="CountrySortName" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Network" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="AspNetUserRoles">
+          <End Type="EPAGRIFFINModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="EPAGRIFFINModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="EPAGRIFFINModelStoreContainer" CdmEntityContainer="EPAGRIFFINEntities">
-          <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="EPAGRIFFINModel.C__MigrationHistory">
-              <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetRoleClaims">
-            <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetRoleClaim">
-              <MappingFragment StoreEntitySet="AspNetRoleClaims">
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetRole">
-              <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetUserClaim">
-              <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetUserLogin">
-              <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserRoles">
-            <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetUserRole">
-              <MappingFragment StoreEntitySet="AspNetUserRoles">
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetUser">
-              <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserTokens">
-            <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetUserToken">
-              <MappingFragment StoreEntitySet="AspNetUserTokens">
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Cities">
             <EntityTypeMapping TypeName="EPAGRIFFINModel.City">
               <MappingFragment StoreEntitySet="City">
@@ -1483,6 +1520,136 @@ warning 6002: The table/view 'epatrinc_greeni.dbo.ViewPerson' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Network" ColumnName="Network" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZIPCode" ColumnName="ZIPCode" />
+                <ScalarProperty Name="DateJoin" ColumnName="DateJoin" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="LinkedIn" ColumnName="LinkedIn" />
+                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+                <ScalarProperty Name="DateVerified" ColumnName="DateVerified" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoleClaims">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetRoleClaim">
+              <MappingFragment StoreEntitySet="AspNetRoleClaims">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserTokens">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetUserToken">
+              <MappingFragment StoreEntitySet="AspNetUserTokens">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewCompanies">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.ViewCompany">
+              <MappingFragment StoreEntitySet="ViewCompany">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Network" ColumnName="Network" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CountrySortName" ColumnName="CountrySortName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZIPCode" ColumnName="ZIPCode" />
+                <ScalarProperty Name="DateJoinStr" ColumnName="DateJoinStr" />
+                <ScalarProperty Name="DateJoin" ColumnName="DateJoin" />
+                <ScalarProperty Name="ImageUrl2" ColumnName="ImageUrl2" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="LinkedIn" ColumnName="LinkedIn" />
+                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="DateVerifiedStr" ColumnName="DateVerifiedStr" />
+                <ScalarProperty Name="DateVerified" ColumnName="DateVerified" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="EPAGRIFFINModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

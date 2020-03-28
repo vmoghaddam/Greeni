@@ -36,50 +36,79 @@ namespace API.Providers
             {
                 UnitOfWork unitOfWork = new UnitOfWork();
                 var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
-                
+
                 ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
-                 
-                
+
+
 
                 if (user == null)
                 {
                     context.SetError("invalid_grant", "The user name or password is incorrect.");
                     return;
                 }
-                var roles = userManager.GetRoles(user.Id);
+                var roles = userManager.GetRoles(user.Id).First();
+
+
                 var scope = context.Scope.ToList();
                 var customerId = Convert.ToInt32(context.Scope[0]);
-                var person = await unitOfWork.PersonRepository.GetViewPersonByUserId(user.Id);
-                
+
+
 
                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
                    OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
                     CookieAuthenticationDefaults.AuthenticationType);
                 oAuthIdentity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-                oAuthIdentity.AddClaim(new Claim(ClaimTypes.Role, "user"));
+                if (roles == "Company")
+                    oAuthIdentity.AddClaim(new Claim(ClaimTypes.Role, "Company"));
+                else if (roles == "User")
+                    oAuthIdentity.AddClaim(new Claim(ClaimTypes.Role, "nuser"));
+                else
+                    oAuthIdentity.AddClaim(new Claim(ClaimTypes.Role, "user"));
+
+
                 oAuthIdentity.AddClaim(new Claim("sub", context.UserName));
                 oAuthIdentity.AddClaim(new Claim(ClaimTypes.Name, "Vahid"));
 
                 AuthenticationProperties properties = CreateProperties(user.UserName, (context.ClientId == null) ? string.Empty : context.ClientId);
-                if (person != null)
-                {
-                    properties.Dictionary.Add("Name",person.Name);
-                    properties.Dictionary.Add("UserId", person.Id.ToString());
-                    properties.Dictionary.Add("Image", person.ImageUrl.ToString());
-                    //   properties.Dictionary.Add("EmployeeId", employee.Id.ToString());
 
+                if (roles == "Company")
+                {
+                    var company = await unitOfWork.CompanyRepository.GetViewCompanyByEmail(context.UserName);
+                    if (company != null)
+                    {
+                        properties.Dictionary.Add("Name", company.Name);
+                        properties.Dictionary.Add("UserId", company.Id.ToString());
+                        properties.Dictionary.Add("Image", string.IsNullOrEmpty(company.ImageUrl) ? "" : company.ImageUrl.ToString());
+                        properties.Dictionary.Add("Role", "Company");
+                        //   properties.Dictionary.Add("EmployeeId", employee.Id.ToString());
+
+                    }
                 }
+                else
+                {
+                    ViewPerson person = await unitOfWork.PersonRepository.GetViewPersonByUserId(user.Id);
+                    if (person != null)
+                    {
+                        properties.Dictionary.Add("Name", person.Name);
+                        properties.Dictionary.Add("UserId", person.Id.ToString());
+                        properties.Dictionary.Add("Image", person.ImageUrl.ToString());
+                        properties.Dictionary.Add("Role", roles != "User" ? "Person" : "User");
+                        //   properties.Dictionary.Add("EmployeeId", employee.Id.ToString());
+
+                    }
+                }
+
 
                 AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
                 context.Validated(ticket);
                 context.Request.Context.Authentication.SignIn(cookiesIdentity);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 int i = 0;
             }
-           
+
         }
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
@@ -148,8 +177,8 @@ namespace API.Providers
             //    return Task.FromResult<object>(null);
             //}
 
-           // context.OwinContext.Set<string>("as:clientAllowedOrigin", client.AllowedOrigin);
-           // context.OwinContext.Set<string>("as:clientRefreshTokenLifeTime", client.RefreshTokenLifeTime.ToString());
+            // context.OwinContext.Set<string>("as:clientAllowedOrigin", client.AllowedOrigin);
+            // context.OwinContext.Set<string>("as:clientRefreshTokenLifeTime", client.RefreshTokenLifeTime.ToString());
 
             context.Validated();
             return Task.FromResult<object>(null);
@@ -170,13 +199,13 @@ namespace API.Providers
             return Task.FromResult<object>(null);
         }
 
-        public static AuthenticationProperties CreateProperties(string userName,string clientId)
+        public static AuthenticationProperties CreateProperties(string userName, string clientId)
         {
             IDictionary<string, string> data = new Dictionary<string, string>
             {
                 { "userName", userName },
                 {"as:client_id",clientId },
-                
+
             };
             return new AuthenticationProperties(data);
         }
@@ -212,5 +241,5 @@ namespace API.Providers
         //////////////
     }
 
-    
+
 }

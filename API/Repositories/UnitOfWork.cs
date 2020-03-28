@@ -15,7 +15,19 @@ namespace API.Repositories
             context = new EPAGRIFFINEntities();
             context.Configuration.LazyLoadingEnabled = false;
         }
+        private CompanyRepository companyRepository;
+        public CompanyRepository CompanyRepository
+        {
+            get
+            {
 
+                if (this.companyRepository == null)
+                {
+                    this.companyRepository = new CompanyRepository(context);
+                }
+                return companyRepository;
+            }
+        }
         private PersonRepository personRepository;
         public PersonRepository PersonRepository
         {
