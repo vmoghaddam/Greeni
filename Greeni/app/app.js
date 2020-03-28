@@ -30,6 +30,11 @@ app.config(function ($routeProvider) {
         controller: "aboutController",
         templateUrl: "/app/views/about.html?v=" + version
     });
+    $routeProvider.when("/signup", {
+        controller: "signupController",
+        templateUrl: "/app/views/signup.html?v=" + version
+    })
+
 
     
     $routeProvider.otherwise({ redirectTo: "/greeni1" });
