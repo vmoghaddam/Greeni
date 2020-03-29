@@ -58,6 +58,16 @@ namespace API.Controllers
             var repassword = dto.confirmPassword;
             var website = dto.website;
             var address = dto.address;
+            var zipCode = dto.zipCode;
+            var firstName = dto.firstName;
+            var lastName = dto.lastName;
+            var phone = dto.phone;
+            var phone2 = dto.phone2;
+            var phone3 = dto.phone3;
+            var mobile = dto.mobile;
+            var nid = dto.NID;
+            
+
             Company company = new Company()
             {
                 Name = name,
@@ -66,6 +76,14 @@ namespace API.Controllers
                 Address = address,
                 DateJoin = DateTime.Now,
                 ImageUrl = "_x2.png",
+                NID=nid,
+                 FirstName=firstName,
+                  LastName=lastName,
+                  Mobile=mobile,
+                  ZIPCode=zipCode,
+                   Phone2=phone2,
+                    Phone3=phone3,
+               
             };
 
             unitOfWork.CompanyRepository.Insert(company);
