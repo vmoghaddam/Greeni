@@ -74,7 +74,7 @@ namespace API.Providers
 
                 if (roles == "Company")
                 {
-                    var company = await unitOfWork.CompanyRepository.GetViewCompanyByEmail(context.UserName);
+                    var company = await unitOfWork.CompanyRepository.GetViewCompanyByMobile(context.UserName);
                     if (company != null)
                     {
                         properties.Dictionary.Add("Name", company.Name);

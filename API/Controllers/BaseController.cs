@@ -54,7 +54,7 @@ namespace API.Controllers
             var id = Convert.ToInt32(dto.id);
             var name = dto.name;
             var email = Convert.ToString(dto.email);
-            var password = dto.password;
+            string password =Convert.ToString( dto.password);
             var repassword = dto.confirmPassword;
             var website = dto.website;
             var address = dto.address;
@@ -64,8 +64,23 @@ namespace API.Controllers
             var phone = dto.phone;
             var phone2 = dto.phone2;
             var phone3 = dto.phone3;
-            var mobile = dto.mobile;
+            var mobile = Convert.ToString(dto.mobile);
             var nid = dto.NID;
+            ApplicationUserManager UserManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+            var user = new ApplicationUser() { UserName = mobile, Email = email };
+
+            IdentityResult result = await UserManager.CreateAsync(user, password);
+            if (!result.Succeeded)
+            {
+                return new CustomActionResult(HttpStatusCode.BadRequest, GetErrorResult(result));
+
+            }
+
+            ApplicationUser created = await UserManager.FindByNameAsync(mobile);
+             
+             
+                await UserManager.AddToRoleAsync(created.Id, "Company");
             
 
             Company company = new Company()
@@ -81,9 +96,11 @@ namespace API.Controllers
                   LastName=lastName,
                   Mobile=mobile,
                   ZIPCode=zipCode,
+                  Phone=phone,
                    Phone2=phone2,
                     Phone3=phone3,
-               
+                    UserId= created.Id,
+
             };
 
             unitOfWork.CompanyRepository.Insert(company);
@@ -91,25 +108,7 @@ namespace API.Controllers
             var saveResult = await unitOfWork.SaveAsync();
             if (saveResult.Code != HttpStatusCode.OK)
                 return saveResult;
-            //RegisterBindingModel
-            AccountController ac = new AccountController();
-            var register = await ac.RegisterInternal(new RegisterBindingModel()
-            {
-                ConfirmPassword = dto.confirmPassword,
-                Password = dto.password,
-                Email = email,
-
-            });
-
-            var user = (AspNetUser)unitOfWork.CompanyRepository.AddRole(email);
-            // var user = (AspNetUser)    unitOfWork.CompanyRepository.GetAspNetUser(email);
-            company.UserId = user.Id;
-            //var role =    unitOfWork.CompanyRepository.GetCompanyRole();
-            //user.AspNetRoles.Add(new AspNetRole()
-            //{
-
-            //});
-            //user.AspNetRoles.Add(role);
+           
 
 
             saveResult = await unitOfWork.SaveAsync();

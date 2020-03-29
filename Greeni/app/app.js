@@ -1,4 +1,48 @@
-﻿ 
+﻿Exceptions = {};
+Exceptions.getMessage = function (error) {
+    return {
+        message: error.data
+        //error.status + ' ' + error.statusText + ' ' + error.data 
+    };
+};
+General = {};
+General.ShowNotify = function (str, t) {
+    //'info' | 'warning' | 'error' | 'success' | 'custom'
+    DevExpress.ui.notify({
+        message: str,
+        position: {
+            my: "center top",
+            at: "center top"
+        },
+        type: t,
+        displayTime: 2000,
+    });
+};
+General.Confirm = function (str, callback) {
+    var myDialog = DevExpress.ui.dialog.custom({
+        rtlEnabled: true,
+        title: "Confirm",
+        message: str,
+        buttons: [{ text: "No", onClick: function () { callback(false); } }, { text: "Yes", onClick: function () { callback(true); } }]
+    });
+    myDialog.show();
+
+};
+
+General.Modal = function (str, callback) {
+    var myDialog = DevExpress.ui.dialog.custom({
+        rtlEnabled: true,
+        title: "پیغام",
+        message: str,
+        buttons: [{ text: "برگشت", onClick: function () { callback(); } }]
+    });
+    myDialog.show();
+
+};
+
+
+
+
 var app = angular.module('AngularJSApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'dx', 'ngSanitize', 'ngAnimate' ]).config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
 }]);
@@ -46,7 +90,7 @@ app.config(function ($routeProvider) {
     })
 
 
-    $routeProvider.when("/profile/company", {
+    $routeProvider.when("/profile/company/:id", {
         controller: "profileController",
         templateUrl: "/app/views/profile.html?v=" + version
     })
@@ -83,9 +127,12 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
     });
 
     ///// New
-    $rootScope.isSignedIn = true;
+    $rootScope.isSignedIn = false;
     $rootScope.userId = null;
-    $rootScope.userTitle = 'سپهر شهرآیینی';
+    $rootScope.userName = null;
+    $rootScope.userTitle = null;
+    authService.fillAuthData();
+    $rootScope.logOut = function () { authService.logOut(); };
     //////////////////////////
     $rootScope.serviceUrl = serviceBase;
     $rootScope.$on('$viewContentLoaded', function () {

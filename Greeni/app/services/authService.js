@@ -76,6 +76,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             $rootScope.userId = responseData.UserId;
             $rootScope.image = $rootScope.imagesUrl + responseData.Image;
             $rootScope.role = responseData.Role;
+            $rootScope.isSignedIn = true;
             deferred.resolve(response);
 
         }, function (err, status) {
@@ -95,6 +96,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         localStorageService.remove('userData');
         _authentication.isAuth = false;
         _authentication.userName = "";
+        $rootScope.isSignedIn = false;
         _authentication.useRefreshTokens = false;
         $location.path('/signin');
     };
@@ -115,6 +117,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
                 $rootScope.userId = userData.UserId;
                 $rootScope.image = $rootScope.imagesUrl + userData.Image;
                 $rootScope.role = userData.Role;
+                $rootScope.isSignedIn = true;
             }
         }
 
@@ -329,9 +332,9 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
         return deferred.promise;
     };
-    var _registerResearcher = function (entity) {
+    var _registerCompany = function (entity) {
         var deferred = $q.defer();
-        $http.post($rootScope.serviceUrl + 'api/researcher/register', entity).then(function (response) {
+        $http.post($rootScope.serviceUrl + 'api/company/register', entity).then(function (response) {
             deferred.resolve(response.data);
         }, function (err, status) {
 
@@ -371,7 +374,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     authServiceFactory.registerExternal = _registerExternal;
     authServiceFactory.register2 = _register2;
     authServiceFactory.changePassword = _changePassword;
-    authServiceFactory.registerResearcher = _registerResearcher;
+    authServiceFactory.registerCompany = _registerCompany;
     authServiceFactory.saveActivity = _saveActivity;
     authServiceFactory.IsAuthurized = function () {
 

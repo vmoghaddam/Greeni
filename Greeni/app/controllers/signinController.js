@@ -1,25 +1,11 @@
 ﻿'use strict';
-app.controller('signinController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
+app.controller('signinController', ['$scope', '$routeParams', '$location', 'authService', 'ngAuthSettings', '$rootScope', function ($scope, $routeParams, $location, authService, ngAuthSettings, $rootScope) {
 
-    var $jq = jQuery.noConflict();
-    $scope.entity = {
-        firstName: null,
-        lastName: null,
-        name: null,
-        address: null,
-        zipCode: null,
-        NID: null,
-        phone: null,
-        mobile: null,
-        email: null,
-        password: null,
-        confirmPassword: null,
-        phone2: '',
-        phone3: '',
-        website: '',
-
-
-
+    $scope.loginData = {
+        userName: "",// "babak@3dchain.io",
+        password: "", //"Atrina1359@a",
+        useRefreshTokens: false,
+        scope: [-1],
     };
 
     $scope.txt_Mobile = {
@@ -29,7 +15,7 @@ app.controller('signinController', ['$scope', '$rootScope', '$location', functio
         placeholder: 'تلفن همراه ',
         rtlEnabled: true,
         bindingOptions: {
-            value: 'entity.mobile',
+            value: 'loginData.userName',
 
         }
     };
@@ -42,39 +28,19 @@ app.controller('signinController', ['$scope', '$rootScope', '$location', functio
         mode: "password",
         rtlEnabled: true,
         bindingOptions: {
-            value: 'entity.password',
+            value: 'loginData.password',
 
         }
     };
 
     $scope.passwordValidationRules = {
-        validationGroup: 'signup',
+        validationGroup: 'signin',
         validationRules: [{
 
             type: "required",
             message: "Password is required"
         }]
     };
-
-    $scope.confirmPasswordValidationRules = {
-        validationGroup: 'signup',
-        validationRules: [{
-
-            type: "compare",
-            comparisonTarget: function () {
-                var password = $jq("#password-validation").dxTextBox("instance");
-                if (password) {
-                    return password.option("value");
-                }
-            },
-            message: "کلمه عبور اشتباه است"
-        },
-        {
-            type: "required",
-            message: "Confirm Password is required"
-        }]
-    };
-
 
 
 
@@ -85,7 +51,7 @@ app.controller('signinController', ['$scope', '$rootScope', '$location', functio
         width: '100%',
         height: 45,
         rtlEnabled: true,
-        validationGroup: 'signup',
+        validationGroup: 'signin',
         onClick: function (e) {
 
             var result = e.validationGroup.validate();
@@ -94,6 +60,8 @@ app.controller('signinController', ['$scope', '$rootScope', '$location', functio
 
                 return;
             }
+            $scope.login();
+
             /////////
 
 
@@ -101,7 +69,32 @@ app.controller('signinController', ['$scope', '$rootScope', '$location', functio
 
     };
 
+    $scope.login = function () {
+        $scope.loadingVisible = true;
+         
 
+        authService.login($scope.loginData).then(function (response) {
+
+
+            $scope.loadingVisible = false;
+
+            
+            $rootScope.userName = authService.authentication.userName;
+            if ($rootScope.role == 'Company') {
+                $location.path('/profile/company/' + $rootScope.userId);
+            }
+            else
+                $location.path('/greeni1');
+
+
+        },
+            function (err) {
+                $scope.loadingVisible = false;
+                $scope.message = err.error_description;
+                General.ShowNotify('Invalid Username or Password.', 'error');
+                
+            });
+    };
 
     /////////////////////////////////////////
     $scope.loadingVisible = false;

@@ -95,12 +95,17 @@ namespace API.Repositories
         {
             return await this.context.ViewCompanies.FirstOrDefaultAsync(q => q.Email == email);
         }
-        
 
-         
-        
+        public async Task<ViewCompany> GetViewCompanyByMobile(string mobile)
+        {
+            return await this.context.ViewCompanies.FirstOrDefaultAsync(q => q.Mobile == mobile);
+        }
 
-         
+
+
+
+
+
 
         public async Task<Company> UpdateCompany(CompanyDto dto)
         {

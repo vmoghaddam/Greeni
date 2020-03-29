@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('signupController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
+app.controller('signupController', ['$scope', '$rootScope', '$location', 'authService', '$route', function ($scope, $rootScope, $location, authService, $route) {
 
     var $jq = jQuery.noConflict();
     $scope.entity = {
@@ -205,7 +205,15 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
                 return;
             }
             /////////
+            $scope.loadingVisible = true;
+            authService.registerCompany($scope.entity).then(function (response) {
 
+                // General.ShowNotify(Config.Text_SavedOk, 'success');
+                $scope.loadingVisible = false;
+                $location.path('/signin');
+
+            }, function (err) { $scope.loadingVisible = false; General.ShowNotify(err.message, 'error'); });
+            ////////////////////
 
         }
 
