@@ -24,9 +24,10 @@
     .dx-texteditor-input {
         padding: 10px;
     }
-    .dx-texteditor-buttons-container{
-        right:initial !important;
-        left:10px !important;
+
+    .dx-texteditor-buttons-container {
+        right: initial !important;
+        left: 10px !important;
     }
 </style>
 
@@ -94,17 +95,7 @@
         <div class="col-lg-12" style="padding:0 0px 0 20px;text-align:center">
             <div class="w3-content w3-justify w3-text-grey" style="text-align:center !important">
                 <div style="width:100%;max-width:350px;margin:0px auto 0 auto;display:inline-block;padding:0px 0 0 0;">
-                    <div dx-text-box="txt_FirstName" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
-                    <div dx-text-box="txt_LastName" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
-                    <div dx-text-box="txt_Company" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
-                    <div dx-text-box="txt_Address" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
-                    <div dx-text-box="txt_MailCode" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
-                    <div dx-text-box="txt_CodeMeli" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
-                    <div dx-text-box="txt_Phone" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
-                    <div dx-text-box="txt_Mobile" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
-                    <div dx-text-box="txt_Email" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
-                    <div dx-text-box="txt_Password" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
-                    <div dx-text-box="txt_ConfirmPassword" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
+                    <div dx-text-box="txt_FirstName" class="name" style="background:white" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
 
                     <div dx-button="btn_save" style="margin-top:10px"></div>
                 </div>
@@ -123,12 +114,6 @@
 
 </div>
 
-
-
-
-
-
-
 <div class="navbar w3-hide-large  " style="border-bottom:#3cb371 2px solid;border-top:#3cb371 2px solid;padding:7px 0 7px 0">
     <table style="width:100%">
         <tr>
@@ -137,16 +122,20 @@
                     <img src="img/g1.png" style="height:40px" />
                 </a>
             </td>
-            <td style="text-align: center; width: 22%">
+            <td style="text-align:center;width:22%">
                 <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/greeni2','greeni1',1)">
-                    <img src="img/g2.png" style="        height: 40px" />
+                    <img src="img/g2.png" style="height:40px" />
                 </a>
             </td>
+
+
             <td style="text-align:center;width:20%" data-ng-click="navigate2('/basket','basket',1)">
-                <a style="        padding: 0px 0px !important;">
+                <a style="padding: 0px 0px !important;">
                     <i class="fas fa-shopping-cart" style="font-size:24px;color:white"></i>
                 </a>
             </td>
+
+
             <td style="text-align:center;width:18%">
                 <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/orders','orders',1)">
                     <i class="fas fa-pen-fancy" style="font-size:24px;color:white"></i>
@@ -154,8 +143,9 @@
             </td>
             <td style="text-align:center;width:18%">
                 <a style="padding: 0px 0px !important;">
-                    <i class="fas fa-info-circle" style="        font-size: 24px;
-        color: white"></i>
+                    <i class="fas fa-info-circle" style="font-size:24px;color:white"></i>
+
+
                 </a>
             </td>
         </tr>
@@ -164,28 +154,18 @@
 </div>
 
 <!--<div class="box home" style="direction:rtl;text-align:center">-->
-    
-
-
-
-
-    <!-- <div dx-text-box="txt_FirstName" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required'}]}"></div>-->
-    <!--<input class="txt-first-name style" placeholder="نام " />
-    <input class="txt-last-name style" placeholder="نام خانوادگی " />
-    <input class="txt-company style" placeholder="شرکت " />
-    <input class="txt-mobile style" placeholder="موبایل" />
-    <input class="txt-phone style" placeholder="تلفن ثابت " />
-    <input class="txt-address style" placeholder="آدرس" />
-    <input class="txt-email style" placeholder="ایمیل" />
-    <input class="txt-mail-code style" placeholder="کد پستی" />
-    <input class="txt-meli-code style" placeholder="کد ملی" />
-    <input class="txt-website style" placeholder="وب سایت" />
-    <input class="txt-password style" placeholder="رمز" />
-    <input class="txt-confirmpassword style" placeholder="ورود دوباره رمز" />
-    <button style="width:100%;height:50px;max-width:350px;overflow:hidden;display:block; margin:20px auto 0 auto;border-radius:8px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">ثبت نام</button>-->
+<!-- <div dx-text-box="txt_FirstName" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required'}]}"></div>-->
+<!--<input class="txt-first-name style" placeholder="نام " />
+<input class="txt-last-name style" placeholder="نام خانوادگی " />
+<input class="txt-company style" placeholder="شرکت " />
+<input class="txt-mobile style" placeholder="موبایل" />
+<input class="txt-phone style" placeholder="تلفن ثابت " />
+<input class="txt-address style" placeholder="آدرس" />
+<input class="txt-email style" placeholder="ایمیل" />
+<input class="txt-mail-code style" placeholder="کد پستی" />
+<input class="txt-meli-code style" placeholder="کد ملی" />
+<input class="txt-website style" placeholder="وب سایت" />
+<input class="txt-password style" placeholder="رمز" />
+<input class="txt-confirmpassword style" placeholder="ورود دوباره رمز" />
+<button style="width:100%;height:50px;max-width:350px;overflow:hidden;display:block; margin:20px auto 0 auto;border-radius:8px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">ثبت نام</button>-->
 <!--</div>-->
-
-
-
-
-

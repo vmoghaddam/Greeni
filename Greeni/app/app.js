@@ -35,6 +35,16 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/signup.html?v=" + version
     })
 
+    $routeProvider.when("/signup2", {
+        controller: "signup2Controller",
+        templateUrl: "/app/views/signup.html?v=" + version
+    })
+
+    $routeProvider.when("/signin", {
+        controller: "signinController",
+        templateUrl: "/app/views/signin.html?v=" + version
+    })
+
 
     
     $routeProvider.otherwise({ redirectTo: "/greeni1" });
