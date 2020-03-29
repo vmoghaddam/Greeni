@@ -2,17 +2,22 @@
 app.controller('signupController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
 
     $scope.entity = {
-        FirstName: null,
-        LastName: null,
-        Company: null,
-        Address: null,
-        MailCode: null,
-        CodeMeli: null,
-        Phone: null,
-        Mobile: null,
-        Email: null,
-        Password: null,
-        ConfirmPassword: null,
+        firstName: null,
+        lastName: null,
+        name: null,
+        address: null,
+        zipCode: null,
+        NID: null,
+        phone: null,
+        mobile: null,
+        email: null,
+        password: null,
+        confirmPassword: null,
+        phone2: '',
+        phone3: '',
+        website:'',
+     
+        
         
     };
 
@@ -23,7 +28,7 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         placeholder: 'نام',
         rtlEnabled:true,
         bindingOptions: {
-            value: 'entity.FirstName',
+            value: 'entity.firstName',
              
         }
     };
@@ -35,7 +40,7 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         placeholder: ' نام خانوادگی',
         rtlEnabled:true,
         bindingOptions: {
-            value: 'entity.LastName',
+            value: 'entity.lastName',
              
         }
     };
@@ -47,7 +52,7 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         placeholder: ' فروشگاه',
         rtlEnabled:true,
         bindingOptions: {
-            value: 'entity.Company',
+            value: 'entity.name',
              
         }
     };
@@ -59,7 +64,7 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         placeholder: ' آدرس',
         rtlEnabled:true,
         bindingOptions: {
-            value: 'entity.Address',
+            value: 'entity.address',
              
         }
     };
@@ -68,10 +73,10 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         hoverStateEnabled: false,
         width: '100%',
         height: 45,
-        placeholder: ' کد پستی',
+        placeholder: 'کد پستی',
         rtlEnabled:true,
         bindingOptions: {
-            value: 'entity.MailCode',
+            value: 'entity.zipCode',
              
         }
     };
@@ -83,7 +88,7 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         placeholder: ' کد ملی',
         rtlEnabled:true,
         bindingOptions: {
-            value: 'entity.CodeMeli',
+            value: 'entity.NID',
              
         }
     };
@@ -95,7 +100,7 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         placeholder: 'تلفن',
         rtlEnabled:true,
         bindingOptions: {
-            value: 'entity.Phone',
+            value: 'entity.phone',
              
         }
     };
@@ -107,7 +112,7 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         placeholder: 'تلفن همراه ',
         rtlEnabled:true,
         bindingOptions: {
-            value: 'entity.Mobile',
+            value: 'entity.mobile',
              
         }
     };
@@ -119,7 +124,7 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         placeholder: ' ایمیل',
         rtlEnabled:true,
         bindingOptions: {
-            value: 'entity.Email',
+            value: 'entity.email',
              
         }
     };
@@ -128,10 +133,10 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         hoverStateEnabled: false,
         width: '100%',
         height: 45,
-        placeholder: 'رمز',
+        placeholder: 'کلمه عبور',
         rtlEnabled:true,
         bindingOptions: {
-            value: 'entity.Password',
+            value: 'entity.password',
              
         }
     };
@@ -140,10 +145,10 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         hoverStateEnabled: false,
         width: '100%',
         height: 45,
-        placeholder: 'ورود دوباره رمز ورود',
+        placeholder: 'تکرار کلمه عبور',
         rtlEnabled:true,
         bindingOptions: {
-            value: 'entity.ConfirmPassword',
+            value: 'entity.confirmPassword',
              
         }
     };
