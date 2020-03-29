@@ -56,7 +56,14 @@ app.config(function ($routeProvider) {
  
 var serviceBase = 'http://localhost:58909/';
 //var serviceBase = 'http://api.greeni.epatrin.ir/';
- 
+app.constant('ngAuthSettings', {
+    apiServiceBaseUri: serviceBase,
+    clientId: 'ngAuthApp'
+});
+app.config(['$httpProvider', function ($httpProvider) {
+
+    $httpProvider.interceptors.push('authInterceptorService');
+    }]);
 app.run(['$rootScope', '$location', '$window', 'authService', function ($rootScope, $location, $window, authService) {
     $window.ga('create', 'UA-159921170-1', 'auto');
     $rootScope.$on('$routeChangeSuccess', function () {
