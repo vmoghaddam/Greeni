@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('signupController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
+app.controller('profileController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
 
     var $jq = jQuery.noConflict();
     $scope.entity = {
@@ -16,10 +16,10 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         confirmPassword: null,
         phone2: '',
         phone3: '',
-        website:'',
-     
-        
-        
+        website: '',
+
+
+
     };
 
     $scope.txt_FirstName = {
@@ -27,46 +27,46 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         width: '100%',
         height: 45,
         placeholder: 'نام',
-        rtlEnabled:true,
+        rtlEnabled: true,
         bindingOptions: {
             value: 'entity.firstName',
-             
+
         }
     };
 
-     $scope.txt_LastName = {
+    $scope.txt_LastName = {
         hoverStateEnabled: false,
         width: '100%',
         height: 45,
         placeholder: ' نام خانوادگی',
-        rtlEnabled:true,
+        rtlEnabled: true,
         bindingOptions: {
             value: 'entity.lastName',
-             
+
         }
     };
 
-     $scope.txt_Company = {
+    $scope.txt_Company = {
         hoverStateEnabled: false,
         width: '100%',
         height: 45,
         placeholder: ' فروشگاه',
-        rtlEnabled:true,
+        rtlEnabled: true,
         bindingOptions: {
             value: 'entity.name',
-             
+
         }
     };
 
-     $scope.txt_Address = {
+    $scope.txt_Address = {
         hoverStateEnabled: false,
         width: '100%',
         height: 90,
         placeholder: ' آدرس',
-        rtlEnabled:true,
+        rtlEnabled: true,
         bindingOptions: {
             value: 'entity.address',
-             
+
         }
     };
 
@@ -75,10 +75,10 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         width: '100%',
         height: 45,
         placeholder: 'کد پستی',
-        rtlEnabled:true,
+        rtlEnabled: true,
         bindingOptions: {
             value: 'entity.zipCode',
-             
+
         }
     };
 
@@ -87,10 +87,10 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         width: '100%',
         height: 45,
         placeholder: ' کد ملی',
-        rtlEnabled:true,
+        rtlEnabled: true,
         bindingOptions: {
             value: 'entity.NID',
-             
+
         }
     };
 
@@ -99,10 +99,10 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         width: '100%',
         height: 45,
         placeholder: 'تلفن',
-        rtlEnabled:true,
+        rtlEnabled: true,
         bindingOptions: {
             value: 'entity.phone',
-             
+
         }
     };
 
@@ -111,10 +111,10 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         width: '100%',
         height: 45,
         placeholder: 'تلفن همراه ',
-        rtlEnabled:true,
+        rtlEnabled: true,
         bindingOptions: {
             value: 'entity.mobile',
-             
+
         }
     };
 
@@ -123,10 +123,10 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         width: '100%',
         height: 45,
         placeholder: ' ایمیل',
-        rtlEnabled:true,
+        rtlEnabled: true,
         bindingOptions: {
             value: 'entity.email',
-             
+
         }
     };
 
@@ -139,7 +139,7 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         rtlEnabled: true,
         bindingOptions: {
             value: 'entity.password',
-             
+
         }
     };
 
@@ -148,11 +148,11 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         width: '100%',
         height: 45,
         placeholder: 'تکرار کلمه عبور',
-        mode:"password",   
-        rtlEnabled:true,
+        mode: "password",
+        rtlEnabled: true,
         bindingOptions: {
             value: 'entity.confirmPassword',
-             
+
         }
     };
 
@@ -194,14 +194,14 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
         icon: 'check',
         width: '100%',
         height: 45,
-        rtlEnabled:true,
-        validationGroup:'signup',
+        rtlEnabled: true,
+        validationGroup: 'signup',
         onClick: function (e) {
 
             var result = e.validationGroup.validate();
 
             if (!result.isValid) {
-                
+
                 return;
             }
             /////////
@@ -238,4 +238,4 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
     ////////////////////////////////////////////
 
 
- }]);
+}]);

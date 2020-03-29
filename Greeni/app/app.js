@@ -46,6 +46,12 @@ app.config(function ($routeProvider) {
     })
 
 
+    $routeProvider.when("/profile/company", {
+        controller: "profileController",
+        templateUrl: "/app/views/profile.html?v=" + version
+    })
+
+
     
     $routeProvider.otherwise({ redirectTo: "/greeni1" });
 
