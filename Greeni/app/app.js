@@ -57,7 +57,23 @@ app.config(function ($routeProvider) {
 var serviceBase = 'http://localhost:58909/';
 //var serviceBase = 'http://api.greeni.epatrin.ir/';
  
-app.run([  '$rootScope', '$location' , function ( $rootScope, $location ) {
+app.run(['$rootScope', '$location', '$window', 'authService', function ($rootScope, $location, $window, authService) {
+    $window.ga('create', 'UA-159921170-1', 'auto');
+    $rootScope.$on('$routeChangeSuccess', function () {
+        $window.ga('send', 'pageview', { page: $location.url() });
+        $window.ga('config', 'GA_MEASUREMENT_ID', {
+            'page_title': 'homepage',
+            'page_path': '/home'
+        });
+
+
+    });
+
+    ///// New
+    $rootScope.isSignedIn = true;
+    $rootScope.userId = null;
+    $rootScope.userTitle = 'سپهر شهرآیینی';
+    //////////////////////////
     $rootScope.serviceUrl = serviceBase;
     $rootScope.$on('$viewContentLoaded', function () {
         

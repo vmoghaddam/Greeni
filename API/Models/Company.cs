@@ -34,5 +34,11 @@ namespace API.Models
         public string Network { get; set; }
         public string UserId { get; set; }
         public string Remark { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Mobile { get; set; }
+        public string Phone2 { get; set; }
+        public string Phone3 { get; set; }
+        public string NID { get; set; }
     }
 }
