@@ -103,8 +103,8 @@
                     <div dx-text-box="txt_Phone" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
                     <div dx-text-box="txt_Mobile" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
                     <div dx-text-box="txt_Email" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
-                    <div dx-text-box="txt_Password" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
-                    <div dx-text-box="txt_ConfirmPassword" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
+                    <div dx-text-box="txt_Password" class="name" style="background:white; margin-top:7px" dx-validator="passwordValidationRules"></div>
+                    <div dx-text-box="txt_ConfirmPassword" class="name" style="background:white; margin-top:7px" dx-validator="confirmPasswordValidationRules"></div>
 
                     <div dx-button="btn_save" style="margin-top:10px"></div>
                 </div>

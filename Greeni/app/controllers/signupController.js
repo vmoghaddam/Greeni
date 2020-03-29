@@ -154,6 +154,37 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', functio
     };
 
 
+    $scope.passwordValidationRules = {
+        validationGroup: 'signupres',
+        validationRules: [{
+
+            type: "required",
+            message: "Password is required"
+        }]
+    };
+
+    $scope.confirmPasswordValidationRules = {
+        validationGroup: 'signupres',
+        validationRules: [{
+
+            type: "compare",
+            comparisonTarget: function () {
+                var password = $jq("#password-validation").dxTextBox("instance");
+                if (password) {
+                    return password.option("value");
+                }
+            },
+            message: "'Password' and 'Confirm Password' do not match."
+        },
+        {
+            type: "required",
+            message: "Confirm Password is required"
+        }]
+    };
+
+
+
+
     $scope.btn_save = {
         text: 'تایید',
         type: 'success',
