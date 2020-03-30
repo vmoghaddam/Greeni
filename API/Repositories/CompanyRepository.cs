@@ -177,6 +177,7 @@ namespace API.Repositories
         public string ZIPCode { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        public string UserName { get; set; }
         public Nullable<int> CountryId { get; set; }
         
 

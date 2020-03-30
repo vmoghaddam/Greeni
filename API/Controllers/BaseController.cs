@@ -130,8 +130,13 @@ namespace API.Controllers
                 // return BadRequest(ModelState);
                 return Exceptions.getModelValidationException(ModelState);
             }
+           
+            
 
             Company company = await unitOfWork.CompanyRepository.UpdateCompany(dto);
+
+           
+
 
             var saveResult = await unitOfWork.SaveAsync();
             if (saveResult.Code != HttpStatusCode.OK)
