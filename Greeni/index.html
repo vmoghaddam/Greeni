@@ -158,12 +158,8 @@
    
     <div ng-app="AngularJSApp" style=" height:100%">
         <div id="popup_signin" dx-popup="popup_signin">
-            <div style="padding:10px 10px 0 10px">
-                <div style="color:white;font-size:16px">Contact Info</div>
-                <div style="color:white;font-size:16px">Contact Info</div>
-                <div style="color:white;font-size:16px">Contact Info</div>
-                <div style="color:white;font-size:16px">Contact Info</div>
-                <div style="color:white;font-size:16px">Contact Info</div>
+            <div style="padding:10px 10px 0 10px" ng-show="isContentVisible">
+               <div style="color:red">TEST TEST TEST</div>
             </div>
         </div>
         <div class="ng-hide" ng-show="isSignedIn">

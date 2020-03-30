@@ -138,15 +138,15 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
         
         $rootScope.popup_signin_visible = true;
     };
-
+    $rootScope.isContentVisible = false;
     $rootScope.popup_signin_visible = true;
     $rootScope.popup_signin_title = 'contasdfghjklasdfghjklasdfghjkl info';
     $rootScope.popup_signin = {
 
         shading: true,
         //position: { my: 'left', at: 'left', of: window, offset: '5 0' },
-        width: $rootScope.popupWidth(450, true),
-        height: $rootScope.popupHeight(280, true),
+        width: 500,
+        height: 500,
         //fullscreen: false,
         showtitle: false,
         dragenabled: true,
@@ -174,9 +174,16 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
             $rootScope.popup_signin_visible = false;
 
         },
-        bindingoptions: {
+        //قبلا
+        //bindingoptions: {
+        //    visible: 'popup_signin_visible',
+        //    fullscreen: 'isfullscreen',
+        //    title: 'popup_signin_title',
+
+        //}
+        bindingOptions: {
             visible: 'popup_signin_visible',
-            fullscreen: 'isfullscreen',
+            
             title: 'popup_signin_title',
 
         }
@@ -333,7 +340,7 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
 
 
     
-    
+    $rootScope.isContentVisible = true;
     //////////////////////////////////////////////////////
 }]);
  
