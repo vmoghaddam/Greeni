@@ -67,6 +67,55 @@ app.controller('greeni1Controller', ['$scope', '$rootScope', '$location', functi
         easing: 'ease-out-back',
         duration: 1000
     });
+
+    //$rootScope.click_contact = function () {
+    //    alert("asdfghj");
+    //    $rootScope.popup_signin_visible = true;
+    //};
+
+    //$rootScope.popup_signin_visible = false;
+    //$rootScope.popup_signin_title = 'contasdfghjklasdfghjklasdfghjkl info';
+    //$rootScope.popup_signin = {
+
+    //    shading: true,
+    //    //position: { my: 'left', at: 'left', of: window, offset: '5 0' },
+    //    width: 450,
+    //    height: 280,
+    //    //fullscreen: false,
+    //    showtitle: false,
+    //    dragenabled: true,
+    //    toolbaritems: [
+
+    //        { widget: 'dxbutton', location: 'after', options: { type: 'normal', text: 'close', icon: 'remove', onclick: function (e) { $rootScope.popup_signin_visible = false; } }, toolbar: 'bottom' }
+    //    ],
+
+    //    visible: false,
+
+    //    closeonoutsideclick: true,
+    //    ontitlerendered: function (e) {
+    //        // $(e.titleelement).addclass('vahid');
+    //        // $(e.titleelement).css('background-color', '#f2552c');
+    //    },
+    //    onshowing: function (e) {
+
+    //    },
+    //    onshown: function (e) {
+
+    //    },
+    //    onhiding: function (e) {
+
+
+    //        $rootScope.popup_signin_visible = false;
+
+    //    },
+    //    bindingoptions: {
+    //        visible: 'popup_signin_visible',
+    //        fullscreen: 'isfullscreen',
+    //        title: 'popup_signin_title',
+
+    //    }
+    //};
+
     ////////////////////////////////////
     
 }]);
