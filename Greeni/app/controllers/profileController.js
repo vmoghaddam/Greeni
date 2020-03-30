@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('profileController', ['$scope', '$rootScope', '$location', '$routeParams', function ($scope, $rootScope, $location, $routeParams) {
+app.controller('profileController', ['$scope', '$rootScope', '$location', '$routeParams', 'personService', function ($scope, $rootScope, $location, $routeParams, personService) {
 
 
     //وقتی از این مدل چیزا استفاده می کنی:
@@ -253,6 +253,17 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
     };
 
     ////////////////////////////////////////////
+    $scope.bind = function () {
+        $scope.loadingVisible = true;
+        personService.getCompany($scope.profileId).then(function (result) {
+            $scope.loadingVisible = false;
+            
+            console.log(result);
 
+        }, function (err) { $scope.loadingVisible = false; General.ShowNotify(err.message, 'error'); });
+    }
+
+    $scope.bind();
+    ////////////////////////////////////////////
 
 }]);
