@@ -2,6 +2,17 @@
 app.controller('profileController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
 
     var $jq = jQuery.noConflict();
+    $jq('body').on('click', '.link-profile', function (e) {
+        // do something
+        e.preventDefault();
+        var id = $jq(this).data('uid');
+        // $rootScope.navigate('/profile/'+id);
+        $window.open('#!/profile/' + id);
+
+        $scope.profileId = $routeParams.id;
+    });
+    $window.open(alert = id);
+
     $scope.entity = {
         firstName: null,
         lastName: null,
