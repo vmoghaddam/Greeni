@@ -143,12 +143,12 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
     $rootScope.popup_signin_title = 'contasdfghjklasdfghjklasdfghjkl info';
     $rootScope.popup_signin = {
 
-        shading: false,
+        shading: true,
         //position: { my: 'left', at: 'left', of: window, offset: '5 0' },
         width: $rootScope.popupWidth(450, true),
         height: $rootScope.popupHeight(280, true),
         //fullscreen: false,
-        showtitle: true,
+        showtitle: false,
         dragenabled: true,
         toolbaritems: [
 
