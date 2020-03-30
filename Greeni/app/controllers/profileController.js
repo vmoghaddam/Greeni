@@ -1,16 +1,23 @@
 ﻿'use strict';
-app.controller('profileController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
+app.controller('profileController', ['$scope', '$rootScope', '$location', '$routeParams', function ($scope, $rootScope, $location, $routeParams) {
 
-    var $jq = jQuery.noConflict();
-    $jq('body').on('click', '.link-profile', function (e) {
-        // do something
-        e.preventDefault();
-        var id = $jq(this).data('uid');
-        // $rootScope.navigate('/profile/'+id);
-        $window.open('#!/profile/' + id);
 
-        $scope.profileId = $routeParams.id;
-    });
+    //وقتی از این مدل چیزا استفاده می کنی:
+    //$routeParams
+    //باید اون بالا اضافه شده باشه
+    $scope.profileId = $routeParams.id;
+    alert($scope.profileId);
+    //این کس شعرایی که کامنت کردم چیه؟
+    //var $jq = jQuery.noConflict();
+    //$jq('body').on('click', '.link-profile', function (e) {
+    //    // do something
+    //    e.preventDefault();
+    //    var id = $jq(this).data('uid');
+    //    // $rootScope.navigate('/profile/'+id);
+    //    $window.open('#!/profile/' + id);
+    //    $scope.profileId = $routeParams.id;
+       
+    //});
     
     $scope.entity = {
         firstName: null,
