@@ -11,8 +11,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', functi
 
         $scope.profileId = $routeParams.id;
     });
-    $window.open(alert = id);
-
+    
     $scope.entity = {
         firstName: null,
         lastName: null,
