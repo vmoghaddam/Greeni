@@ -133,6 +133,56 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
     $rootScope.userTitle = null;
     authService.fillAuthData();
     $rootScope.logOut = function () { authService.logOut(); };
+
+    $rootScope.click_contact = function () {
+        
+        $rootScope.popup_signin_visible = true;
+    };
+
+    $rootScope.popup_signin_visible = true;
+    $rootScope.popup_signin_title = 'contasdfghjklasdfghjklasdfghjkl info';
+    $rootScope.popup_signin = {
+
+        shading: false,
+        //position: { my: 'left', at: 'left', of: window, offset: '5 0' },
+        width: $rootScope.popupWidth(450, true),
+        height: $rootScope.popupHeight(280, true),
+        //fullscreen: false,
+        showtitle: true,
+        dragenabled: true,
+        toolbaritems: [
+
+            { widget: 'dxbutton', location: 'after', options: { type: 'normal', text: 'close', icon: 'remove', onclick: function (e) { $rootScope.popup_signin_visible = false; } }, toolbar: 'bottom' }
+        ],
+
+        visible: false,
+
+        closeonoutsideclick: true,
+        ontitlerendered: function (e) {
+            // $(e.titleelement).addclass('vahid');
+            // $(e.titleelement).css('background-color', '#f2552c');
+        },
+        onshowing: function (e) {
+
+        },
+        onshown: function (e) {
+
+        },
+        onhiding: function (e) {
+
+
+            $rootScope.popup_signin_visible = false;
+
+        },
+        bindingoptions: {
+            visible: 'popup_signin_visible',
+            fullscreen: 'isfullscreen',
+            title: 'popup_signin_title',
+
+        }
+    };
+
+
     //////////////////////////
     $rootScope.serviceUrl = serviceBase;
     $rootScope.$on('$viewContentLoaded', function () {
@@ -281,8 +331,8 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
         return dto;
     };
 
-    
 
+    
     
     //////////////////////////////////////////////////////
 }]);
