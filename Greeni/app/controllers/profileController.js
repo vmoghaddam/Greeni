@@ -26,10 +26,14 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         phone2: '',
         phone3: '',
         website: '',
-
-
-
     };
+    $scope.entityPassword = {
+        Password: null,
+            Old: null,
+            UserName: $rootScope.UserName
+        };
+
+
 
     $scope.txt_FirstName = {
         hoverStateEnabled: false,
@@ -147,7 +151,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         mode: "password",
         rtlEnabled: true,
         bindingOptions: {
-            value: 'entity.password',
+            value: 'entityPassword.Password',
 
         }
     };
@@ -161,6 +165,19 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         rtlEnabled: true,
         bindingOptions: {
             value: 'entity.confirmPassword',
+
+        }
+    };
+
+    $scope.txt_currentPassword = {
+        hoverStateEnabled: false,
+        width: '100%',
+        height: 45,
+        placeholder: 'کلمه عبور فعلی',
+        mode: "password",
+        rtlEnabled: true,
+        bindingOptions: {
+            value: 'entityPassword.Old',
 
         }
     };
