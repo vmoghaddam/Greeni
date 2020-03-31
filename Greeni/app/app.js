@@ -139,8 +139,8 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
         $rootScope.popup_signin_visible = true;
     };
     $rootScope.isContentVisible = false;
-    $rootScope.popup_signin_visible = true;
-    $rootScope.popup_signin_title = 'contasdfghjklasdfghjklasdfghjkl info';
+    $rootScope.popup_signin_visible = false;
+    $rootScope.popup_signin_title = 'contact info';
     $rootScope.popup_signin = {
 
         shading: true,

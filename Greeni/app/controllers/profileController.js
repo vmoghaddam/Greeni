@@ -8,17 +8,9 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
     $scope.profileId = $routeParams.id;
     alert($scope.profileId);
     //این کس شعرایی که کامنت کردم چیه؟
-    //var $jq = jQuery.noConflict();
-    //$jq('body').on('click', '.link-profile', function (e) {
-    //    // do something
-    //    e.preventDefault();
-    //    var id = $jq(this).data('uid');
-    //    // $rootScope.navigate('/profile/'+id);
-    //    $window.open('#!/profile/' + id);
-    //    $scope.profileId = $routeParams.id;
-       
-    //});
-    
+    var $jq = jQuery.noConflict();
+    //عرضم به درزت  که اینا برای مقایسه دوتا پسورد هست   
+
     $scope.entity = {
         firstName: null,
         lastName: null,
@@ -46,7 +38,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         placeholder: 'نام',
         rtlEnabled: true,
         bindingOptions: {
-            value: 'entity.firstName',
+            value: "entity.firstName",
 
         }
     };
@@ -175,16 +167,16 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
 
 
     $scope.passwordValidationRules = {
-        validationGroup: 'signup',
+        validationGroup: 'password',
         validationRules: [{
 
             type: "required",
-            message: "Password is required"
+            message: "این فیلد ضروری است"
         }]
     };
 
     $scope.confirmPasswordValidationRules = {
-        validationGroup: 'signup',
+        validationGroup: 'password',
         validationRules: [{
 
             type: "compare",
@@ -198,7 +190,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         },
         {
             type: "required",
-            message: "Confirm Password is required"
+            message: "این فیلد ضروری است"
         }]
     };
 
@@ -215,6 +207,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         validationGroup: 'signup',
         onClick: function (e) {
 
+
             var result = e.validationGroup.validate();
 
             if (!result.isValid) {
@@ -229,41 +222,76 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
     };
 
 
-
-    /////////////////////////////////////////
-    $scope.loadingVisible = false;
-    $scope.loadPanel = {
-        message: 'لطفا صبر کنید',
+    $scope.btn_password = {
+        text: 'تایید',
+        type: 'success',
+        icon: 'check',
+        width: '100%',
+        height: 45,
         rtlEnabled: true,
-        showIndicator: true,
-        showPane: true,
-        shading: true,
-        closeOnOutsideClick: false,
-        shadingColor: "rgba(0,0,0,0.4)",
-        // position: { of: "body" },
-        onShown: function () {
+        validationGroup: 'password',
+        onClick: function (e) {
+            var result = e.validationGroup.validate();
 
-        },
-        onHidden: function () {
+            if (!result.isValid) {
 
-        },
-        bindingOptions: {
-            visible: 'loadingVisible'
+                return;
         }
-    };
+        /////////
 
-    ////////////////////////////////////////////
-    $scope.bind = function () {
-        $scope.loadingVisible = true;
-        personService.getCompany($scope.profileId).then(function (result) {
-            $scope.loadingVisible = false;
-            
-            console.log(result);
 
-        }, function (err) { $scope.loadingVisible = false; General.ShowNotify(err.message, 'error'); });
     }
 
-    $scope.bind();
+};
+
+
+
+
+
+
+/////////////////////////////////////////
+$scope.loadingVisible = false;
+$scope.loadPanel = {
+    message: 'لطفا صبر کنید',
+    rtlEnabled: true,
+    showIndicator: true,
+    showPane: true,
+    shading: true,
+    closeOnOutsideClick: false,
+    shadingColor: "rgba(0,0,0,0.4)",
+    // position: { of: "body" },
+    onShown: function () {
+
+    },
+    onHidden: function () {
+
+    },
+    bindingOptions: {
+        visible: 'loadingVisible'
+    }
+};
+
+////////////////////////////////////////////
+$scope.bind = function () {
+    $scope.loadingVisible = true;
+    personService.getCompany($scope.profileId).then(function (result) {
+        $scope.loadingVisible = false;
+
+        $scope.entity.mobile = result.Mobile;
+        $scope.entity.firstName = result.FirstName;
+        $scope.entity.lastName = result.LastName;
+        $scope.entity.email = result.Email;
+        $scope.entity.address = result.Address;
+        $scope.entity.zipCode = result.ZIPCode;
+        $scope.entity.NID = result.NID;
+        $scope.entity.phone = result.Phone;
+        $scope.entity.name = result.Name;
+        console.log(result);
+
+    }, function (err) { $scope.loadingVisible = false; General.ShowNotify(err.message, 'error'); });
+}
+
+$scope.bind();
     ////////////////////////////////////////////
 
 }]);
