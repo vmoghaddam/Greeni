@@ -286,7 +286,8 @@ $scope.bind = function () {
         $scope.entity.NID = result.NID;
         $scope.entity.phone = result.Phone;
         $scope.entity.name = result.Name;
-        console.log(result);
+        //console.log(result);
+
 
     }, function (err) { $scope.loadingVisible = false; General.ShowNotify(err.message, 'error'); });
 }
