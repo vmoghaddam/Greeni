@@ -209,12 +209,12 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', 'authSe
             authService.registerCompany($scope.entity).then(function (response) {
 
                 // General.ShowNotify(Config.Text_SavedOk, 'success');
+               
                 $scope.loadingVisible = false;
                 $location.path('/signin');
-
+                
             }, function (err) { $scope.loadingVisible = false; General.ShowNotify(err.message, 'error'); });
             ////////////////////
-
         }
 
     };
