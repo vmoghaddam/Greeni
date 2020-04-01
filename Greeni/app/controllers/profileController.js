@@ -248,7 +248,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         onClick: function (e) {
 
             $scope.loadingVisible = true;
-            authService.registerCompany($scope.entityPassword).then(function (response) {
+            authService.changePassword($scope.entityPassword).then(function (response) {
 
                 // General.ShowNotify(Config.Text_SavedOk, 'success');
                 $scope.loadingVisible = false;
@@ -258,13 +258,13 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
             }, function (err) { $scope.loadingVisible = false; General.ShowNotify(err.message, 'error'); });
             ////////////////////
 
-            var result = e.validationgroup.validate();
+            //var result = e.validationgroup.validate();
 
-            if (!result.isvalid) {
+            //if (!result.isvalid) {
 
-                return;
-            }
-            //////////
+            //    return;
+            //}
+            ////////////
 
             
            
