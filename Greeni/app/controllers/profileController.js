@@ -6,7 +6,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
     //$routeParams
     //باید اون بالا اضافه شده باشه
     $scope.profileId = $routeParams.id;
-    alert($scope.profileId);
+   
     //این کس شعرایی که کامنت کردم چیه؟
     var $jq = jQuery.noConflict();
     //عرضم به درزت  که این برای مقایسه دوتا پسورد هست   
@@ -31,10 +31,10 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         Password: null,
         Old: null,
         ConfirmPassword: null,
-        UserName: $rootScope.UserName
+        UserName: $rootScope.userName
     };
 
-
+    
 
     $scope.txt_FirstName = {
         hoverStateEnabled: false,
@@ -185,7 +185,17 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
 
 
     $scope.passwordValidationRules = {
-        validationGroup: 'password',
+        validationGroup: 'profile_password',
+        validationRules: [{
+
+            type: "required",
+            message: "این فیلد ضروری است"
+        }]
+    };
+
+    //این اضافه شد
+    $scope.currentPasswordValidationRules = {
+        validationGroup: 'profile_password',
         validationRules: [{
 
             type: "required",
@@ -194,12 +204,12 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
     };
 
     $scope.confirmPasswordValidationRules = {
-        validationGroup: 'password',
+        validationGroup: 'profile_password',
         validationRules: [{
 
             type: "compare",
             comparisonTarget: function () {
-                var password = $jq("#password-validation").dxTextBox("instance");
+                var password = $jq("#password-validation-profile").dxTextBox("instance");
                 if (password) {
                     return password.option("value");
                 }
@@ -244,9 +254,16 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         width: '100%',
         height: 45,
         rtlEnabled: true,
-        validationGroup: 'password',
+        validationGroup: 'profile_password',
         onClick: function (e) {
+            var result = e.validationGroup.validate();
 
+            if (!result.isValid) {
+
+                return;
+            }
+
+           
             $scope.loadingVisible = true;
             authService.changePassword($scope.entityPassword).then(function (response) {
 
@@ -258,12 +275,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
             }, function (err) { $scope.loadingVisible = false; General.ShowNotify(err.message, 'error'); });
             ////////////////////
 
-            //var result = e.validationgroup.validate();
-
-            //if (!result.isvalid) {
-
-            //    return;
-            //}
+           
             ////////////
 
             
