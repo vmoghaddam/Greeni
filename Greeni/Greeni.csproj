@@ -107,6 +107,7 @@
     <Content Include="app\controllers\indexController.js" />
     <Content Include="app\controllers\ordersController.js" />
     <Content Include="app\controllers\profileController.js" />
+    <Content Include="app\controllers\salesController.js" />
     <Content Include="app\controllers\signinController.js" />
     <Content Include="app\controllers\signup2Controller.js" />
     <Content Include="app\controllers\signupController.js" />
@@ -122,6 +123,7 @@
     <Content Include="app\views\home.html" />
     <Content Include="app\views\orders.html" />
     <Content Include="app\views\profile.html" />
+    <Content Include="app\views\sales.html" />
     <Content Include="app\views\signin.html" />
     <Content Include="app\views\signup.html" />
     <Content Include="app\views\signup2.html" />

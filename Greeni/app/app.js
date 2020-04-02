@@ -96,6 +96,12 @@ app.config(function ($routeProvider) {
     })
 
 
+    $routeProvider.when("/sales", {
+        controller: "salesController",
+        templateUrl: "/app/views/sales.html?v=" + version
+    })
+
+
     
     $routeProvider.otherwise({ redirectTo: "/greeni1" });
 

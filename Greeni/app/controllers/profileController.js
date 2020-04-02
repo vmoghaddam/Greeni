@@ -270,7 +270,8 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
                 // General.ShowNotify(Config.Text_SavedOk, 'success');
                 $scope.loadingVisible = false;
                 $scope.entityPassword.Old = null;
-                $scope.entityPassword.password = null;
+                $scope.entityPassword.Password = null;
+                $scope.entityPassword.ConfirmPassword = null;
                 
             }, function (err) { $scope.loadingVisible = false; General.ShowNotify(err.message, 'error'); });
             ////////////////////
