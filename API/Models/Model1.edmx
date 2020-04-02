@@ -309,6 +309,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewCompany' does not have a p
           <Property Name="ImageUrl2" Type="nvarchar" MaxLength="1021" />
           <Property Name="DateJoin" Type="datetime" Nullable="false" />
           <Property Name="DateJoinStr" Type="nvarchar" MaxLength="4000" />
+          <Property Name="PDateJoin" Type="nvarchar" MaxLength="4000" />
           <Property Name="ZIPCode" Type="nvarchar" MaxLength="255" />
           <Property Name="City" Type="nvarchar" MaxLength="255" />
           <Property Name="State" Type="nvarchar" MaxLength="255" />
@@ -320,6 +321,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewCompany' does not have a p
           <Property Name="Remark" Type="nvarchar" MaxLength="2000" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
           <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="511" />
           <Property Name="Mobile" Type="nvarchar" MaxLength="255" />
           <Property Name="Phone2" Type="nvarchar" MaxLength="255" />
           <Property Name="Phone3" Type="nvarchar" MaxLength="255" />
@@ -638,6 +640,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
     [ViewCompany].[ImageUrl2] AS [ImageUrl2], 
     [ViewCompany].[DateJoin] AS [DateJoin], 
     [ViewCompany].[DateJoinStr] AS [DateJoinStr], 
+    [ViewCompany].[PDateJoin] AS [PDateJoin], 
     [ViewCompany].[ZIPCode] AS [ZIPCode], 
     [ViewCompany].[City] AS [City], 
     [ViewCompany].[State] AS [State], 
@@ -649,6 +652,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
     [ViewCompany].[Remark] AS [Remark], 
     [ViewCompany].[FirstName] AS [FirstName], 
     [ViewCompany].[LastName] AS [LastName], 
+    [ViewCompany].[FullName] AS [FullName], 
     [ViewCompany].[Mobile] AS [Mobile], 
     [ViewCompany].[Phone2] AS [Phone2], 
     [ViewCompany].[Phone3] AS [Phone3], 
@@ -1266,6 +1270,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="ImageUrl2" Type="String" MaxLength="1021" FixedLength="false" Unicode="true" />
           <Property Name="DateJoin" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DateJoinStr" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="PDateJoin" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="ZIPCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -1277,6 +1282,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="Remark" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
           <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="511" FixedLength="false" Unicode="true" />
           <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Phone2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Phone3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -1662,6 +1668,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
                 <ScalarProperty Name="Phone3" ColumnName="Phone3" />
                 <ScalarProperty Name="Phone2" ColumnName="Phone2" />
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
@@ -1673,6 +1680,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="ZIPCode" ColumnName="ZIPCode" />
+                <ScalarProperty Name="PDateJoin" ColumnName="PDateJoin" />
                 <ScalarProperty Name="DateJoinStr" ColumnName="DateJoinStr" />
                 <ScalarProperty Name="DateJoin" ColumnName="DateJoin" />
                 <ScalarProperty Name="ImageUrl2" ColumnName="ImageUrl2" />

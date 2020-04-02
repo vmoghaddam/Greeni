@@ -30,6 +30,7 @@ namespace API.Models
         public string ImageUrl2 { get; set; }
         public System.DateTime DateJoin { get; set; }
         public string DateJoinStr { get; set; }
+        public string PDateJoin { get; set; }
         public string ZIPCode { get; set; }
         public string City { get; set; }
         public string State { get; set; }
@@ -41,6 +42,7 @@ namespace API.Models
         public string Remark { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName { get; set; }
         public string Mobile { get; set; }
         public string Phone2 { get; set; }
         public string Phone3 { get; set; }

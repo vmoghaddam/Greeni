@@ -82,24 +82,28 @@ app.config(function ($routeProvider) {
     $routeProvider.when("/signup2", {
         controller: "signup2Controller",
         templateUrl: "/app/views/signup.html?v=" + version
-    })
+    });
 
     $routeProvider.when("/signin", {
         controller: "signinController",
         templateUrl: "/app/views/signin.html?v=" + version
-    })
+    });
 
 
     $routeProvider.when("/profile/company/:id", {
         controller: "profileController",
         templateUrl: "/app/views/profile.html?v=" + version
-    })
+    });
 
 
     $routeProvider.when("/sales", {
         controller: "salesController",
         templateUrl: "/app/views/sales.html?v=" + version
-    })
+    });
+    $routeProvider.when("/admin/stores", {
+        controller: "storesController",
+        templateUrl: "/app/views/stores.html?v=" + version
+    });
 
 
     
