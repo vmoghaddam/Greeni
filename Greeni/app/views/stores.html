@@ -1,56 +1,86 @@
 ﻿<style>
-    #dg_stores .dx-rtl .dx-texteditor-input{
-        padding:0 25px 0 10px !important;
+    #dg_stores .dx-rtl .dx-texteditor-input {
+        padding: 0 25px 0 10px !important;
     }
+
+    @media (min-width:756px) {
+
+        .sidebar {
+            display: none
+        }
+
+        #baricon {
+            display: none
+        }
+    }
+
+    @media (max-width:756px) {
+        .bigNav {
+            display: none
+        }
+
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 10;
+            top: 0;
+            right: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+            .sidebar a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 25px;
+                color: #818181;
+                display: block;
+                transition: 0.3s;
+            }
+
+                .sidebar a:hover {
+                    color: #f1f1f1;
+                }
+
+            .sidebar .closebtn {
+                position: absolute;
+                top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+            }
+ }
+
+
+
+
 </style>
 
 <div class="box home" style="direction:rtl;text-align:right">
-    <!-- Icon Bar (Sidebar - hidden on small screens) -->
-    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" style="overflow:hidden !important">
-
+    <nav class="bigNav" style="overflow:hidden;text-align:center !important">
         <!-- Avatar image in top left corner -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <!--<a class="w3-bar-item w3-button w3-padding-large " style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni1','greeni1',1)">
-            <img src="img/g1.png" style="height:70px" />
-            <img src="img/greeni1.png" style="width:100%" />
 
+        <a class="w3-bar-item w3-button " style="position:relative;" data-ng-click="navigate2('/admin/stores','stores',1)">
+            <span style="font-size:13px;color:white;font-weight:bold;margin-top:5px">فروشگاه</span>
         </a>
-
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni2','greeni2',1)">
-            <img src="img/g2.png" style="height:70px" />
-
-            <img src="img/greenimax2.png" style="width:100%" />
+        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/admin/orders','orders',1)">
+            <span style="font-size:13px;color:white;font-weight:bold;margin-top:5px">سفارش ها </span>
         </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket menu-selected" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/basket','basket',1)">
-            <i class="fas fa-shopping-cart" style="font-size:40px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سبد خرید  </span>
-            <div ng-show="isBasketNoVisible" class="basket-no">{{basketCount}}</div>
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/orders','orders',1)">
-            <i class="fas fa-boxes" style="font-size:40px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سفارش ها  </span>
-
-        </a>
-
-
-
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
-            <i class="fas fa-pen-fancy" style="font-size:32px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block">وبلاگ</span>
-
-        </a>
-
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important;">
-            <i class="fas fa-info-circle" style="font-size:32px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px;">درباره ما</span>
-
-        </a>-->
-
-
-
-
 
     </nav>
+
+
+    <!--mobile navigation bar-->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a data-ng-click="navigate2('/admin/stores','stores',1)">فروشگاه</a>
+        <a data-ng-click="navigate2('/admin/orders','orders',1)">سفارش ها</a>
+    </div><i id="baricon" onclick="openNav()" class="fas fa-bars openbtn"></i>
 
 
 
@@ -63,13 +93,13 @@
             <div style="background:#ccc;padding:10px;font-weight:bold;border:1px solid gray">فروشگاه</div>
             <div dx-data-grid="dg_stores" id="dg_stores" class="content" style="overflow-y:hidden"></div>
             <!--<div class="w3-content w3-justify w3-text-grey" style="text-align:center !important">
-        <div style="width:100%;max-width:350px;margin:0px auto 0 auto;display:inline-block;padding:0px 0 0 0;">
-            <div dx-text-box="txt_Mobile" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signin',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
-            <div dx-text-box="txt_Password" class="name" style="background:white; margin-top:7px" dx-validator="passwordValidationRules"></div>
+                <div style="width:100%;max-width:350px;margin:0px auto 0 auto;display:inline-block;padding:0px 0 0 0;">
+                    <div dx-text-box="txt_Mobile" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signin',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
+                    <div dx-text-box="txt_Password" class="name" style="background:white; margin-top:7px" dx-validator="passwordValidationRules"></div>
 
-            <div dx-button="btn_save" style="margin-top:10px"></div>
-        </div>
-    </div>-->
+                    <div dx-button="btn_save" style="margin-top:10px"></div>
+                </div>
+            </div>-->
 
         </div>
         <div class="col-lg-5" style="padding:0 5px 0 0px; background:white; color:black;">
@@ -89,3 +119,16 @@
     <div dx-load-panel="loadPanel"></div>
 
 </div>
+
+
+<script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "0px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+</script>

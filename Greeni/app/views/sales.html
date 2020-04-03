@@ -153,18 +153,16 @@
     <div class="w3-padding-large" id="mainmap">
         <!-- Header/Home -->
         <iframe class="map" src="https://www.google.com/maps/d/embed?mid=1-bhAgOA9NMjvLeWGI8O4Q7e0XQKRpusW" width="100%" height="500px"></iframe>
-        <div id="gridContainer" dx-data-grid="dataGridOptions">
-            <div data-options="dxTemplate:{ name:'discountCellTemplate' }">
-                <div class="chart-cell">
-                    
-                </div>
-            </div>
+        <div  style="padding:0 0px 0 0px; background:white; color:black;">
+            <div style="background:#ccc;padding:10px;font-weight:bold;border:1px solid gray">فروشگاه</div>
+            <div dx-data-grid="dg_stores" id="dg_stores" class="content" style="overflow-y:hidden"></div>
+            
         </div>
     
 
 
         <!-- Footer -->
-        <footer class="w3-content w3-padding-16 w3-text-grey w3-xlarge" style="border-top:1px solid gray;margin-top:20px;margin-bottom:30px;text-align:center">
+        <footer class="w3-content w3-padding-16 w3-text-grey w3-xlarge" style="border-top:1px solid gray;margin-top:40px;margin-bottom:30px;text-align:center">
             <div>
                 <a style="float:right" data-ng-click="navigate2('/laws','laws',1)">قوانین و مقررات</a>
                 <div style="float:left">
