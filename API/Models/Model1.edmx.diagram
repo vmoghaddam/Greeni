@@ -21,8 +21,6 @@
         <EntityTypeShape EntityType="EPAGRIFFINModel.Order" Width="1.5" PointX="11.375" PointY="20.375" />
         <AssociationConnector Association="EPAGRIFFINModel.fk_order_person" />
         <AssociationConnector Association="EPAGRIFFINModel.fk_orderi_order" />
-        <EntityTypeShape EntityType="EPAGRIFFINModel.ViewOrderItem" Width="1.5" PointX="5.375" PointY="12.75" />
-        <EntityTypeShape EntityType="EPAGRIFFINModel.ViewOrder" Width="1.5" PointX="7.375" PointY="12.75" />
         <EntityTypeShape EntityType="EPAGRIFFINModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2" />
         <EntityTypeShape EntityType="EPAGRIFFINModel.AspNetUser" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="EPAGRIFFINModel.AspNetRoleClaim" Width="1.5" PointX="5.75" PointY="0.75" />
@@ -32,6 +30,8 @@
         <AssociationConnector Association="EPAGRIFFINModel.AspNetUserRoles" />
         <EntityTypeShape EntityType="EPAGRIFFINModel.Company" Width="1.5" PointX="13.375" PointY="0.75" />
         <EntityTypeShape EntityType="EPAGRIFFINModel.ViewCompany" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="EPAGRIFFINModel.ViewOrder" Width="1.5" PointX="3.375" PointY="12.75" />
+        <EntityTypeShape EntityType="EPAGRIFFINModel.ViewOrderItem" Width="1.5" PointX="5.375" PointY="12.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

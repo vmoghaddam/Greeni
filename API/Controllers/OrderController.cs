@@ -199,7 +199,20 @@ namespace API.Controllers
             return Ok(result);
         }
 
+        [Route("api/orders")]
+        [EnableQuery]
+        public IQueryable<ViewOrder> GetOrders()
+        {
 
+            return unitOfWork.OrderRepository.GetViewOrders().OrderByDescending(q => q.Date);
+        }
+        [Route("api/order/Items/{Id}")]
+        [EnableQuery]
+        public IQueryable<ViewOrderItem> GetOrderItems(int Id)
+        {
+
+            return unitOfWork.OrderRepository.GetViewOrderItems().Where(q=>q.OrderId==Id);
+        }
 
         protected override void Dispose(bool disposing)
         {

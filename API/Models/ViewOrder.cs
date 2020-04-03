@@ -27,5 +27,6 @@ namespace API.Models
         public Nullable<int> StatusId { get; set; }
         public Nullable<int> PersonId { get; set; }
         public string Status { get; set; }
+        public Nullable<decimal> TotalAmount { get; set; }
     }
 }

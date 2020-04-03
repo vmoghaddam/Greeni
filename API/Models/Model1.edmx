@@ -374,6 +374,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewOrder' does not have a pri
           <Property Name="StatusId" Type="int" />
           <Property Name="PersonId" Type="int" />
           <Property Name="Status" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="TotalAmount" Type="numeric" Precision="38" Scale="9" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'greenim1_greeni.dbo.ViewOrderItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -689,7 +690,8 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
     [ViewOrder].[Transport] AS [Transport], 
     [ViewOrder].[StatusId] AS [StatusId], 
     [ViewOrder].[PersonId] AS [PersonId], 
-    [ViewOrder].[Status] AS [Status]
+    [ViewOrder].[Status] AS [Status], 
+    [ViewOrder].[TotalAmount] AS [TotalAmount]
     FROM [dbo].[ViewOrder] AS [ViewOrder]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ViewOrderItem" EntityType="Self.ViewOrderItem" store:Type="Views" store:Schema="dbo">
@@ -809,8 +811,6 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderItem" EntitySet="OrderItems" />
           </AssociationSet>
-          <EntitySet Name="ViewOrderItems" EntityType="EPAGRIFFINModel.ViewOrderItem" />
-          <EntitySet Name="ViewOrders" EntityType="EPAGRIFFINModel.ViewOrder" />
           <EntitySet Name="AspNetRoles" EntityType="EPAGRIFFINModel.AspNetRole" />
           <EntitySet Name="AspNetUsers" EntityType="EPAGRIFFINModel.AspNetUser" />
           <EntitySet Name="AspNetRoleClaims" EntityType="EPAGRIFFINModel.AspNetRoleClaim" />
@@ -823,6 +823,8 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
           </AssociationSet>
           <EntitySet Name="Companies" EntityType="EPAGRIFFINModel.Company" />
           <EntitySet Name="ViewCompanies" EntityType="EPAGRIFFINModel.ViewCompany" />
+          <EntitySet Name="ViewOrders" EntityType="EPAGRIFFINModel.ViewOrder" />
+          <EntitySet Name="ViewOrderItems" EntityType="EPAGRIFFINModel.ViewOrderItem" />
           </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -1094,56 +1096,6 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="ViewOrderItem">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="OrderId" />
-            <PropertyRef Name="ProductId" />
-            <PropertyRef Name="Quantity" />
-            <PropertyRef Name="PriceUnit" />
-            <PropertyRef Name="DiscountUnit" />
-            <PropertyRef Name="Product" />
-            <PropertyRef Name="OrderStatus" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="OrderId" Type="Int32" Nullable="false" />
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="PriceUnit" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
-          <Property Name="DiscountUnit" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
-          <Property Name="FinalPriceUnit" Type="Decimal" Precision="38" Scale="9" />
-          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="StatusId" Type="Int32" />
-          <Property Name="OrderStatusId" Type="Int32" />
-          <Property Name="Product" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Date" Type="Decimal" Precision="20" Scale="0" />
-          <Property Name="DateStr" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Person" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="Tax" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="OrderDiscount" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="Transport" Type="Decimal" Precision="18" Scale="8" />
-        </EntityType>
-        <EntityType Name="ViewOrder">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Status" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DateG" Type="DateTime" Precision="3" />
-          <Property Name="Date" Type="Decimal" Precision="20" Scale="0" />
-          <Property Name="DateStr" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Tax" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="Discount" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="Transport" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="StatusId" Type="Int32" />
-          <Property Name="PersonId" Type="Int32" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
@@ -1287,6 +1239,57 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="Phone2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Phone3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="NID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ViewOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateG" Type="DateTime" Precision="3" />
+          <Property Name="Date" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="DateStr" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Transport" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="38" Scale="9" />
+        </EntityType>
+        <EntityType Name="ViewOrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="PriceUnit" />
+            <PropertyRef Name="DiscountUnit" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="OrderStatus" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="PriceUnit" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+          <Property Name="DiscountUnit" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
+          <Property Name="FinalPriceUnit" Type="Decimal" Precision="38" Scale="9" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="OrderStatusId" Type="Int32" />
+          <Property Name="Product" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="DateStr" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Person" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="OrderDiscount" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Transport" Type="Decimal" Precision="18" Scale="8" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1512,50 +1515,6 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ViewOrderItems">
-            <EntityTypeMapping TypeName="EPAGRIFFINModel.ViewOrderItem">
-              <MappingFragment StoreEntitySet="ViewOrderItem">
-                <ScalarProperty Name="Transport" ColumnName="Transport" />
-                <ScalarProperty Name="OrderDiscount" ColumnName="OrderDiscount" />
-                <ScalarProperty Name="Tax" ColumnName="Tax" />
-                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
-                <ScalarProperty Name="Person" ColumnName="Person" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="DateStr" ColumnName="DateStr" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Product" ColumnName="Product" />
-                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="FinalPriceUnit" ColumnName="FinalPriceUnit" />
-                <ScalarProperty Name="DiscountUnit" ColumnName="DiscountUnit" />
-                <ScalarProperty Name="PriceUnit" ColumnName="PriceUnit" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ViewOrders">
-            <EntityTypeMapping TypeName="EPAGRIFFINModel.ViewOrder">
-              <MappingFragment StoreEntitySet="ViewOrder">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-                <ScalarProperty Name="Transport" ColumnName="Transport" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Tax" ColumnName="Tax" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="DateStr" ColumnName="DateStr" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="DateG" ColumnName="DateG" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
@@ -1696,6 +1655,51 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewOrders">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.ViewOrder">
+              <MappingFragment StoreEntitySet="ViewOrder">
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Transport" ColumnName="Transport" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="DateStr" ColumnName="DateStr" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DateG" ColumnName="DateG" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewOrderItems">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.ViewOrderItem">
+              <MappingFragment StoreEntitySet="ViewOrderItem">
+                <ScalarProperty Name="Transport" ColumnName="Transport" />
+                <ScalarProperty Name="OrderDiscount" ColumnName="OrderDiscount" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="Person" ColumnName="Person" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="DateStr" ColumnName="DateStr" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="FinalPriceUnit" ColumnName="FinalPriceUnit" />
+                <ScalarProperty Name="DiscountUnit" ColumnName="DiscountUnit" />
+                <ScalarProperty Name="PriceUnit" ColumnName="PriceUnit" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

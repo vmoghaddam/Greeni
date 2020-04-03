@@ -33,6 +33,14 @@ namespace API.Repositories
             this.context.OrderItems.RemoveRange(orderItems);
             return new CustomActionResult(HttpStatusCode.OK, "");
         }
+        public IQueryable<ViewOrder> GetViewOrders()
+        {
+            return this.GetQuery<ViewOrder>();
+        }
+        public IQueryable<ViewOrderItem> GetViewOrderItems()
+        {
+            return this.GetQuery<ViewOrderItem>();
+        }
 
         public virtual void Insert(Models.OrderItem entity)
         {

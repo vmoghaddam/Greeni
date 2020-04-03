@@ -1,0 +1,91 @@
+﻿<style>
+    #dg_orders .dx-rtl .dx-texteditor-input {
+        padding: 0 25px 0 10px !important;
+    }
+</style>
+
+<div class="box home" style="direction:rtl;text-align:right">
+    <!-- Icon Bar (Sidebar - hidden on small screens) -->
+    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" style="overflow:hidden !important">
+
+        <!-- Avatar image in top left corner -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <!--<a class="w3-bar-item w3-button w3-padding-large " style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni1','greeni1',1)">
+            <img src="img/g1.png" style="height:70px" />
+            <img src="img/greeni1.png" style="width:100%" />
+
+        </a>
+
+        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni2','greeni2',1)">
+            <img src="img/g2.png" style="height:70px" />
+
+            <img src="img/greenimax2.png" style="width:100%" />
+        </a>
+        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket menu-selected" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/basket','basket',1)">
+            <i class="fas fa-shopping-cart" style="font-size:40px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سبد خرید  </span>
+            <div ng-show="isBasketNoVisible" class="basket-no">{{basketCount}}</div>
+        </a>
+        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/orders','orders',1)">
+            <i class="fas fa-boxes" style="font-size:40px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سفارش ها  </span>
+
+        </a>
+
+
+
+        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
+            <i class="fas fa-pen-fancy" style="font-size:32px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block">وبلاگ</span>
+
+        </a>
+
+        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important;">
+            <i class="fas fa-info-circle" style="font-size:32px;color:white"></i>
+            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px;">درباره ما</span>
+
+        </a>-->
+
+
+
+
+
+    </nav>
+
+
+
+    <!-- Page Content -->
+    <div class="w3-padding-large" id="main">
+        <!-- Header/Home -->
+        <header class="w3-container w3-padding-48 w3-center w3-black" id="home" style="padding-top:20px !important"></header>
+
+        <div class="col-lg-7" style="padding:0 0px 0 0px; background:white; color:black;">
+            <div style="background:#ccc;padding:10px;font-weight:bold;border:1px solid gray">سفارش</div>
+            <div dx-data-grid="dg_orders" id="dg_orders" class="content" style="overflow-y:hidden"></div>
+            <!--<div class="w3-content w3-justify w3-text-grey" style="text-align:center !important">
+                <div style="width:100%;max-width:350px;margin:0px auto 0 auto;display:inline-block;padding:0px 0 0 0;">
+                    <div dx-text-box="txt_Mobile" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signin',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
+                    <div dx-text-box="txt_Password" class="name" style="background:white; margin-top:7px" dx-validator="passwordValidationRules"></div>
+
+                    <div dx-button="btn_save" style="margin-top:10px"></div>
+                </div>
+            </div>-->
+
+        </div>
+        <div class="col-lg-5" style="padding:0 5px 0 0px; background:white; color:black;">
+            <div style="background:#ccc;padding:10px;font-weight:bold;border:1px solid gray">جزییات</div>
+            <div dx-data-grid="dg_items" id="dg_items" class="content" style="overflow-y:hidden"></div>
+
+
+        </div>
+        <div style="clear:both"></div>
+
+
+
+
+
+    </div>
+
+    <div dx-load-panel="loadPanel"></div>
+
+</div>

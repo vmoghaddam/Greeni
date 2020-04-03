@@ -104,6 +104,10 @@ app.config(function ($routeProvider) {
         controller: "storesController",
         templateUrl: "/app/views/stores.html?v=" + version
     });
+    $routeProvider.when("/admin/orders", {
+        controller: "ordersAdminController",
+        templateUrl: "/app/views/oerdersAdmin.html?v=" + version
+    });
 
 
     
