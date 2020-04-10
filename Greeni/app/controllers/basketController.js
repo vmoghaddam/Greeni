@@ -52,6 +52,8 @@ app.controller('basketController', ['$scope', '$rootScope', '$location', '$route
         //$scope.loadingVisible = true;
         var dto = $rootScope.getOrderDto($scope.name, $scope.mobile);
         dto.SMS = 1;
+        dto.AuthId = $rootScope.authId;
+        dto.Role = $rootScope.role;
          
 
         $scope.loadingVisible = true;
@@ -60,12 +62,15 @@ app.controller('basketController', ['$scope', '$rootScope', '$location', '$route
             
             $scope.loadingVisible = false;
             $scope.orderNo = response.Id;
+
            // $rootScope.setOrderNo($scope.orderNo);
             $rootScope.emptyBasket();
             $scope.updateBasketCount();
-            $('.info').fadeOut(400, function () {
-                $('.confirmed').fadeIn();
-            });
+           
+            window.location.href = serviceBase + '/SalePayment.aspx?id=' + $scope.orderNo;
+          //  $('.info').fadeOut(400, function () {
+          //      $('.confirmed').fadeIn();
+          //  });
 
             /////////////////////
 
@@ -104,6 +109,7 @@ app.controller('basketController', ['$scope', '$rootScope', '$location', '$route
         placeholder: 'شماره موبایل',
         bindingOptions: {
             value: 'mobile',
+            readOnly: 'ro',
         }
     };
     $scope.name = null;
@@ -114,8 +120,15 @@ app.controller('basketController', ['$scope', '$rootScope', '$location', '$route
         placeholder: 'نام',
         bindingOptions: {
             value: 'name',
+            readOnly:'ro',
         }
     };
+    $scope.ro = false;
+    if ($rootScope.isSignedIn) {
+        $scope.name = $rootScope.userTitle;
+        $scope.mobile = $rootScope.userName;
+        $scope.ro = true;
+    }
     ////////////////////////////////////
     AOS.init({
         easing: 'ease-out-back',

@@ -8,24 +8,38 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
     $scope.profileId = $routeParams.id;
    
     //این کس شعرایی که کامنت کردم چیه؟
-    var $jq = jQuery.noConflict();
+   // var $jq = jQuery.noConflict();
     //عرضم به درزت  که این برای مقایسه دوتا پسورد هست   
     //البته الان بعد از اضافه کردن یک تکست باکس دیگه کلا گیر میده
 
     $scope.entity = {
-        firstName: null,
-        lastName: null,
-        name: null,
-        address: null,
-        zipCode: null,
-        NID: null,
-        phone: null,
-        mobile: null,
-        email: null,
-        password: null,
-        phone2: '',
-        phone3: '',
-        website: '',
+        Id:$scope.profileId,
+ Name:null,
+ Address:null,
+ Phone:null,
+ Email:null,
+ Website:null,
+ Url:null,
+  
+ Twitter:null,
+ LinkedIn:null,
+ ImageUrl:null,
+ 
+  
+ ZIPCode:null,
+ City:null,
+ State:null,
+  
+  
+  
+ Remark:null,
+ FirstName:null,
+ LastName:null,
+ Mobile:null,
+ Phone2:null,
+ Phone3:null,
+ NID:null,
+
     };
     $scope.entityPassword = {
         Password: null,
@@ -43,7 +57,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         placeholder: 'نام',
         rtlEnabled: true,
         bindingOptions: {
-            value: "entity.firstName",
+            value: "entity.FirstName",
 
         }
     };
@@ -55,7 +69,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         placeholder: ' نام خانوادگی',
         rtlEnabled: true,
         bindingOptions: {
-            value: 'entity.lastName',
+            value: 'entity.LastName',
 
         }
     };
@@ -67,7 +81,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         placeholder: ' فروشگاه',
         rtlEnabled: true,
         bindingOptions: {
-            value: 'entity.name',
+            value: 'entity.Name'
 
         }
     };
@@ -79,7 +93,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         placeholder: ' آدرس',
         rtlEnabled: true,
         bindingOptions: {
-            value: 'entity.address',
+            value: 'entity.Address',
 
         }
     };
@@ -91,7 +105,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         placeholder: 'کد پستی',
         rtlEnabled: true,
         bindingOptions: {
-            value: 'entity.zipCode',
+            value: 'entity.ZIPCode',
 
         }
     };
@@ -115,7 +129,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         placeholder: 'تلفن',
         rtlEnabled: true,
         bindingOptions: {
-            value: 'entity.phone',
+            value: 'entity.Phone',
 
         }
     };
@@ -127,7 +141,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         placeholder: 'تلفن همراه ',
         rtlEnabled: true,
         bindingOptions: {
-            value: 'entity.mobile',
+            value: 'entity.Mobile',
 
         }
     };
@@ -139,7 +153,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         placeholder: ' ایمیل',
         rtlEnabled: true,
         bindingOptions: {
-            value: 'entity.email',
+            value: 'entity.Email',
 
         }
     };
@@ -232,16 +246,27 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         width: '100%',
         height: 45,
         rtlEnabled: true,
-        validationGroup: 'signup',
+        validationGroup: 'profileupdate',
         onClick: function (e) {
+            alert('xxxx');
             var result = e.validationGroup.validate();
 
             if (!result.isValid) {
-
+                alert('x');
                 return;
 
             }
             /////////
+            $scope.loadingVisible = true;
+            authService.updateCompany($scope.entity).then(function (response) {
+
+                $rootScope.userName =$scope.entity.Mobile;
+                $scope.loadingVisible = false;
+                General.ShowNotify('تغییرات با موفقیت ذخیره شد', 'success');
+                
+                
+            }, function (err) { $scope.loadingVisible = false; General.ShowNotify(err.message, 'error'); });
+            ///////////////////
         }
 
     };
@@ -269,6 +294,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
 
                 // General.ShowNotify(Config.Text_SavedOk, 'success');
                 $scope.loadingVisible = false;
+                General.ShowNotify('تغییرات با موفقیت ذخیره شد', 'success');
                 $scope.entityPassword.Old = null;
                 $scope.entityPassword.Password = null;
                 $scope.entityPassword.ConfirmPassword = null;
@@ -317,15 +343,15 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         personService.getCompany($scope.profileId).then(function (result) {
             $scope.loadingVisible = false;
 
-            $scope.entity.mobile = result.Mobile;
-            $scope.entity.firstName = result.FirstName;
-            $scope.entity.lastName = result.LastName;
-            $scope.entity.email = result.Email;
-            $scope.entity.address = result.Address;
-            $scope.entity.zipCode = result.ZIPCode;
+            $scope.entity.Mobile = result.Mobile;
+            $scope.entity.FirstName = result.FirstName;
+            $scope.entity.LastName = result.LastName;
+            $scope.entity.Email = result.Email;
+            $scope.entity.Address = result.Address;
+            $scope.entity.ZIPCode = result.ZIPCode;
             $scope.entity.NID = result.NID;
-            $scope.entity.phone = result.Phone;
-            $scope.entity.name = result.Name;
+            $scope.entity.Phone = result.Phone;
+            $scope.entity.Name = result.Name;
             //console.log(result);
 
 

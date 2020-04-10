@@ -18,6 +18,8 @@ namespace API.ViewModels
         public decimal? Transport { get; set; }
         public int? StatusId { get; set; }
         public int? PersonId { get; set; }
+        public string AuthId { get; set; }
+        public string Role { get; set; }
         public int SMS { get; set; }
         List<OrderItemDto> orderItems = null;
         public List<OrderItemDto> OrderItems
@@ -44,6 +46,8 @@ namespace API.ViewModels
             entity.Transport = order.Transport;
             entity.StatusId = order.StatusId;
             entity.PersonId = order.PersonId;
+            entity.UserId = order.AuthId;
+
         }
         public static void FillDto(Models.Order entity, ViewModels.OrderDto order)
         {
@@ -58,6 +62,7 @@ namespace API.ViewModels
             order.Transport = entity.Transport;
             order.StatusId = entity.StatusId;
             order.PersonId = entity.PersonId;
+            order.AuthId = entity.UserId;
         }
     }
 

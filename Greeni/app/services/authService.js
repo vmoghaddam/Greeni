@@ -36,24 +36,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         console.log(data);
         var deferred = $q.defer();
 
-        //$http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
-
-        //    if (loginData.useRefreshTokens) {
-        //        localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: response.refresh_token, useRefreshTokens: true });
-        //    }
-        //    else {
-        //        localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: "", useRefreshTokens: false });
-        //    }
-        //    _authentication.isAuth = true;
-        //    _authentication.userName = loginData.userName;
-        //    _authentication.useRefreshTokens = loginData.useRefreshTokens;
-
-        //    deferred.resolve(response);
-
-        //}).error(function (err, status) {
-        //    _logOut();
-        //    deferred.reject(err);
-        //    });
+      
         $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(function (response) {
             console.log('token');
             console.log(response);
@@ -67,13 +50,14 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             else {
                 localStorageService.set('authorizationData', { token: responseData.access_token, userName: loginData.userName, refreshToken: "", expires: responseData['.expires'], useRefreshTokens: false });
             }
-            localStorageService.set('userData', { Name: responseData.Name, UserId: responseData.UserId, Image: responseData.Image,Role:responseData.Role });
+            localStorageService.set('userData', { Name: responseData.Name, UserId: responseData.UserId, Image: responseData.Image, Role: responseData.Role, UserName: loginData.userName, AuthId: responseData.AuthId });
             _authentication.isAuth = true;
             _authentication.userName = loginData.userName;
             _authentication.useRefreshTokens = loginData.useRefreshTokens;
             $rootScope.userName = loginData.userName;
             $rootScope.userTitle = responseData.Name;
             $rootScope.userId = responseData.UserId;
+            $rootScope.authId = responseData.AuthId;
             $rootScope.image = $rootScope.imagesUrl + responseData.Image;
             $rootScope.role = responseData.Role;
             $rootScope.isSignedIn = true;
@@ -114,6 +98,8 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             var userData = localStorageService.get('userData');
             if (userData) {
                 $rootScope.userTitle = userData.Name;
+                $rootScope.authId = userData.AuthId;
+                $rootScope.userName = userData.UserName;
                 $rootScope.userId = userData.UserId;
                 $rootScope.image = $rootScope.imagesUrl + userData.Image;
                 $rootScope.role = userData.Role;
@@ -332,6 +318,17 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
         return deferred.promise;
     };
+    var _updateCompany = function (entity) {
+        var deferred = $q.defer();
+        $http.post($rootScope.serviceUrl + 'api/company/update', entity).then(function (response) {
+            deferred.resolve(response.data);
+        }, function (err, status) {
+
+            deferred.reject(Exceptions.getMessage(err));
+        });
+
+        return deferred.promise;
+    };
     var _registerCompany = function (entity) {
         var deferred = $q.defer();
         $http.post($rootScope.serviceUrl + 'api/company/register', entity).then(function (response) {
@@ -375,6 +372,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     authServiceFactory.register2 = _register2;
     authServiceFactory.changePassword = _changePassword;
     authServiceFactory.registerCompany = _registerCompany;
+    authServiceFactory.updateCompany = _updateCompany;
     authServiceFactory.saveActivity = _saveActivity;
     authServiceFactory.IsAuthurized = function () {
 

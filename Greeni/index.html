@@ -182,6 +182,32 @@
                 </table>
             </div>
         </div>
+        <div class="ng-hide" ng-show="!isSignedIn">
+            <div class="hidden-xs" style="text-align:left;color:white;position:fixed;top:20px;left:0;padding:0 0 0 20px;direction:ltr;width:100%">
+                <a href="" ng-click="signIn()">
+                    <table>
+                        <tr>
+                            <td style="padding:0 10px 0 10px">
+                                <i class="fas fa-user-circle" style="font-size:26px"></i>
+                            </td>
+                            <td style="font-size:16px;">حساب کاربری</td>
+
+                        </tr>
+                    </table>
+                </a>
+            </div>
+            <div class="hidden-lg" style="text-align:left;color:white;position:fixed;top:0px;left:0; direction:ltr;width:100%;z-index:1000;padding:7px 0 3px 0;background:#333;color:white;border-bottom:2px solid green">
+                <a href="" ng-click="signIn()">
+                    <table>
+                        <tr>
+                            <td style="padding:0 10px 0 10px"><i class="fas fa-user-circle" style="font-size:20px"></i> </td>
+                            <td style="font-size:13px;position:relative;top:-3px">حساب کاربری</td>
+
+                        </tr>
+                    </table>
+                </a>
+            </div>
+        </div>
 
         <div class="anfade" ng-view>
 

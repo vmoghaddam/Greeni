@@ -1,4 +1,5 @@
-﻿using System;
+﻿using API.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,7 +25,20 @@ namespace API
             bool amountParseWasSucceed = long.TryParse(amountAsString, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.CurrentCulture, out amount);
 
             var tspToken = Request.Form["TspToken"];
-            txtTspToken.Text = tspToken;
+
+            using (var context = new EPAGRIFFINEntities())
+            {
+                var order = context.Orders.FirstOrDefault(q => q.Id == orderId);
+                order.PayDoneToken = token.ToString();
+                order.PayDoneTerminalNo = terminalNumber.ToString();
+                order.PayDoneRRN = rrn.ToString();
+                order.PayDoneStatus = status.ToString();
+                order.PayDoneHashCardNumber = cardNumberHashed;
+                order.PayDoneDate = DateTime.Now;
+                context.SaveChanges();
+
+            }
+                txtTspToken.Text = tspToken;
             txtToken.Text = token.ToString();
             txtOrderId.Text = orderId.ToString();
             txtTerminalNo.Text = terminalNumber.ToString();
@@ -51,6 +65,7 @@ namespace API
                 confirmRequestData.Token = token;
                 confirmRequestData.LoginAccount = "IXE2U0hp0H3linqxkY26";
                 var confirmResponse = confirmSvc.ConfirmPayment(confirmRequestData);
+                
                 if (confirmResponse.Status == 0)
                 {
                     lblConfirmStatus.Text = "Payment and Confirm was successful.";
@@ -59,7 +74,26 @@ namespace API
                 {
                     lblConfirmStatus.Text = "payment was successful, however, Confirm payment was not successful.";
                 }
+                using (var context = new EPAGRIFFINEntities())
+                {
+                    var rrn = confirmResponse.RRN.ToString();
+                    var order = context.Orders.FirstOrDefault(q => q.PayDoneRRN == rrn);
+                    if (order != null)
+                    {
+                        order.PayConfirm = confirmResponse.Status.ToString();
+                        order.PayConfirmCardMask = confirmResponse.CardNumberMasked;
+                        order.PayConfirmDate = DateTime.Now;
+                        order.PayConfirmToken = confirmResponse.Token.ToString();
+                    }
+                    context.SaveChanges();
+                }
+
+                Response.Redirect("http://greenimax.ir/#!/orders");
+
             }
+
+
+
         }
 
         //در صورتی که لازم باشد پرداختی که کاربر در صفحه درگاه پرداخت اینترنتی پارسیان انجام داده است

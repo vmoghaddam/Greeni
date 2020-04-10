@@ -105,7 +105,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.City' does not have a primary 
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
           <Property Name="Address" Type="nvarchar" MaxLength="1000" />
           <Property Name="Phone" Type="nvarchar" MaxLength="500" />
           <Property Name="Email" Type="nvarchar" MaxLength="500" />
@@ -176,6 +176,25 @@ warning 6002: The table/view 'greenim1_greeni.dbo.Option' does not have a primar
           <Property Name="Transport" Type="decimal" Precision="18" Scale="8" />
           <Property Name="StatusId" Type="int" />
           <Property Name="PersonId" Type="int" />
+          <Property Name="UserId" Type="varchar" MaxLength="500" />
+          <Property Name="AdditionalData" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PayInitStatus" Type="int" />
+          <Property Name="PayInitMessage" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PayInitToken" Type="varchar" MaxLength="500" />
+          <Property Name="PayDoneToken" Type="varchar" MaxLength="500" />
+          <Property Name="PayDoneOrderId" Type="varchar" MaxLength="500" />
+          <Property Name="PayDoneTerminalNo" Type="varchar" MaxLength="500" />
+          <Property Name="PayDoneRRN" Type="varchar" MaxLength="500" />
+          <Property Name="PayDoneStatus" Type="varchar" MaxLength="500" />
+          <Property Name="PayDoneAmount" Type="varchar" MaxLength="500" />
+          <Property Name="PayDoneHashCardNumber" Type="varchar" MaxLength="500" />
+          <Property Name="PayInitDate" Type="datetime" />
+          <Property Name="PayDoneDate" Type="datetime" />
+          <Property Name="PayConfirm" Type="varchar" MaxLength="255" />
+          <Property Name="PayConfirmDate" Type="datetime" />
+          <Property Name="TspToken" Type="varchar" MaxLength="500" />
+          <Property Name="PayConfirmCardMask" Type="varchar" MaxLength="500" />
+          <Property Name="PayConfirmToken" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -375,6 +394,25 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewOrder' does not have a pri
           <Property Name="PersonId" Type="int" />
           <Property Name="Status" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="TotalAmount" Type="numeric" Precision="38" Scale="9" />
+          <Property Name="UserId" Type="varchar" MaxLength="500" />
+          <Property Name="AdditionalData" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PayInitStatus" Type="int" />
+          <Property Name="PayInitMessage" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PayInitToken" Type="varchar" MaxLength="500" />
+          <Property Name="PayDoneToken" Type="varchar" MaxLength="500" />
+          <Property Name="PayDoneOrderId" Type="varchar" MaxLength="500" />
+          <Property Name="PayDoneTerminalNo" Type="varchar" MaxLength="500" />
+          <Property Name="PayDoneRRN" Type="varchar" MaxLength="500" />
+          <Property Name="PayDoneStatus" Type="varchar" MaxLength="500" />
+          <Property Name="PayDoneAmount" Type="varchar" MaxLength="500" />
+          <Property Name="PayDoneHashCardNumber" Type="varchar" MaxLength="500" />
+          <Property Name="PayInitDate" Type="datetime" />
+          <Property Name="PayDoneDate" Type="datetime" />
+          <Property Name="PayConfirmDate" Type="datetime" />
+          <Property Name="PayConfirm" Type="varchar" MaxLength="255" />
+          <Property Name="TspToken" Type="varchar" MaxLength="500" />
+          <Property Name="PayConfirmCardMask" Type="varchar" MaxLength="500" />
+          <Property Name="PayConfirmToken" Type="varchar" MaxLength="500" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'greenim1_greeni.dbo.ViewOrderItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -691,7 +729,26 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
     [ViewOrder].[StatusId] AS [StatusId], 
     [ViewOrder].[PersonId] AS [PersonId], 
     [ViewOrder].[Status] AS [Status], 
-    [ViewOrder].[TotalAmount] AS [TotalAmount]
+    [ViewOrder].[TotalAmount] AS [TotalAmount], 
+    [ViewOrder].[UserId] AS [UserId], 
+    [ViewOrder].[AdditionalData] AS [AdditionalData], 
+    [ViewOrder].[PayInitStatus] AS [PayInitStatus], 
+    [ViewOrder].[PayInitMessage] AS [PayInitMessage], 
+    [ViewOrder].[PayInitToken] AS [PayInitToken], 
+    [ViewOrder].[PayDoneToken] AS [PayDoneToken], 
+    [ViewOrder].[PayDoneOrderId] AS [PayDoneOrderId], 
+    [ViewOrder].[PayDoneTerminalNo] AS [PayDoneTerminalNo], 
+    [ViewOrder].[PayDoneRRN] AS [PayDoneRRN], 
+    [ViewOrder].[PayDoneStatus] AS [PayDoneStatus], 
+    [ViewOrder].[PayDoneAmount] AS [PayDoneAmount], 
+    [ViewOrder].[PayDoneHashCardNumber] AS [PayDoneHashCardNumber], 
+    [ViewOrder].[PayInitDate] AS [PayInitDate], 
+    [ViewOrder].[PayDoneDate] AS [PayDoneDate], 
+    [ViewOrder].[PayConfirmDate] AS [PayConfirmDate], 
+    [ViewOrder].[PayConfirm] AS [PayConfirm], 
+    [ViewOrder].[TspToken] AS [TspToken], 
+    [ViewOrder].[PayConfirmCardMask] AS [PayConfirmCardMask], 
+    [ViewOrder].[PayConfirmToken] AS [PayConfirmToken]
     FROM [dbo].[ViewOrder] AS [ViewOrder]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ViewOrderItem" EntityType="Self.ViewOrderItem" store:Type="Views" store:Schema="dbo">
@@ -802,15 +859,6 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
             <End Role="OrderItem" EntitySet="OrderItems" />
           </AssociationSet>
           <EntitySet Name="People" EntityType="EPAGRIFFINModel.Person" />
-          <EntitySet Name="Orders" EntityType="EPAGRIFFINModel.Order" />
-          <AssociationSet Name="fk_order_person" Association="EPAGRIFFINModel.fk_order_person">
-            <End Role="Person" EntitySet="People" />
-            <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="fk_orderi_order" Association="EPAGRIFFINModel.fk_orderi_order">
-            <End Role="Order" EntitySet="Orders" />
-            <End Role="OrderItem" EntitySet="OrderItems" />
-          </AssociationSet>
           <EntitySet Name="AspNetRoles" EntityType="EPAGRIFFINModel.AspNetRole" />
           <EntitySet Name="AspNetUsers" EntityType="EPAGRIFFINModel.AspNetUser" />
           <EntitySet Name="AspNetRoleClaims" EntityType="EPAGRIFFINModel.AspNetRoleClaim" />
@@ -823,8 +871,17 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
           </AssociationSet>
           <EntitySet Name="Companies" EntityType="EPAGRIFFINModel.Company" />
           <EntitySet Name="ViewCompanies" EntityType="EPAGRIFFINModel.ViewCompany" />
-          <EntitySet Name="ViewOrders" EntityType="EPAGRIFFINModel.ViewOrder" />
           <EntitySet Name="ViewOrderItems" EntityType="EPAGRIFFINModel.ViewOrderItem" />
+          <EntitySet Name="Orders" EntityType="EPAGRIFFINModel.Order" />
+          <EntitySet Name="ViewOrders" EntityType="EPAGRIFFINModel.ViewOrder" />
+          <AssociationSet Name="fk_order_person" Association="EPAGRIFFINModel.fk_order_person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="fk_orderi_order" Association="EPAGRIFFINModel.fk_orderi_order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -1054,48 +1111,6 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="Position2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Orders" Relationship="EPAGRIFFINModel.fk_order_person" FromRole="Person" ToRole="Order" />
         </EntityType>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DateG" Type="DateTime" Precision="3" />
-          <Property Name="Date" Type="Decimal" Precision="20" Scale="0" />
-          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Tax" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="Discount" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="Transport" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="StatusId" Type="Int32" />
-          <Property Name="PersonId" Type="Int32" />
-          <NavigationProperty Name="Person" Relationship="EPAGRIFFINModel.fk_order_person" FromRole="Order" ToRole="Person" />
-          <NavigationProperty Name="OrderItems" Relationship="EPAGRIFFINModel.fk_orderi_order" FromRole="Order" ToRole="OrderItem" />
-        </EntityType>
-        <Association Name="fk_order_person">
-          <End Type="EPAGRIFFINModel.Person" Role="Person" Multiplicity="0..1" />
-          <End Type="EPAGRIFFINModel.Order" Role="Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Person">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_orderi_order">
-          <End Type="EPAGRIFFINModel.Order" Role="Order" Multiplicity="1" />
-          <End Type="EPAGRIFFINModel.OrderItem" Role="OrderItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="OrderItem">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
@@ -1170,7 +1185,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -1240,26 +1255,6 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="Phone3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="NID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="ViewOrder">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Status" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DateG" Type="DateTime" Precision="3" />
-          <Property Name="Date" Type="Decimal" Precision="20" Scale="0" />
-          <Property Name="DateStr" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Tax" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="Discount" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="Transport" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="StatusId" Type="Int32" />
-          <Property Name="PersonId" Type="Int32" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="TotalAmount" Type="Decimal" Precision="38" Scale="9" />
-        </EntityType>
         <EntityType Name="ViewOrderItem">
           <Key>
             <PropertyRef Name="Id" />
@@ -1291,6 +1286,106 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="OrderDiscount" Type="Decimal" Precision="18" Scale="8" />
           <Property Name="Transport" Type="Decimal" Precision="18" Scale="8" />
         </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateG" Type="DateTime" Precision="3" />
+          <Property Name="Date" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Transport" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="UserId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AdditionalData" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PayInitStatus" Type="Int32" />
+          <Property Name="PayInitMessage" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PayInitToken" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayDoneToken" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayDoneOrderId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayDoneTerminalNo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayDoneRRN" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayDoneStatus" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayDoneAmount" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayDoneHashCardNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayInitDate" Type="DateTime" Precision="3" />
+          <Property Name="PayDoneDate" Type="DateTime" Precision="3" />
+          <Property Name="PayConfirm" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PayConfirmDate" Type="DateTime" Precision="3" />
+          <Property Name="TspToken" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayConfirmCardMask" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayConfirmToken" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Person" Relationship="EPAGRIFFINModel.fk_order_person" FromRole="Order" ToRole="Person" />
+          <NavigationProperty Name="OrderItems" Relationship="EPAGRIFFINModel.fk_orderi_order" FromRole="Order" ToRole="OrderItem" />
+        </EntityType>
+        <EntityType Name="ViewOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateG" Type="DateTime" Precision="3" />
+          <Property Name="Date" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="DateStr" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Transport" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="38" Scale="9" />
+          <Property Name="UserId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AdditionalData" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PayInitStatus" Type="Int32" />
+          <Property Name="PayInitMessage" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PayInitToken" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayDoneToken" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayDoneOrderId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayDoneTerminalNo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayDoneRRN" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayDoneStatus" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayDoneAmount" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayDoneHashCardNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayInitDate" Type="DateTime" Precision="3" />
+          <Property Name="PayDoneDate" Type="DateTime" Precision="3" />
+          <Property Name="PayConfirmDate" Type="DateTime" Precision="3" />
+          <Property Name="PayConfirm" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TspToken" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayConfirmCardMask" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PayConfirmToken" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="fk_order_person">
+          <End Type="EPAGRIFFINModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="EPAGRIFFINModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_orderi_order">
+          <End Type="EPAGRIFFINModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="EPAGRIFFINModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1498,23 +1593,6 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="EPAGRIFFINModel.Order">
-              <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-                <ScalarProperty Name="Transport" ColumnName="Transport" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Tax" ColumnName="Tax" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="DateG" ColumnName="DateG" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="EPAGRIFFINModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
@@ -1659,26 +1737,6 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ViewOrders">
-            <EntityTypeMapping TypeName="EPAGRIFFINModel.ViewOrder">
-              <MappingFragment StoreEntitySet="ViewOrder">
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-                <ScalarProperty Name="Transport" ColumnName="Transport" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Tax" ColumnName="Tax" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="DateStr" ColumnName="DateStr" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="DateG" ColumnName="DateG" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ViewOrderItems">
             <EntityTypeMapping TypeName="EPAGRIFFINModel.ViewOrderItem">
               <MappingFragment StoreEntitySet="ViewOrderItem">
@@ -1700,6 +1758,81 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="PayConfirmToken" ColumnName="PayConfirmToken" />
+                <ScalarProperty Name="PayConfirmCardMask" ColumnName="PayConfirmCardMask" />
+                <ScalarProperty Name="TspToken" ColumnName="TspToken" />
+                <ScalarProperty Name="PayConfirmDate" ColumnName="PayConfirmDate" />
+                <ScalarProperty Name="PayConfirm" ColumnName="PayConfirm" />
+                <ScalarProperty Name="PayDoneDate" ColumnName="PayDoneDate" />
+                <ScalarProperty Name="PayInitDate" ColumnName="PayInitDate" />
+                <ScalarProperty Name="PayDoneHashCardNumber" ColumnName="PayDoneHashCardNumber" />
+                <ScalarProperty Name="PayDoneAmount" ColumnName="PayDoneAmount" />
+                <ScalarProperty Name="PayDoneStatus" ColumnName="PayDoneStatus" />
+                <ScalarProperty Name="PayDoneRRN" ColumnName="PayDoneRRN" />
+                <ScalarProperty Name="PayDoneTerminalNo" ColumnName="PayDoneTerminalNo" />
+                <ScalarProperty Name="PayDoneOrderId" ColumnName="PayDoneOrderId" />
+                <ScalarProperty Name="PayDoneToken" ColumnName="PayDoneToken" />
+                <ScalarProperty Name="PayInitToken" ColumnName="PayInitToken" />
+                <ScalarProperty Name="PayInitMessage" ColumnName="PayInitMessage" />
+                <ScalarProperty Name="PayInitStatus" ColumnName="PayInitStatus" />
+                <ScalarProperty Name="AdditionalData" ColumnName="AdditionalData" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Transport" ColumnName="Transport" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DateG" ColumnName="DateG" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewOrders">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.ViewOrder">
+              <MappingFragment StoreEntitySet="ViewOrder">
+                <ScalarProperty Name="PayConfirmToken" ColumnName="PayConfirmToken" />
+                <ScalarProperty Name="PayConfirmCardMask" ColumnName="PayConfirmCardMask" />
+                <ScalarProperty Name="TspToken" ColumnName="TspToken" />
+                <ScalarProperty Name="PayConfirm" ColumnName="PayConfirm" />
+                <ScalarProperty Name="PayConfirmDate" ColumnName="PayConfirmDate" />
+                <ScalarProperty Name="PayDoneDate" ColumnName="PayDoneDate" />
+                <ScalarProperty Name="PayInitDate" ColumnName="PayInitDate" />
+                <ScalarProperty Name="PayDoneHashCardNumber" ColumnName="PayDoneHashCardNumber" />
+                <ScalarProperty Name="PayDoneAmount" ColumnName="PayDoneAmount" />
+                <ScalarProperty Name="PayDoneStatus" ColumnName="PayDoneStatus" />
+                <ScalarProperty Name="PayDoneRRN" ColumnName="PayDoneRRN" />
+                <ScalarProperty Name="PayDoneTerminalNo" ColumnName="PayDoneTerminalNo" />
+                <ScalarProperty Name="PayDoneOrderId" ColumnName="PayDoneOrderId" />
+                <ScalarProperty Name="PayDoneToken" ColumnName="PayDoneToken" />
+                <ScalarProperty Name="PayInitToken" ColumnName="PayInitToken" />
+                <ScalarProperty Name="PayInitMessage" ColumnName="PayInitMessage" />
+                <ScalarProperty Name="PayInitStatus" ColumnName="PayInitStatus" />
+                <ScalarProperty Name="AdditionalData" ColumnName="AdditionalData" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Transport" ColumnName="Transport" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="DateStr" ColumnName="DateStr" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DateG" ColumnName="DateG" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

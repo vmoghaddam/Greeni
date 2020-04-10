@@ -118,8 +118,8 @@ app.config(function ($routeProvider) {
  
  
  
-var serviceBase = 'http://localhost:58909/';
-//var serviceBase = 'http://api.greeni.epatrin.ir/';
+//var serviceBase = 'http://localhost:58909/';
+var serviceBase = 'http://api.greeni.epatrin.ir/';
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
     clientId: 'ngAuthApp'
@@ -147,6 +147,7 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
     $rootScope.userTitle = null;
     authService.fillAuthData();
     $rootScope.logOut = function () { authService.logOut(); };
+    $rootScope.signIn = function () { $location.path('/signin'); };
 
     $rootScope.click_contact = function () {
         

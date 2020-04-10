@@ -37,7 +37,6 @@ namespace API.Models
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<OrderItem> OrderItems { get; set; }
         public virtual DbSet<Person> People { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
@@ -46,7 +45,8 @@ namespace API.Models
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<ViewCompany> ViewCompanies { get; set; }
-        public virtual DbSet<ViewOrder> ViewOrders { get; set; }
         public virtual DbSet<ViewOrderItem> ViewOrderItems { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<ViewOrder> ViewOrders { get; set; }
     }
 }

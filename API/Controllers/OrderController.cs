@@ -126,21 +126,21 @@ namespace API.Controllers
             ViewModels.OrderDto.Fill(entity, dto);
             entity.DateG = DateTime.Now;
             entity.Date = Convert.ToDecimal(Utils.DateTimeUtil.GetPersianDateTimeDigital((DateTime)entity.DateG));
-            Person person = await unitOfWork.PersonRepository.GetViewPersonByMobile(dto.Mobile);
-            if (person == null)
-            {
-                person = new Person()
-                {
-                    Mobile = dto.Mobile,
-                    FirstName = dto.Name,
-                    DateCreate = DateTime.Now,
-                    IsActive = true,
-                    IsDeleted = false,
-                };
-                unitOfWork.PersonRepository.Insert(person);
+            //Person person = await unitOfWork.PersonRepository.GetViewPersonByMobile(dto.Mobile);
+            //if (person == null)
+            //{
+            //    person = new Person()
+            //    {
+            //        Mobile = dto.Mobile,
+            //        FirstName = dto.Name,
+            //        DateCreate = DateTime.Now,
+            //        IsActive = true,
+            //        IsDeleted = false,
+            //    };
+            //    unitOfWork.PersonRepository.Insert(person);
 
-            }
-            entity.Person = person;
+            //}
+            //entity.Person = person;
 
 
             if (dto.Id != -1)
@@ -163,6 +163,8 @@ namespace API.Controllers
             {
                 sendOrderNoX(dto.Mobile, entity.Id.ToString(), dto.Name);
             }
+
+
 
             return Ok(entity);
         }

@@ -109,10 +109,15 @@ namespace API.Repositories
 
         public async Task<Company> UpdateCompany(CompanyDto dto)
         {
+
             Company company = await this.context.Companies.Where(q => q.Id == dto.Id).FirstOrDefaultAsync();
+            if (company.Mobile != dto.Mobile)
+            {
+                var aspuser = await this.context.AspNetUsers.FirstOrDefaultAsync( q => q.Id == company.UserId);
+                if (aspuser != null)
+                    aspuser.UserName = dto.Mobile;
 
-
-
+            }
             company.Name = dto.Name;
             company.Address = dto.Address;
             company.Phone = dto.Phone;
@@ -122,17 +127,23 @@ namespace API.Repositories
 
             company.Twitter = dto.Twitter;
             company.LinkedIn = dto.LinkedIn;
-            //  company.ImageUrl { get; set; }
-            
-
+            company.ImageUrl = dto.ImageUrl;
+            //company.PersonId = dto.PersonId;
 
             company.ZIPCode = dto.ZIPCode;
             company.City = dto.City;
             company.State = dto.State;
             company.CountryId = dto.CountryId;
-            company.Remark = dto.Remark;
+            company.Network = dto.Network;
 
-            
+            company.Remark = dto.Remark;
+            company.FirstName = dto.FirstName;
+            company.LastName = dto.LastName;
+            company.Mobile = dto.Mobile;
+            company.Phone2 = dto.Phone2;
+            company.Phone3 = dto.Phone3;
+            company.NID = dto.NID;
+
 
             return company;
         }
@@ -160,26 +171,31 @@ namespace API.Repositories
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Remark { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Website { get; set; }
         public string Url { get; set; }
-        public Nullable<System.DateTime> DateVerified { get; set; }
+    
         public string Twitter { get; set; }
         public string LinkedIn { get; set; }
         public string ImageUrl { get; set; }
+        public Nullable<int> PersonId { get; set; }
       
-
-
-
         public string ZIPCode { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public string UserName { get; set; }
         public Nullable<int> CountryId { get; set; }
-        
+        public string Network { get; set; }
+        public string UserId { get; set; }
+        public string Remark { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Mobile { get; set; }
+        public string Phone2 { get; set; }
+        public string Phone3 { get; set; }
+        public string NID { get; set; }
+
 
 
     }

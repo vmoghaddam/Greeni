@@ -71,7 +71,7 @@ namespace API.Providers
                 oAuthIdentity.AddClaim(new Claim(ClaimTypes.Name, "Vahid"));
 
                 AuthenticationProperties properties = CreateProperties(user.UserName, (context.ClientId == null) ? string.Empty : context.ClientId);
-
+                properties.Dictionary.Add("AuthId", user.Id);
                 if (roles == "Company")
                 {
                     var company = await unitOfWork.CompanyRepository.GetViewCompanyByMobile(context.UserName);
