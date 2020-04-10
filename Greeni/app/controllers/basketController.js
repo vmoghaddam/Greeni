@@ -48,6 +48,9 @@ app.controller('basketController', ['$scope', '$rootScope', '$location', '$route
 
     $scope.bind();
     ///////////////////////////////
+    $rootScope.signIn = function () { $location.path('/signin'); };
+
+
     $scope.confirm_order = function () {
         //$scope.loadingVisible = true;
         var dto = $rootScope.getOrderDto($scope.name, $scope.mobile);
@@ -123,12 +126,20 @@ app.controller('basketController', ['$scope', '$rootScope', '$location', '$route
             readOnly:'ro',
         }
     };
+
+
+    $rootScope.SignedBtn = true;
     $scope.ro = false;
     if ($rootScope.isSignedIn) {
         $scope.name = $rootScope.userTitle;
         $scope.mobile = $rootScope.userName;
         $scope.ro = true;
+        $rootScope.isSignedIn = true;
+        $rootScope.SignedBtn = false;
     }
+
+
+    
     ////////////////////////////////////
     AOS.init({
         easing: 'ease-out-back',

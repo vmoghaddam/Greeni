@@ -118,8 +118,8 @@ app.config(function ($routeProvider) {
  
  
  
-//var serviceBase = 'http://localhost:58909/';
-var serviceBase = 'http://api.greeni.epatrin.ir/';
+var serviceBase = 'http://localhost:58909/';
+//var serviceBase = 'http://api.greeni.epatrin.ir/';
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
     clientId: 'ngAuthApp'
