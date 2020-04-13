@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Kavenegar;
+using Kavenegar.Exceptions;
 
 namespace API
 {
@@ -38,7 +40,7 @@ namespace API
                 context.SaveChanges();
 
             }
-                txtTspToken.Text = tspToken;
+            txtTspToken.Text = tspToken;
             txtToken.Text = token.ToString();
             txtOrderId.Text = orderId.ToString();
             txtTerminalNo.Text = terminalNumber.ToString();
@@ -50,8 +52,26 @@ namespace API
             if (status == 0)
             {
                 ConfirmPayment(token);
+                try
+                {
+                    var api = new KavenegarApi("5969676976475A7553765263534C6B46666C34476F642B4A422B6E416F457279656B4C4664326244704A633D");
+                    api.Send("1000596446", "09157648894", "خرید انجام و پرداخت  با موفقیت شد ");
+                    //Console.Write("پیامک فرستاده شد ");
+                }
+                catch (ApiException ex)
+                {
+                    // در صورتی که خروجی وب سرویس 200 نباشد این خطارخ می دهد.
+                    Console.Write("Message : " + ex.Message);
+                }
+                catch (System.Web.HttpException ex)
+                {
+                    // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
+                    Console.Write("Message : " + ex.Message);
+                }
             }
         }
+
+        
 
         /// <summary>
         /// Confirm payment must be performed only for SALE payment.
@@ -59,13 +79,13 @@ namespace API
         /// <param name="token"></param>
         private void ConfirmPayment(long token)
         {
-            using (var confirmSvc =  new ParsianConfirmRef.ConfirmServiceSoapClient())
+            using (var confirmSvc = new ParsianConfirmRef.ConfirmServiceSoapClient())
             {
                 var confirmRequestData = new ParsianConfirmRef.ClientConfirmRequestData();
                 confirmRequestData.Token = token;
                 confirmRequestData.LoginAccount = "IXE2U0hp0H3linqxkY26";
                 var confirmResponse = confirmSvc.ConfirmPayment(confirmRequestData);
-                
+
                 if (confirmResponse.Status == 0)
                 {
                     lblConfirmStatus.Text = "Payment and Confirm was successful.";
@@ -91,6 +111,7 @@ namespace API
                 Response.Redirect("http://greenimax.ir/#!/orders");
 
             }
+
 
 
 

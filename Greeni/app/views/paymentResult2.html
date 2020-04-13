@@ -1,0 +1,212 @@
+﻿<style>
+    #table {
+        background: rgb(166, 166, 166);
+        color: black;
+        padding: 0px;
+        width: 100%;
+        max-width: 800px;
+        border: 1px solid rgb(166, 166, 166);
+        margin: 0px auto;
+    }
+
+    #tb_cell {
+        background-color: white;
+        padding: 12px 10px 12px 10px
+    }
+
+    .main {
+        background-color: white !important;
+    }
+
+    .w3-black{
+        background-color:white !important
+    }
+    @media (min-width:756px) {
+        .Table {
+            color: white;
+            padding: 60px 190px 10px 0px;
+            float: right;
+            text-align: justify;
+            width: 600px;
+        }
+
+        .AboutText {
+            color: white;
+            font-size: 16px;
+            padding: 90px 190px 3px 0px;
+            font-weight: bold;
+            float: right;
+            text-align: justify;
+            width: 600px
+        }
+
+        .mainImage {
+            width: 53%;
+            height: auto;
+            float: left;
+            padding: 40px 0px 5px 10px
+        }
+
+        .sidebar {
+            display: none
+        }
+
+        #main {
+            display: none
+        }
+    }
+
+    @media (max-width:756px) {
+        .bigNav {
+            display: none
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+            .sidebar a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 25px;
+                color: #818181;
+                display: block;
+                transition: 0.3s;
+            }
+
+                .sidebar a:hover {
+                    color: #f1f1f1;
+                }
+
+            .sidebar .closebtn {
+                position: absolute;
+                top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+            }
+
+        .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+        }
+
+            .openbtn:hover {
+                background-color: #444;
+            }
+
+        #main {
+            transition: margin-right .5s;
+            padding: 40px 20px 0px 0px;
+            background-color: #000;
+            float: right;
+            margin-top: -20px
+        }
+
+        .mainImage {
+            width: 100%;
+            height: auto
+        }
+    }
+</style>
+
+    <nav class="bigNav" style="overflow:hidden;text-align:center !important">
+        <!-- Avatar image in top left corner -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+        <a class="w3-bar-item w3-button " style="position:relative;" data-ng-click="navigate2('/greeni1','greeni1',1)">
+            <span style="font-size:13px;color:black;font-weight:bold;margin-top:5px">گرینی مکس 1</span>
+        </a>
+        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/greeni2','greeni2',1)">
+            <span style="font-size:13px;color:black;font-weight:bold;margin-top:5px">گرینی مکس 2</span>
+        </a>
+        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/basket','basket',1)">
+            <span style="font-size:13px;color:black;font-weight:bold;margin-top:5px">سبد خرید  </span>
+            <div ng-show="isBasketNoVisible" class="basket-no">{{basketCount}}</div>
+        </a>
+        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/orders','orders',1)">
+            <span style="font-size:13px;color:black;font-weight:bold;display:block;margin-top:5px">سفارش ها  </span>
+        </a>
+        <a class="w3-bar-item w3-button w3-padding-large centerNav" style="" data-ng-click="navigate2('/sales','sales',1)">
+            <span style="font-size:13px;color:black;font-weight:bold">نمایندگی های فروش</span>
+        </a>
+        <a class="w3-bar-item w3-button w3-padding-large centerNav" style="" data-ng-click="navigate2('/about','about',1)">
+            <span style="font-size:13px;color:black;font-weight:bold;margin-top:5px;">درباره ما</span>
+        </a>
+
+    </nav>
+
+    <!--mobile navigation bar-->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a data-ng-click="navigate2('/greeni1','greeni1',1)">گرینی مکس 1</a>
+        <a data-ng-click="navigate2('/greeni2','greeni2',1)">گرینی مکس 2</a>
+        <a data-ng-click="navigate2('/basket','basket',1)">سبد خرید</a>
+        <a data-ng-click="navigate2('/orders','orders',1)">سفارش ها</a>
+        <a data-ng-click="navigate2('/sales','sales',1)">نمایندگی ها</a>
+        <a data-ng-click="navigate2('/about','about',1)">درباره ما</a>
+    </div>
+    <i id="main" onclick="openNav()" class="fas fa-bars openbtn"></i>
+
+
+
+    <table id="table" style="margin-top: 100px">
+        <tr>
+            <th style="width:200px; padding: 12px 10px 12px 10px;">شماره فاکتور</th>
+            <th style="width: 100px">تاریخ فاکتور</th>
+            <th style="width:150px">مرجع سفارش</th>
+            <th style="width:100px">تاریخ سفارش</th>
+        </tr>
+        <tr>
+            <td id="tb_cell" style="width: 200px;">1</td>
+            <td id="tb_cell" style="width: 100px;">2</td>
+            <td id="tb_cell" style="width: 150px;">3</td>
+            <td id="tb_cell" style="width: 100px;">4</td>
+        </tr>
+    </table>
+
+
+    <table id="table" style="width:100%; margin-top: 100px">
+        <tr>
+            <th style="width:100px; padding: 12px 10px 12px 10px;">مرجع</th>
+            <th style="width:150px">محصول</th>
+            <th style="width:100px">نرخ مالیات</th>
+            <th style="width:100px">قیمت واحد (بدون مالیات)</th>
+            <th style="width:100px">تعداد</th>
+            <th style="width:100px">مجموع بدون (مالیات)</th>
+        </tr>
+        <tr>
+            <td id="tb_cell" style="width:100px">1</td>
+            <td id="tb_cell" style="width:100px">2</td>
+            <td id="tb_cell" style="width:100px">3</td>
+            <td id="tb_cell" style="width:150px">4</td>
+            <td id="tb_cell" style="width:100px">5</td>
+            <td id="tb_cell" style="width:150px">6</td>
+        </tr>
+    </table>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "0px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+</script>
+

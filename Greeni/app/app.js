@@ -100,13 +100,29 @@ app.config(function ($routeProvider) {
         controller: "salesController",
         templateUrl: "/app/views/sales.html?v=" + version
     });
+
     $routeProvider.when("/admin/stores", {
         controller: "storesController",
         templateUrl: "/app/views/stores.html?v=" + version
     });
+
     $routeProvider.when("/admin/orders", {
         controller: "ordersAdminController",
         templateUrl: "/app/views/oerdersAdmin.html?v=" + version
+    });
+
+
+    
+    $routeProvider.when("/paymentResult", {
+        controller: "paymentResultController",
+        templateUrl: "/app/views/paymentResult.html?v=" + version
+    });
+
+
+    
+    $routeProvider.when("/paymentResult2", {
+        controller: "paymentResult2Controller",
+        templateUrl: "/app/views/paymentResult2.html?v=" + version
     });
 
 
