@@ -1,6 +1,8 @@
 ﻿'use strict';
 app.controller('signinController', ['$scope', '$routeParams', '$location', 'authService', 'ngAuthSettings', '$rootScope', function ($scope, $routeParams, $location, authService, ngAuthSettings, $rootScope) {
 
+    $scope.refer = $routeParams.refer;
+
     $scope.loginData = {
         userName: "",// "babak@3dchain.io",
         password: "", //"Atrina1359@a",
@@ -45,7 +47,7 @@ app.controller('signinController', ['$scope', '$routeParams', '$location', 'auth
 
 
     $scope.btn_save = {
-        text: 'تایید',
+        text: 'ورود',
         type: 'success',
         icon: 'check',
         width: '100%',
@@ -69,6 +71,25 @@ app.controller('signinController', ['$scope', '$routeParams', '$location', 'auth
 
     };
 
+    $scope.btn_signup = {
+        text: 'ثبت نام',
+        type: 'default',
+        icon: 'check',
+        width: '100%',
+        height: 45,
+        rtlEnabled: true,
+        //validationGroup: 'signin',
+        onClick: function (e) {
+            if (!$scope.refer)
+                $location.path('/signup');
+            else
+                $location.path('/signup/' + $scope.refer)
+
+
+        }
+
+    };
+
     $scope.login = function () {
         $scope.loadingVisible = true;
          
@@ -80,11 +101,16 @@ app.controller('signinController', ['$scope', '$routeParams', '$location', 'auth
 
             
             $rootScope.userName = authService.authentication.userName;
-            if ($rootScope.role == 'Company') {
-                $location.path('/profile/company/' + $rootScope.userId);
+            if (!$scope.refer) {
+                if ($rootScope.role == 'Company') {
+                    $location.path('/profile/company/' + $rootScope.userId);
+                }
+                else
+                    $location.path('/greeni1');
             }
             else
-                $location.path('/greeni1');
+                $location.path('/'+$scope.refer);
+           
 
 
         },

@@ -1,15 +1,15 @@
 ﻿<style>
-    #table {
+    .table1 {
         background: rgb(166, 166, 166);
         color: black;
         padding: 0px;
         width: 100%;
-        max-width: 800px;
+        max-width: 900px;
         border: 1px solid rgb(166, 166, 166);
         margin: 0px auto;
     }
 
-    #tb_cell {
+    .tb_cell {
         background-color: white;
         padding: 12px 10px 12px 10px
     }
@@ -18,9 +18,10 @@
         background-color: white !important;
     }
 
-    .w3-black{
-        background-color:white !important
+    .w3-black {
+        background-color: white !important
     }
+
     @media (min-width:756px) {
         .Table {
             color: white;
@@ -123,90 +124,114 @@
     }
 </style>
 
-    <nav class="bigNav" style="overflow:hidden;text-align:center !important">
-        <!-- Avatar image in top left corner -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-        <a class="w3-bar-item w3-button " style="position:relative;" data-ng-click="navigate2('/greeni1','greeni1',1)">
-            <span style="font-size:13px;color:black;font-weight:bold;margin-top:5px">گرینی مکس 1</span>
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/greeni2','greeni2',1)">
-            <span style="font-size:13px;color:black;font-weight:bold;margin-top:5px">گرینی مکس 2</span>
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/basket','basket',1)">
-            <span style="font-size:13px;color:black;font-weight:bold;margin-top:5px">سبد خرید  </span>
-            <div ng-show="isBasketNoVisible" class="basket-no">{{basketCount}}</div>
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/orders','orders',1)">
-            <span style="font-size:13px;color:black;font-weight:bold;display:block;margin-top:5px">سفارش ها  </span>
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large centerNav" style="" data-ng-click="navigate2('/sales','sales',1)">
-            <span style="font-size:13px;color:black;font-weight:bold">نمایندگی های فروش</span>
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large centerNav" style="" data-ng-click="navigate2('/about','about',1)">
-            <span style="font-size:13px;color:black;font-weight:bold;margin-top:5px;">درباره ما</span>
-        </a>
-
-    </nav>
-
-    <!--mobile navigation bar-->
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a data-ng-click="navigate2('/greeni1','greeni1',1)">گرینی مکس 1</a>
-        <a data-ng-click="navigate2('/greeni2','greeni2',1)">گرینی مکس 2</a>
-        <a data-ng-click="navigate2('/basket','basket',1)">سبد خرید</a>
-        <a data-ng-click="navigate2('/orders','orders',1)">سفارش ها</a>
-        <a data-ng-click="navigate2('/sales','sales',1)">نمایندگی ها</a>
-        <a data-ng-click="navigate2('/about','about',1)">درباره ما</a>
-    </div>
-    <i id="main" onclick="openNav()" class="fas fa-bars openbtn"></i>
-
-
-
-    <table id="table" style="margin-top: 100px">
+<div style="color:black; border:1px solid #ccc;padding:10px 20px 30px 10px;max-width:900px;margin :20px auto 0 auto">
+    <table class="table1" style="width:100%;background:white;border:none;">
         <tr>
-            <th style="width:200px; padding: 12px 10px 12px 10px;">شماره فاکتور</th>
-            <th style="width: 100px">تاریخ فاکتور</th>
-            <th style="width:150px">مرجع سفارش</th>
-            <th style="width:100px">تاریخ سفارش</th>
+            <td rowspan="2" style="width:115px">
+                <img src="img/roshd.png" style="width:100%" />
+            </td>
+
         </tr>
         <tr>
-            <td id="tb_cell" style="width: 200px;">1</td>
-            <td id="tb_cell" style="width: 100px;">2</td>
-            <td id="tb_cell" style="width: 150px;">3</td>
-            <td id="tb_cell" style="width: 100px;">4</td>
+            <td>
+                <div style="padding-top:15px;font-size:16px;font-weight:bold">شرکت تعاونی رشد رهنمون طوس</div>
+                <div style="padding-top:5px;">خراسان رضوی مشهد بلوار پیروزی خیابان فرخی جنوبی ۱۸ پلاک ۱۰۰</div>
+                <div style="padding-top:5px;font-size:15px;">051-33409117</div>
+            </td>
+            <td style="width:150px;text-align:left" rowspan="2">
+                <div style="font-size:16px;">{{order.invoiceDate}}</div>
+                <div style="direction:ltr;font-size:16px;padding-top:5px;">#IN{{order.Id}}</div>
+            </td>
+
+        </tr>
+    </table>
+    <div style="border-bottom:1px solid #ccc;margin-top:5px;"></div>
+    <table class="table1" style="width:100%;background:white;border:none; margin-top:15px ">
+        <tr style="background:#ccc;border :1px solid #aaa;line-height:32px;">
+            <td colspan="4" style="padding-right:10px">تحویل گیرنده</td>
+        </tr>
+        <tr style="background:#ccc;border :1px solid #bbb;line-height:32px;">
+            <td style="padding-right:10px;border-left:1px solid #aaa;width:30%">فروشگاه / شرکت</td>
+            <td style="padding-right:10px;border-left:1px solid #aaa;width:30%">مدیریت</td>
+            <td style="padding-right:10px;border-left:1px solid #aaa;width:20%">موبایل</td>
+            <td style="padding-right:10px;width:20%">تلفن</td>
+        </tr>
+        <tr style=" border:1px solid #bbb;  line-height:32px;">
+            <td style="padding-right:10px;border-left:1px solid #bbb; width:33%">{{order.Company}}</td>
+            <td style="padding-right:10px;border-left:1px solid #bbb;width:33%">{{order.CompanyManager}}</td>
+            <td style="padding-right:10px;border-left:1px solid #bbb;width:17%">{{order.CompanyMobile}}</td>
+            <td style="padding-right:10px;width:17%">{{order.CompanyPhone}}</td>
+        </tr>
+        <tr style=" border:1px solid #bbb;line-height:32px;">
+            <td colspan="4" style="padding:15px 10px 15px 10px;line-height:25px;text-align:center">
+                <div style="font-weight:bold">{{order.CompanyLocation}}</div>
+                <div style="padding:5px 0 5px 0">کد پستی</div>
+                <div style="font-weight:bold;">{{order.CompanyZIPCode}}</div>
+            </td>
+        </tr>
+
+    </table>
+
+    <table class="table1" style="width:100%;background:white;border:none; margin-top:20px ">
+        <tr style="background:#ccc;border :1px solid #aaa;line-height:32px;">
+            <td colspan="5" style="padding-right:10px">سفارش</td>
+        </tr>
+        <tr style="background:#ccc;border :1px solid #bbb;line-height:32px;">
+            <td style="padding-right:10px;border-left:1px solid #aaa; ">محصول</td>
+            <td style="padding-right:0px;border-left:1px solid #aaa;text-align:center;width:20% ">قیمت واحد (تومان)</td>
+            <td style="padding-right:0px;border-left:1px solid #aaa; text-align:center;width:10%">تعداد</td>
+            <td style="padding-right:0px;border-left:1px solid #aaa; text-align:center;width:10%">تخفیف (%)</td>
+            <td style="padding-right:0px;border-left:1px solid #aaa;text-align:center;width:20% ">مجموع (تومان)</td>
+
+        </tr>
+        <tr style=" border:1px solid #bbb;  line-height:32px;" ng-repeat="x in items">
+            <td style="padding-right:10px;border-left:1px solid #bbb;  ">{{x.Product}}</td>
+            <td style="padding-right:0px;border-left:1px solid #bbb;text-align:center ">{{x.PriceUnit2}}</td>
+            <td style="padding-right:0px;border-left:1px solid #bbb;text-align:center ">{{x.Quantity2}}</td>
+            <td style="padding-right:0px;border-left:1px solid #bbb;text-align:center ">{{x.DiscountUnit2}}</td>
+            <td style="padding-right:0px;border-left:1px solid #bbb;text-align:center ">{{x.FinalPriceUnit2}}</td>
+        </tr>
+        <tr style=" border :1px solid #bbb;line-height:32px;border-top-width:2px">
+            <td colspan="4" style="padding-left:10px;border-left:1px solid #bbb; text-align:left ">جمع کل محصولات</td>
+            <td style="padding-right:0px;border-left:1px solid #bbb;text-align:center ">{{order.TotalAmount2}}</td>
+        </tr>
+        <tr style=" border :1px solid #bbb;line-height:32px;">
+            <td colspan="4" style="padding-left:10px;border-left:1px solid #bbb; text-align:left ">هزینه ارسال</td>
+            <td style="padding-right:0px;border-left:1px solid #bbb;text-align:center ">{{order.Transport2}}</td>
+        </tr>
+        <tr style=" border :1px solid #bbb;line-height:32px;">
+            <td colspan="4" style="padding-left:10px;border-left:1px solid #bbb; text-align:left ">جمع کل</td>
+            <td style="padding-right:0px;border-left:1px solid #bbb;text-align:center ">{{order.Final2}}</td>
         </tr>
     </table>
 
+    <table class="table1" style="width:100%;background:white;border:none; margin-top:20px ">
+        <tr style="background:#ccc;border :1px solid #aaa;line-height:32px;">
+            <td colspan="5" style="padding-right:10px">اطلاعات پرداخت</td>
+        </tr>
+        <tr style="background:#ccc;border :1px solid #bbb;line-height:32px;">
+            <td style="padding-right:10px;border-left:1px solid #aaa;text-align:center; ">تاریخ</td>
+            <td style="padding-right:0px;border-left:1px solid #aaa;text-align:center; ">شماره درخواست</td>
+            <td style="padding-right:0px;border-left:1px solid #aaa; text-align:center; ">شماره مرجع</td>
+            <td style="padding-right:0px;border-left:1px solid #aaa; text-align:center; ">شماره کارت</td>
 
-    <table id="table" style="width:100%; margin-top: 100px">
-        <tr>
-            <th style="width:100px; padding: 12px 10px 12px 10px;">مرجع</th>
-            <th style="width:150px">محصول</th>
-            <th style="width:100px">نرخ مالیات</th>
-            <th style="width:100px">قیمت واحد (بدون مالیات)</th>
-            <th style="width:100px">تعداد</th>
-            <th style="width:100px">مجموع بدون (مالیات)</th>
+
         </tr>
-        <tr>
-            <td id="tb_cell" style="width:100px">1</td>
-            <td id="tb_cell" style="width:100px">2</td>
-            <td id="tb_cell" style="width:100px">3</td>
-            <td id="tb_cell" style="width:150px">4</td>
-            <td id="tb_cell" style="width:100px">5</td>
-            <td id="tb_cell" style="width:150px">6</td>
+        <tr style=" border:1px solid #bbb;  line-height:32px;">
+            <td style="padding-right:10px;border-left:1px solid #bbb;text-align:center;  ">{{order.payDate}}</td>
+            <td style="padding-right:0px;border-left:1px solid #bbb;text-align:center;direction:ltr ">{{order.PayConfirmToken}}</td>
+            <td style="padding-right:0px;border-left:1px solid #bbb;text-align:center;direction:ltr ">{{order.PayDoneRRN}}</td>
+            <td style="padding-right:0px;border-left:1px solid #bbb;text-align:center;direction:ltr ">{{order.PayConfirmCardMask}}</td>
+
         </tr>
+
     </table>
 
-<script>
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "0px";
-    }
+    <div style="margin-top:30px;padding-top:10px; text-align:center;border-top:1px solid #ccc">شرکت تعاونی رشد رهنمون طوس</div>
+    <div style="padding-top:5px;text-align:center">خراسان رضوی مشهد بلوار پیروزی خیابان فرخی جنوبی ۱۸ پلاک ۱۰۰</div>
+    <div style="padding-top:5px;font-size:15px;text-align:center">051-33409117</div>
 
-    function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
-    }
-</script>
 
+
+</div>
+<div dx-load-panel="loadPanel"></div>

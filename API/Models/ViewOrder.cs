@@ -47,5 +47,15 @@ namespace API.Models
         public string TspToken { get; set; }
         public string PayConfirmCardMask { get; set; }
         public string PayConfirmToken { get; set; }
+        public string Company { get; set; }
+        public string CompanyManager { get; set; }
+        public string CompanyMobile { get; set; }
+        public string CompanyPhone { get; set; }
+        public string CompanyAddress { get; set; }
+        public string CompanyCity { get; set; }
+        public string CompanyState { get; set; }
+        public string CompanyLocation { get; set; }
+        public Nullable<int> CompanyId { get; set; }
+        public string CompanyZIPCode { get; set; }
     }
 }

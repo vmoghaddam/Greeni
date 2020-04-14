@@ -78,6 +78,10 @@ app.config(function ($routeProvider) {
         controller: "signupController",
         templateUrl: "/app/views/signup.html?v=" + version
     })
+    $routeProvider.when("/signup/:refer", {
+        controller: "signupController",
+        templateUrl: "/app/views/signup.html?v=" + version
+    })
 
     $routeProvider.when("/signup2", {
         controller: "signup2Controller",
@@ -85,6 +89,11 @@ app.config(function ($routeProvider) {
     });
 
     $routeProvider.when("/signin", {
+        controller: "signinController",
+        templateUrl: "/app/views/signin.html?v=" + version
+    });
+
+    $routeProvider.when("/signin/:refer", {
         controller: "signinController",
         templateUrl: "/app/views/signin.html?v=" + version
     });
@@ -120,7 +129,12 @@ app.config(function ($routeProvider) {
 
 
     
-    $routeProvider.when("/paymentResult2", {
+    $routeProvider.when("/paymentResult2/:id", {
+        controller: "paymentResult2Controller",
+        templateUrl: "/app/views/paymentResult2.html?v=" + version
+    });
+
+    $routeProvider.when("/invoice/:id", {
         controller: "paymentResult2Controller",
         templateUrl: "/app/views/paymentResult2.html?v=" + version
     });

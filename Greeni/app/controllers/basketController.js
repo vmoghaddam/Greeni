@@ -48,7 +48,7 @@ app.controller('basketController', ['$scope', '$rootScope', '$location', '$route
 
     $scope.bind();
     ///////////////////////////////
-    $rootScope.signIn = function () { $location.path('/signin'); };
+    $rootScope.signIn = function () { $location.path('/signin/basket'); };
 
 
     $scope.confirm_order = function () {

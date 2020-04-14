@@ -201,6 +201,23 @@ namespace API.Controllers
             return Ok(result);
         }
 
+        [Route("api/orders/id/{id}")]
+
+        [AcceptVerbs("GET")]
+        public async Task<IHttpActionResult> GetOrderById(int id)
+        {
+            var order = await unitOfWork.OrderRepository.GetViewOrders().Where(q => q.Id == id).FirstOrDefaultAsync();
+            var orderItems = await unitOfWork.OrderRepository.GetViewOrderItems().Where(q => q.OrderId == id).ToListAsync();
+
+            var result = new
+            {
+                order,
+                orderItems
+            };
+
+            return Ok(result);
+        }
+
         [Route("api/orders")]
         [EnableQuery]
         public IQueryable<ViewOrder> GetOrders()

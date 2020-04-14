@@ -60,9 +60,26 @@ app.factory('orderService', ['$http', '$q',   '$rootScope', function ($http, $q,
     };
      
  
+    var _getOrderById = function (Id) {
+
+
+        var deferred = $q.defer();
+        $http.get(serviceBase + 'api/orders/id/' + Id).then(function (response) {
+            deferred.resolve(response.data);
+        }, function (err, status) {
+
+            deferred.reject(Exceptions.getMessage(err));
+        });
+
+        return deferred.promise;
+    };
+
+
+
     serviceFactory.save = _save;
     serviceFactory.getOrders = _getOrders;
     serviceFactory.getOrderItems = _getOrderItems;
+    serviceFactory.getOrderById = _getOrderById;
     return serviceFactory;
 
 }]);

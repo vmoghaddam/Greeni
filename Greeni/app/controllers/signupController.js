@@ -1,6 +1,6 @@
 ﻿'use strict';
-app.controller('signupController', ['$scope', '$rootScope', '$location', 'authService', '$route', function ($scope, $rootScope, $location, authService, $route) {
-
+app.controller('signupController', ['$scope', '$rootScope', '$location', 'authService', '$route', '$routeParams', function ($scope, $rootScope, $location, authService, $route, $routeParams) {
+    $scope.refer = $routeParams.refer;
     var $jq = jQuery.noConflict();
     $scope.entity = {
         firstName: null,
@@ -211,7 +211,10 @@ app.controller('signupController', ['$scope', '$rootScope', '$location', 'authSe
                 // General.ShowNotify(Config.Text_SavedOk, 'success');
                
                 $scope.loadingVisible = false;
-                $location.path('/signin');
+                if (!$scope.refer)
+                    $location.path('/signin');
+                else
+                    $location.path('/signin/' + $scope.refer);
                 
             }, function (err) { $scope.loadingVisible = false; General.ShowNotify(err.message, 'error'); });
             ////////////////////

@@ -104,11 +104,13 @@ namespace API
                         order.PayConfirmCardMask = confirmResponse.CardNumberMasked;
                         order.PayConfirmDate = DateTime.Now;
                         order.PayConfirmToken = confirmResponse.Token.ToString();
+                        context.SaveChanges();
+                        Response.Redirect("http://greenimax.ir/#!/invoice/"+order.Id);
                     }
-                    context.SaveChanges();
+                    
                 }
 
-                Response.Redirect("http://greenimax.ir/#!/orders");
+               
 
             }
 

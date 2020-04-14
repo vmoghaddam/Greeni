@@ -47,5 +47,6 @@ namespace API.Models
         public string Phone2 { get; set; }
         public string Phone3 { get; set; }
         public string NID { get; set; }
+        public string UserId { get; set; }
     }
 }

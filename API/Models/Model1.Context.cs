@@ -44,9 +44,9 @@ namespace API.Models
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
-        public virtual DbSet<ViewCompany> ViewCompanies { get; set; }
         public virtual DbSet<ViewOrderItem> ViewOrderItems { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<ViewCompany> ViewCompanies { get; set; }
         public virtual DbSet<ViewOrder> ViewOrders { get; set; }
     }
 }
