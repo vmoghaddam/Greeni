@@ -124,6 +124,44 @@
     }
 </style>
 
+<nav class="bigNav" style="text-align:center !important; color:black !important">
+    <!-- Avatar image in top left corner -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <a class="w3-bar-item w3-button " style="position:relative;" data-ng-click="navigate2('/greeni1','greeni1',1)">
+        <span style="font-size:13px;color:black;font-weight:bold;margin-top:5px">گرینی مکس 1</span>
+    </a>
+    <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/greeni2','greeni2',1)">
+        <span style="font-size:13px;color:black;font-weight:bold;margin-top:5px">گرینی مکس 2</span>
+    </a>
+    <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/basket','basket',1)">
+        <span style="font-size:13px;color:black;font-weight:bold;margin-top:5px">سبد خرید  </span>
+        <div ng-show="isBasketNoVisible" class="basket-no">{{basketCount}}</div>
+    </a>
+    <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/orders','orders',1)">
+        <span style="font-size:13px;color:black;font-weight:bold;display:block;margin-top:5px">سفارش ها  </span>
+    </a>
+    <a class="w3-bar-item w3-button w3-padding-large centerNav" style="" data-ng-click="navigate2('/sales','sales',1)">
+        <span style="font-size:13px;color:black;font-weight:bold">نمایندگی های فروش</span>
+    </a>
+    <a class="w3-bar-item w3-button w3-padding-large centerNav" style="" data-ng-click="navigate2('/about','about',1)">
+        <span style="font-size:13px;color:black;font-weight:bold;margin-top:5px;">درباره ما</span>
+    </a>
+
+</nav>
+
+<!--mobile navigation bar-->
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a data-ng-click="navigate2('/greeni1','greeni1',1)">گرینی مکس 1</a>
+    <a data-ng-click="navigate2('/greeni2','greeni2',1)">گرینی مکس 2</a>
+    <a data-ng-click="navigate2('/basket','basket',1)">سبد خرید</a>
+    <a data-ng-click="navigate2('/orders','orders',1)">سفارش ها</a>
+    <a data-ng-click="navigate2('/sales','sales',1)">نمایندگی ها</a>
+    <a data-ng-click="navigate2('/about','about',1)">درباره ما</a>
+</div>
+<i id="main" onclick="openNav()" class="fas fa-bars openbtn"></i>
+
 <div style="color:black; border:1px solid #ccc;padding:10px 20px 30px 10px;max-width:900px;margin :20px auto 0 auto">
     <table class="table1" style="width:100%;background:white;border:none;">
         <tr>
@@ -134,7 +172,9 @@
         </tr>
         <tr>
             <td>
-                <div style="padding-top:15px;font-size:16px;font-weight:bold">شرکت تعاونی رشد رهنمون طوس</div>
+                <div style="        padding-top: 15px;
+        font-size: 16px;
+        font-weight: bold">شرکت تعاونی رشد رهنمون طوس</div>
                 <div style="padding-top:5px;">خراسان رضوی مشهد بلوار پیروزی خیابان فرخی جنوبی ۱۸ پلاک ۱۰۰</div>
                 <div style="padding-top:5px;font-size:15px;">051-33409117</div>
             </td>
@@ -235,3 +275,16 @@
 
 </div>
 <div dx-load-panel="loadPanel"></div>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "0px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+</script>
+
