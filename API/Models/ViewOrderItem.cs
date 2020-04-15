@@ -32,6 +32,7 @@ namespace API.Models
         public string OrderStatus { get; set; }
         public Nullable<decimal> Tax { get; set; }
         public Nullable<decimal> OrderDiscount { get; set; }
-        public Nullable<decimal> Transport { get; set; }
+        public decimal Transport { get; set; }
+        public string UserId { get; set; }
     }
 }

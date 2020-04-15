@@ -1,7 +1,7 @@
 ﻿'use strict';
 app.controller('ordersController', ['$scope', '$rootScope', '$location', '$route', 'orderService', function ($scope, $rootScope, $location, $route, orderService) {
     // $rootScope.setOrderNo(null);
-   
+    $scope.hasOrders = true;
 
     $scope.basketCount = 0;
     $scope.isBasketNoVisible = $scope.basketCount > 0;
@@ -27,8 +27,27 @@ app.controller('ordersController', ['$scope', '$rootScope', '$location', '$route
 
         }, function (err) { $scope.loadingVisible = false; alert(err.message); });
     };
+    $scope.bindUser = function () {
 
+        $scope.loadingVisible = true;
 
+        orderService.getOrdersByUser($rootScope.authId).then(function (response) {
+
+            $scope.loadingVisible = false;
+            $scope.orders = response;
+            $scope.hasOrders = response.length > 0;
+            /////////////////////
+
+        }, function (err) { $scope.loadingVisible = false; alert(err.message); });
+    };
+
+    $scope.getStatus = function (item) {
+        console.log(item);
+        return item.Order.Status;
+    }
+    $scope.goInvoice = function (id) {
+        $location.path('/invoice/'+id);
+    }
    
 
     //$scope.bind();
@@ -77,4 +96,8 @@ app.controller('ordersController', ['$scope', '$rootScope', '$location', '$route
         easing: 'ease-out-back',
         duration: 1000
     });
+
+    if ($rootScope.isSignedIn)
+        $scope.bindUser();
+
 }]);

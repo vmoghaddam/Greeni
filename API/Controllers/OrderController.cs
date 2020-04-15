@@ -187,6 +187,40 @@ namespace API.Controllers
                 var finalvalue = (decimal)oitems_value - (decimal)odiscount + tax + transport;
                 result.Add(new ViewModels.ViewOrderDto()
                 {
+                    Order = x,
+                    Date = x.Date,
+                    DateStr = x.DateStr,
+                    Id = x.Id,
+                    Status = x.Status,
+                    Value = finalvalue,
+                    Items = oitems
+
+                });
+
+            }
+
+            return Ok(result);
+        }
+
+        [Route("api/orders/user/{id}")]
+
+        [AcceptVerbs("GET")]
+        public async Task<IHttpActionResult> GetOrderItemsByUserId(string id)
+        {
+            var orders = await unitOfWork.OrderRepository.GetViewOrdersByUserId(id).OrderByDescending(q => q.Date).ToListAsync();
+            var items = await unitOfWork.OrderRepository.GetViewOrderItemByUserId(id).OrderBy(q => q.ProductId).ToListAsync();
+            var result = new List<ViewModels.ViewOrderDto>();
+            foreach (var x in orders)
+            {
+                var oitems = items.Where(q => q.OrderId == x.Id).ToList();
+                var oitems_value = oitems.Sum(q => q.FinalPriceUnit);
+                var odiscount = (x.Discount == null) ? 0 : ((decimal)x.Discount * oitems_value / 100);
+                var tax = x.Tax == null ? 0 : (decimal)x.Tax;
+                var transport = x.Transport == null ? 0 : (decimal)x.Transport;
+                var finalvalue = (decimal)oitems_value - (decimal)odiscount + tax + transport;
+                result.Add(new ViewModels.ViewOrderDto()
+                {
+                    Order=x,
                     Date = x.Date,
                     DateStr = x.DateStr,
                     Id = x.Id,

@@ -23,7 +23,7 @@ namespace API.Models
         public string Remark { get; set; }
         public Nullable<decimal> Tax { get; set; }
         public Nullable<decimal> Discount { get; set; }
-        public Nullable<decimal> Transport { get; set; }
+        public decimal Transport { get; set; }
         public Nullable<int> StatusId { get; set; }
         public Nullable<int> PersonId { get; set; }
         public string Status { get; set; }

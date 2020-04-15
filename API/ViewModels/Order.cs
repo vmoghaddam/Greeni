@@ -111,6 +111,8 @@ namespace API.ViewModels
 
         public string Status { get; set; }
 
+        public Models.ViewOrder Order { get; set; }
+
         public List<Models.ViewOrderItem> Items = new List<Models.ViewOrderItem>();
     }
 

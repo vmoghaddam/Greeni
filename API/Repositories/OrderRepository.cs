@@ -19,12 +19,22 @@ namespace API.Repositories
         public IQueryable<ViewOrderItem> GetViewOrderItemByMobile(string mobile)
         {
 
-            return   this.context.ViewOrderItems.Where(q => q.Mobile == mobile);
+            return   this.context.ViewOrderItems.Where(q => q.Mobile == mobile || q.Mobile == "0" + mobile);
+        }
+        public IQueryable<ViewOrderItem> GetViewOrderItemByUserId(string userid)
+        {
+
+            return this.context.ViewOrderItems.Where(q => q.UserId==userid);
         }
         public IQueryable<ViewOrder> GetViewOrdersByMobile(string mobile)
         {
 
-            return this.context.ViewOrders.Where(q => q.Mobile == mobile);
+            return this.context.ViewOrders.Where(q => q.Mobile == mobile || q.Mobile=="0"+mobile);
+        }
+        public IQueryable<ViewOrder> GetViewOrdersByUserId(string userid)
+        {
+
+            return this.context.ViewOrders.Where(q => q.UserId==userid);
         }
         internal async Task<CustomActionResult> RemoveOrderItems(int orderId)
         {
