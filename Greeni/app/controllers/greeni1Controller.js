@@ -11,12 +11,20 @@ app.controller('greeni1Controller', ['$scope', '$rootScope', '$location', functi
     $scope.updateBasketCount();
 
     $scope.orderValue = 1;
+    $scope.disHint = $rootScope.getDiscountHint(1, 1);
+    //alert($scope.disHint);
     $scope.num_order = {
         width: '100%',
         height: 45,
         min: 1,
         showSpinButtons: true,
         rtlEnabled: true,
+        valueChangeEvent:'keyup',
+        onValueChanged:function(e){
+            
+            $scope.disHint = $rootScope.getDiscountHint(1, e.value);
+            
+        },
         bindingOptions: {
             value:'orderValue',
         }

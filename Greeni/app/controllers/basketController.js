@@ -26,13 +26,14 @@ app.controller('basketController', ['$scope', '$rootScope', '$location', '$route
         var basket_items = $rootScope.getBasketItems();
         $.each(basket_items, function (_i, _d) {
             var product = Enumerable.From($rootScope.products).Where('$.id==' + _d.productId).FirstOrDefault();
+            var dis = $rootScope.getDiscount(product.id, _d.total);
             var item = {
                 id: product.id,
                 name: product.name,
                 price: product.price,
-                discount: product.discount,
+                discount: dis,
                 total: _d.total,
-                total_price: _d.total * (product.price - product.price * product.discount*1.0/100)
+                total_price:Math.round( _d.total * (product.price - product.price * dis * 1.0 / 100))
             };
             $scope.invoice_price += item.total_price;
             $scope.dataSource.push(item);

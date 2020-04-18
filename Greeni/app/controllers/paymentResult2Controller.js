@@ -44,6 +44,8 @@ app.controller('paymentResult2Controller', ['$scope', '$rootScope', '$location',
             $scope.order.invoiceDate = new persianDate(new Date($scope.order.DateG)).format("YYYY/MM/DD");
             $scope.order.payDate = new persianDate(new Date($scope.order.PayConfirmDate)).format("YYYY/MM/DD");
             $scope.order.TotalAmount2 = new Intl.NumberFormat().format($scope.order.TotalAmount.toFixed(0));
+            $scope.order.TotalAmountInit2 = new Intl.NumberFormat().format($scope.order.TotalAmountInit.toFixed(0));
+            $scope.order.TotalDiscount2 = new Intl.NumberFormat().format($scope.order.TotalDiscount.toFixed(0));
             if (!$scope.order.Transport)
                 $scope.order.Transport = 0;
 
@@ -58,6 +60,7 @@ app.controller('paymentResult2Controller', ['$scope', '$rootScope', '$location',
                 _d.DiscountUnit2 = _d.DiscountUnit.toFixed(0);
                 //'ar-EG'
                 _d.PriceUnit2 = new Intl.NumberFormat().format(_d.PriceUnit2);
+                _d.Price2 = new Intl.NumberFormat().format(_d.Price);
                 _d.Quantity2 = new Intl.NumberFormat().format(_d.Quantity);
 
                 _d.FinalPriceUnit2 = new Intl.NumberFormat().format(_d.FinalPriceUnit.toFixed(0));

@@ -18,9 +18,10 @@ namespace API.Models
         public int OrderId { get; set; }
         public int ProductId { get; set; }
         public int Quantity { get; set; }
-        public decimal PriceUnit { get; set; }
-        public decimal DiscountUnit { get; set; }
-        public Nullable<decimal> FinalPriceUnit { get; set; }
+        public Nullable<double> PriceUnit { get; set; }
+        public Nullable<double> DiscountUnit { get; set; }
+        public Nullable<double> FinalPriceUnit { get; set; }
+        public Nullable<double> Price { get; set; }
         public string Remark { get; set; }
         public Nullable<int> StatusId { get; set; }
         public Nullable<int> OrderStatusId { get; set; }
@@ -32,6 +33,7 @@ namespace API.Models
         public string OrderStatus { get; set; }
         public Nullable<decimal> Tax { get; set; }
         public Nullable<decimal> OrderDiscount { get; set; }
+        public Nullable<double> Discount { get; set; }
         public decimal Transport { get; set; }
         public string UserId { get; set; }
     }

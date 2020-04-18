@@ -7,6 +7,19 @@
         left: 0 !important;
         text-align: center !important;
     }
+    .distbl{
+        background:black;
+        color:white;
+
+    }
+    .distbl tr {
+        border:1px solid #eee;
+        line-height:30px;
+    }
+        .distbl tr td{
+            border: 1px solid #eee;
+             
+        }
 </style>
 
 
@@ -108,7 +121,7 @@
             </div>
 
             <div class="col-lg-4" style="padding:5px">
-                <table style="background:#3cb371;color:white;padding:0;width:100%;border:1px solid #3cb371">
+                <table style="background:#3cb371;color:white;padding:0;width:100%;border:1px solid #3cb371;">
                     <thead>
                         <tr>
                             <th style="text-align:right;padding:12px 10px 12px 10px" colspan="2">جدول تجزیه ضمانت شده</th>
@@ -218,9 +231,50 @@
                 سفارش دهید
             </div>
 
+            <table style="width:100%;margin:0px 0 20px 0" class="distbl">
+                <thead  >
+                    <tr  >
+                        <td colspan="8" style="background:#3cb371;">درصد تخفیف بر اساس کارتن فروش</td>
+                    </tr>
+                    <tr>
+                        <td style="background:#3cb371">کارتن</td>
+                        <td>5</td>
+                        <td>10</td>
+                        <td>15</td>
+                        <td>20</td>
+                        <td>25</td>
+                        <td>30</td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td style="background:#3cb371">تعداد</td>
+                        <td>120</td>
+                        <td>240</td>
+                        <td>360</td>
+                        <td>480</td>
+                        <td>600</td>
+                        <td>720</td>
+                        <td>840</td>
+                    </tr>
 
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="background:#3cb371">درصد تخفیف</td>
+                        <td>10</td>
+                        <td>10.8</td>
+                        <td>11.5</td>
+                        <td>12.3</td>
+                        <td>13</td>
+                        <td>13.8</td>
+                        <td>14.5</td>
+                    </tr>
+                </tbody>
+            </table>
             <div style="width:100%;max-width:350px;margin:0 auto 0 auto;display:inline-block;padding:0px 0 0 0">
+
                 <div dx-number-box="num_order" class="center" style="background:white"></div>
+                <p style="margin-top:10px;color:white;">{{disHint}}</p>
             </div>
             <a class="button" href="" ng-click="addToBasket()" style="width:100%;max-width:350px;overflow:hidden;display:block; margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
                 <span>افزودن به سبد خرید</span>

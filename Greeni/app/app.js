@@ -243,10 +243,10 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
     });
     
     DevExpress.ui.themes.current('material.gray-light');
-
+    //4-18
     $rootScope.products = [
-        {id:1,name:'گرینی مکس 1',price:1000,discount:10},
-        { id: 2, name: 'گرینی مکس 2', price: 2000, discount: 15 },
+        {id:1,name:'گرینی مکس 1',price:180000,discount:0},
+        { id: 2, name: 'گرینی مکس 2', price: 200000, discount: 0 },
     ];
 
     $rootScope.getWindowSize = function () {
@@ -282,6 +282,61 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
 
 
     };
+    //4-18
+    $rootScope.getPrice = function (id) {
+        if (id == 1)
+            return 180000;
+        else
+            return 200000;
+    };
+    $rootScope.getDiscount = function (pid, qty) {
+        var a = 24;
+        if (pid == 1) {
+            if (qty <= 5*a)
+                return 10;
+            if (qty > 5 * a && qty <= 10 * a)
+                return 10.8;
+            if (qty > 10 * a && qty <= 15 * a)
+                return 11.5;
+            if (qty > 15 * a && qty <= 20 * a)
+                return 12.3;
+            if (qty > 20 * a && qty <= 25 * a)
+                return 13;
+            if (qty > 25 * a && qty <= 30 * a)
+                return 13.8;
+            if (qty > 30 * a && qty <= 35 * a)
+                return 14.5;
+            if (qty > 35 * a)
+                return 14.5;
+        }
+
+        if (pid == 2) {
+            if (qty <= 5 * a)
+                return 10;
+            if (qty > 5 * a && qty <= 10 * a)
+                return 10.8;
+            if (qty > 10 * a && qty <= 15 * a)
+                return 11.6;
+            if (qty > 15 * a && qty <= 20 * a)
+                return 12.4;
+            if (qty > 20 * a && qty <= 25 * a)
+                return 13.2;
+            if (qty > 25 * a && qty <= 30 * a)
+                return 14;
+            if (qty > 30 * a && qty <= 35 * a)
+                return 14.8;
+            if (qty > 35 * a)
+                return 14.8;
+        }
+    };
+    $rootScope.getDiscountHint = function (pid, qty) {
+        var price = $rootScope.getPrice(pid);
+        var dis = $rootScope.getDiscount(pid, qty);
+        var value = Math.round(qty * price * dis / 100);
+        var hint = "با توجه به تعداد انتخاب شده به شما "
+        + dis + " درصد" + " تخفیف معادل " + new Intl.NumberFormat().format(value.toFixed(0)) + " ریال، تعلق می گیرد";
+        return hint;
+    }
     $rootScope.getGreeni = function () {
         var epa_greeni = localStorage.getItem("epa_greeni");
         if (!epa_greeni) {

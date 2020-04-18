@@ -180,8 +180,8 @@ namespace API.Controllers
             foreach (var x in orders)
             {
                 var oitems = items.Where(q => q.OrderId == x.Id).ToList();
-                var oitems_value = oitems.Sum(q => q.FinalPriceUnit  );
-                var odiscount = (x.Discount == null) ? 0 : ((decimal)x.Discount * oitems_value / 100);
+                var oitems_value =(decimal) oitems.Sum(q => q.FinalPriceUnit  );
+                var odiscount = (x.Discount == null) ? 0 : ((decimal)x.Discount *  oitems_value / 100);
                 var tax = x.Tax == null ? 0 : (decimal)x.Tax;
                 var transport = x.Transport == null ? 0 : (decimal)x.Transport;
                 var finalvalue = (decimal)oitems_value - (decimal)odiscount + tax + transport;
@@ -213,7 +213,7 @@ namespace API.Controllers
             foreach (var x in orders)
             {
                 var oitems = items.Where(q => q.OrderId == x.Id).ToList();
-                var oitems_value = oitems.Sum(q => q.FinalPriceUnit);
+                var oitems_value =(decimal) oitems.Sum(q => q.FinalPriceUnit);
                 var odiscount = (x.Discount == null) ? 0 : ((decimal)x.Discount * oitems_value / 100);
                 var tax = x.Tax == null ? 0 : (decimal)x.Tax;
                 var transport = x.Transport == null ? 0 : (decimal)x.Transport;
