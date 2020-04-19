@@ -5,7 +5,7 @@ app.controller('greeni1Controller', ['$scope', '$rootScope', '$location', functi
     $scope.basketCount = 0;
     $scope.isBasketNoVisible = $scope.basketCount>0;
     $scope.updateBasketCount = function () {
-        $scope.basketCount = $rootScope.getBasketTotalCount();
+       // $scope.basketCount = $rootScope.getBasketTotalCount();
         $scope.isBasketNoVisible = $scope.basketCount > 0;
     };
     $scope.updateBasketCount();
