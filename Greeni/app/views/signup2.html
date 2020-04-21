@@ -82,22 +82,26 @@
     </nav>
 
 
-
     <!-- Page Content -->
     <div class="w3-padding-large" id="main">
         <!-- Header/Home -->
         <header class="w3-container w3-padding-48 w3-center w3-black" id="home" style="padding-top:20px !important">
             <!--<h1 class="w3-jumbo  hidden-xs"><span style="font-size:60px">GREEN<span style="color:red;font-style:italic;font-size:70px; font-weight:bold; padding:0px 6px 0px 0px">i</span>MAX</span></h1>
             <h1 class="w3-jumbo  hidden-lg hidden-md hidden-sm"><span style="font-size:40px">GREEN<span style="color:red;font-style:italic;font-size:50px; font-weight:bold; padding:0px 6px 0px 0px">i</span>MAX</span></h1>-->
-            <h1 class="w3-jumbo  hidden-xs">عضویت (فروشگاه)</h1>
+            <h1 class="w3-jumbo  hidden-xs">عضویت</h1>
         </header>
 
         <div class="col-lg-12" style="padding:0 0px 0 20px;text-align:center">
             <div class="w3-content w3-justify w3-text-grey" style="text-align:center !important">
                 <div style="width:100%;max-width:350px;margin:0px auto 0 auto;display:inline-block;padding:0px 0 0 0;">
-                    <div dx-text-box="txt_FirstName" class="name" style="background:white" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
+                    <div dx-text-box="txt_Mobile" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
+                    <div dx-text-box="txt_FirstName" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
+                    <div dx-text-box="txt_LastName" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
+                    <div dx-text-area="txt_Address" class="name" style="background:white; margin-top:7px" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required',message:'این فیلد ضروری است'}]}"></div>
 
                     <div dx-button="btn_save" style="margin-top:10px"></div>
+
+                    <div dx-button="btn_signup" style="margin-top:10px"></div>
                 </div>
             </div>
 
@@ -113,6 +117,10 @@
     <div dx-load-panel="loadPanel"></div>
 
 </div>
+
+
+
+
 
 <div class="navbar w3-hide-large  " style="border-bottom:#3cb371 2px solid;border-top:#3cb371 2px solid;padding:7px 0 7px 0">
     <table style="width:100%">

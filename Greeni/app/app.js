@@ -43,17 +43,17 @@ General.Modal = function (str, callback) {
 
 
 
-var app = angular.module('AngularJSApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'dx', 'ngSanitize', 'ngAnimate' ]).config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
+var app = angular.module('AngularJSApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'dx', 'ngSanitize', 'ngAnimate']).config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
 }]);
- 
- 
+
+
 app.config(function ($routeProvider) {
     var version = 0.9;
-    
+
     $routeProvider.when("/greeni1", {
         controller: "greeni1Controller",
-        templateUrl: "/app/views/greeni1.html?v="+version
+        templateUrl: "/app/views/greeni1.html?v=" + version
     });
     $routeProvider.when("/greeni2", {
         controller: "greeni2Controller",
@@ -74,6 +74,12 @@ app.config(function ($routeProvider) {
         controller: "aboutController",
         templateUrl: "/app/views/about.html?v=" + version
     });
+
+    $routeProvider.when("/signup/user", {
+        controller: "signup2Controller",
+        templateUrl: "/app/views/signup2.html?v=" + version
+    });
+
     $routeProvider.when("/signup", {
         controller: "signupController",
         templateUrl: "/app/views/signup.html?v=" + version
@@ -83,11 +89,7 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/signup.html?v=" + version
     })
 
-    $routeProvider.when("/signup2", {
-        controller: "signup2Controller",
-        templateUrl: "/app/views/signup.html?v=" + version
-    });
-
+    
     $routeProvider.when("/signin", {
         controller: "signinController",
         templateUrl: "/app/views/signin.html?v=" + version
@@ -121,14 +123,14 @@ app.config(function ($routeProvider) {
     });
 
 
-    
+
     $routeProvider.when("/paymentResult", {
         controller: "paymentResultController",
         templateUrl: "/app/views/paymentResult.html?v=" + version
     });
 
 
-    
+
     $routeProvider.when("/paymentResult2/:id", {
         controller: "paymentResult2Controller",
         templateUrl: "/app/views/paymentResult2.html?v=" + version
@@ -140,14 +142,14 @@ app.config(function ($routeProvider) {
     });
 
 
-    
+
     $routeProvider.otherwise({ redirectTo: "/greeni1" });
 
-});   
+});
 
- 
- 
- 
+
+
+
 var serviceBase = 'http://localhost:58909/';
 //var serviceBase = 'http://api.greeni.epatrin.ir/';
 app.constant('ngAuthSettings', {
@@ -157,7 +159,7 @@ app.constant('ngAuthSettings', {
 app.config(['$httpProvider', function ($httpProvider) {
 
     $httpProvider.interceptors.push('authInterceptorService');
-    }]);
+}]);
 app.run(['$rootScope', '$location', '$window', 'authService', function ($rootScope, $location, $window, authService) {
     $window.ga('create', 'UA-159921170-1', 'auto');
     $rootScope.$on('$routeChangeSuccess', function () {
@@ -180,7 +182,7 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
     $rootScope.signIn = function () { $location.path('/signin'); };
 
     $rootScope.click_contact = function () {
-        
+
         $rootScope.popup_signin_visible = true;
     };
     $rootScope.isContentVisible = false;
@@ -228,7 +230,7 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
         //}
         bindingOptions: {
             visible: 'popup_signin_visible',
-            
+
             title: 'popup_signin_title',
 
         }
@@ -238,14 +240,14 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
     //////////////////////////
     $rootScope.serviceUrl = serviceBase;
     $rootScope.$on('$viewContentLoaded', function () {
-        
-        
+
+
     });
-    
+
     DevExpress.ui.themes.current('material.gray-light');
     //4-18
     $rootScope.products = [
-        {id:1,name:'گرینی مکس 1',price:180000,discount:0},
+        { id: 1, name: 'گرینی مکس 1', price: 180000, discount: 0 },
         { id: 2, name: 'گرینی مکس 2', price: 200000, discount: 0 },
     ];
 
@@ -277,7 +279,7 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
             return w;//$jq(window).width();
     };
     $rootScope.navigate2 = function (target, key, module) {
- 
+
         $location.path(target);
 
 
@@ -292,7 +294,7 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
     $rootScope.getDiscount = function (pid, qty) {
         var a = 24;
         if (pid == 1) {
-            if (qty <= 5*a)
+            if (qty <= 5 * a)
                 return 10;
             if (qty > 5 * a && qty <= 10 * a)
                 return 10.8;
@@ -334,7 +336,7 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
         var dis = $rootScope.getDiscount(pid, qty);
         var value = Math.round(qty * price * dis / 100);
         var hint = "با توجه به تعداد انتخاب شده به شما "
-        + dis + " درصد" + " تخفیف معادل " + new Intl.NumberFormat().format(value.toFixed(0)) + " ریال، تعلق می گیرد";
+            + dis + " درصد" + " تخفیف معادل " + new Intl.NumberFormat().format(value.toFixed(0)) + " ریال، تعلق می گیرد";
         return hint;
     }
     $rootScope.getGreeni = function () {
@@ -375,7 +377,7 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
             console.log(current.total);
         }
         else {
-            basket_items.push({ productId: _productId, total: _total,status:-1 });
+            basket_items.push({ productId: _productId, total: _total, status: -1 });
         }
         console.log(greeni);
         localStorage.setItem("epa_greeni", JSON.stringify(greeni));
@@ -384,9 +386,9 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
 
     $rootScope.removeFromBasket = function (_productId) {
         var greeni = $rootScope.getGreeni();
-        greeni.basket.items = Enumerable.From(greeni.basket.items).Where('$.productId!=' + _productId).ToArray(); 
-        
-       
+        greeni.basket.items = Enumerable.From(greeni.basket.items).Where('$.productId!=' + _productId).ToArray();
+
+
         localStorage.setItem("epa_greeni", JSON.stringify(greeni));
     };
     $rootScope.emptyBasket = function () {
@@ -416,22 +418,22 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
         dto.Mobile = mobile;
         dto.Name = name;
         dto.StatusId = -1;
-     
 
-        dto.OrderItems= [];
+
+        dto.OrderItems = [];
         var basket_items = greeni.basket.items;
         $.each(basket_items, function (_i, _d) {
             var product = Enumerable.From($rootScope.products).Where('$.id==' + _d.productId).FirstOrDefault();
             var item = {
                 ProductId: product.id,
                 DiscountUnit: product.discount,
-                 OrderId:-1,
-                StatusId:-1,
+                OrderId: -1,
+                StatusId: -1,
                 Quantity: _d.total,
                 PriceUnit: product.price,
-                Id:-1,
+                Id: -1,
             };
-         
+
 
             dto.OrderItems.push(item);
         });
@@ -439,10 +441,9 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
     };
 
 
-    
+
     $rootScope.isContentVisible = true;
     //////////////////////////////////////////////////////
 }]);
- 
- 
- 
+
+

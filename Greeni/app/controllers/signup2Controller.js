@@ -1,8 +1,14 @@
 ﻿'use strict';
-app.controller('signup2Controller', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
-
+app.controller('signup2Controller', ['$scope', '$rootScope', '$location', 'authService', '$route', '$routeParams', function ($scope, $rootScope, $location, authService, $route, $routeParams) {
+    $scope.refer = $routeParams.refer;
+    var $jq = jQuery.noConflict();
     $scope.entity = {
-        FirstName: null,
+        firstName: null,
+        lastName: null,
+        address: null,
+        mobile: null,
+        
+
     };
 
     $scope.txt_FirstName = {
@@ -12,9 +18,67 @@ app.controller('signup2Controller', ['$scope', '$rootScope', '$location', functi
         placeholder: 'نام',
         rtlEnabled: true,
         bindingOptions: {
-            value: 'entity.FirstName',
+            value: 'entity.firstName',
 
         }
+    };
+
+    $scope.txt_LastName = {
+        hoverStateEnabled: false,
+        width: '100%',
+        height: 45,
+        placeholder: ' نام خانوادگی',
+        rtlEnabled: true,
+        bindingOptions: {
+            value: 'entity.lastName',
+
+        }
+    };
+
+
+    $scope.txt_Address = {
+        hoverStateEnabled: false,
+        width: '100%',
+        height: 90,
+        placeholder: ' آدرس',
+        rtlEnabled: true,
+        bindingOptions: {
+            value: 'entity.address',
+
+        }
+    };
+
+    $scope.txt_Mobile = {
+        hoverStateEnabled: false,
+        width: '100%',
+        height: 45,
+        placeholder: 'تلفن همراه ',
+        rtlEnabled: true,
+        bindingOptions: {
+            value: 'entity.mobile',
+
+        }
+    };
+
+
+
+    $scope.btn_signup = {
+        text: 'ثبت نام فروشگاه',
+        type: 'default',
+        icon: 'check',
+        width: '100%',
+        height: 45,
+        rtlEnabled: true,
+        //validationGroup: 'signin',
+        onClick: function (e) {
+            if (!$scope.refer)
+                $location.path('/signup');
+            else
+                $location.path('/signup/' + $scope.refer)
+
+
+        }
+
     };
 
 
@@ -35,8 +99,19 @@ app.controller('signup2Controller', ['$scope', '$rootScope', '$location', functi
                 return;
             }
             /////////
+            $scope.loadingVisible = true;
+            authService.registerCompany($scope.entity).then(function (response) {
 
+                // General.ShowNotify(Config.Text_SavedOk, 'success');
 
+                $scope.loadingVisible = false;
+                if (!$scope.refer)
+                    $location.path('/signin');
+                else
+                    $location.path('/signin/' + $scope.refer);
+
+            }, function (err) { $scope.loadingVisible = false; General.ShowNotify(err.message, 'error'); });
+            ////////////////////
         }
 
     };
