@@ -45,6 +45,7 @@ app.controller('greeni1Controller', ['$scope', '$rootScope', '$location', functi
         height: 45,
         placeholder: 'نام',
         bindingOptions: {
+
             value: 'name',
         }
     };

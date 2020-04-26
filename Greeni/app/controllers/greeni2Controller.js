@@ -3,6 +3,7 @@ app.controller('greeni2Controller', ['$scope', '$rootScope', '$location', functi
 
     $scope.productId = 2;
     $scope.basketCount = 0;
+
     $scope.isBasketNoVisible = $scope.basketCount > 0;
     $scope.updateBasketCount = function () {
         $scope.basketCount = $rootScope.getBasketTotalCount();

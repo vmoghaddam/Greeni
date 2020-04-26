@@ -441,8 +441,9 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
                 Quantity: _d.total,
                 PriceUnit: product.price,
                 Id: -1,
-            };
 
+            };
+             
 
             dto.OrderItems.push(item);
         });
