@@ -79,6 +79,10 @@ app.config(function ($routeProvider) {
         controller: "signup2Controller",
         templateUrl: "/app/views/signup2.html?v=" + version
     });
+    $routeProvider.when("/signup/user/:refer", {
+        controller: "signup2Controller",
+        templateUrl: "/app/views/signup2.html?v=" + version
+    })
 
     $routeProvider.when("/signup", {
         controller: "signupController",
@@ -171,6 +175,9 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
 
 
     });
+    ////4-21
+    
+
 
     ///// New
     $rootScope.isSignedIn = false;
@@ -292,6 +299,8 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
             return 200000;
     };
     $rootScope.getDiscount = function (pid, qty) {
+        if ($rootScope.role != 'Company')
+            return 0;
         var a = 24;
         if (pid == 1) {
             if (qty <= 5 * a)

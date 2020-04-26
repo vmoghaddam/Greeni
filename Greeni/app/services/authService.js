@@ -340,6 +340,17 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
         return deferred.promise;
     };
+    var _registerUser = function (entity) {
+        var deferred = $q.defer();
+        $http.post($rootScope.serviceUrl + 'api/user/register', entity).then(function (response) {
+            deferred.resolve(response.data);
+        }, function (err, status) {
+
+            deferred.reject(Exceptions.getMessage(err));
+        });
+
+        return deferred.promise;
+    };
 
     var _saveActivity = function (entity) {
         var deferred = $q.defer();
@@ -372,6 +383,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     authServiceFactory.register2 = _register2;
     authServiceFactory.changePassword = _changePassword;
     authServiceFactory.registerCompany = _registerCompany;
+    authServiceFactory.registerUser = _registerUser;
     authServiceFactory.updateCompany = _updateCompany;
     authServiceFactory.saveActivity = _saveActivity;
     authServiceFactory.IsAuthurized = function () {

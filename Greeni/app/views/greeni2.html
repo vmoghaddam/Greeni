@@ -192,7 +192,7 @@
             <div style="text-align:center;color: white ; font-size: 20px;padding: 40px 0 10px 0; margin-bottom: 30px; font-weight: bold; border-bottom: 1px solid white">
                 سفارش دهید
             </div>
-            <table style="width:100%;margin:0px 0 20px 0" class="distbl">
+            <table style="width:100%;margin:0px 0 20px 0" class="distbl" ng-show="role=='Company'">
                 <thead>
                     <tr>
                         <td colspan="8" style="background:#3cb371;">درصد تخفیف بر اساس کارتن فروش</td>
@@ -234,7 +234,7 @@
             </table>
             <div style="width:100%;max-width:350px;margin:0 auto 0 auto;display:inline-block;padding:0px 0 0 0">
                 <div dx-number-box="num_order" class="center" style="background:white"></div>
-                <p style="margin-top:10px;color:white;">{{disHint}}</p>
+                <p style="margin-top:10px;color:white;" ng-show="role=='Company'">{{disHint}}</p>
             </div>
             <a class="button" href="" ng-click="addToBasket()" style="width:100%;max-width:350px;overflow:hidden;display:block; margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
                 <span>افزودن به سبد خرید</span>

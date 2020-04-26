@@ -81,9 +81,9 @@ app.controller('signinController', ['$scope', '$routeParams', '$location', 'auth
         //validationGroup: 'signin',
         onClick: function (e) {
             if (!$scope.refer)
-                $location.path('/signup');
+                $location.path('/signup/user');
             else
-                $location.path('/signup/' + $scope.refer)
+                $location.path('/signup/user/' + $scope.refer)
 
 
         }

@@ -118,6 +118,84 @@ namespace API.Controllers
             return Ok(company);
         }
 
+        [Route("api/user/register")]
+        [AcceptVerbs("POST")]
+        public async Task<IHttpActionResult> PostRegisterUser(dynamic dto)
+        {
+            // return Ok(client);
+            if (dto == null)
+                return Exceptions.getNullException(ModelState);
+            if (!ModelState.IsValid)
+            {
+                // return BadRequest(ModelState);
+                return Exceptions.getModelValidationException(ModelState);
+            }
+            var validate = unitOfWork.CompanyRepository.Validate();
+            if (validate.Code != HttpStatusCode.OK)
+                return validate;
+            var id = Convert.ToInt32(dto.id);
+           
+            var email = Convert.ToString(dto.email);
+            string password = Convert.ToString(dto.password);
+            var repassword = dto.confirmPassword;
+            
+            var address = dto.address;
+            
+            var firstName = dto.firstName;
+            var lastName = dto.lastName;
+            
+            var mobile = Convert.ToString(dto.mobile);
+            
+            ApplicationUserManager UserManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+            var user = new ApplicationUser() { UserName = mobile, Email = email };
+
+            IdentityResult result = await UserManager.CreateAsync(user, password);
+            if (!result.Succeeded)
+            {
+                return new CustomActionResult(HttpStatusCode.BadRequest, GetErrorResult(result));
+
+            }
+
+            ApplicationUser created = await UserManager.FindByNameAsync(mobile);
+
+
+            await UserManager.AddToRoleAsync(created.Id, "User");
+
+
+            Company company = new Company()
+            {
+                 
+                Email = email,
+                
+                Address = address,
+                DateJoin = DateTime.Now,
+                ImageUrl = "_x2.png",
+                
+                FirstName = firstName,
+                LastName = lastName,
+                Mobile = mobile,
+               
+                UserId = created.Id,
+                IsUser=true,
+
+            };
+
+            unitOfWork.CompanyRepository.Insert(company);
+
+            var saveResult = await unitOfWork.SaveAsync();
+            if (saveResult.Code != HttpStatusCode.OK)
+                return saveResult;
+
+
+
+            saveResult = await unitOfWork.SaveAsync();
+            if (saveResult.Code != HttpStatusCode.OK)
+                return saveResult;
+
+            return Ok(company);
+        }
+
         [Route("api/company/update")]
         [AcceptVerbs("POST")]
         public async Task<IHttpActionResult> PostUpdateCompany( CompanyDto dto)

@@ -62,9 +62,9 @@ namespace API.Providers
                 if (roles == "Company")
                     oAuthIdentity.AddClaim(new Claim(ClaimTypes.Role, "Company"));
                 else if (roles == "User")
-                    oAuthIdentity.AddClaim(new Claim(ClaimTypes.Role, "nuser"));
+                    oAuthIdentity.AddClaim(new Claim(ClaimTypes.Role, "User"));
                 else
-                    oAuthIdentity.AddClaim(new Claim(ClaimTypes.Role, "user"));
+                    oAuthIdentity.AddClaim(new Claim(ClaimTypes.Role, "xuser"));
 
 
                 oAuthIdentity.AddClaim(new Claim("sub", context.UserName));
@@ -72,9 +72,10 @@ namespace API.Providers
 
                 AuthenticationProperties properties = CreateProperties(user.UserName, (context.ClientId == null) ? string.Empty : context.ClientId);
                 properties.Dictionary.Add("AuthId", user.Id);
+                var company = await unitOfWork.CompanyRepository.GetViewCompanyByMobile(context.UserName);
                 if (roles == "Company")
                 {
-                    var company = await unitOfWork.CompanyRepository.GetViewCompanyByMobile(context.UserName);
+                    
                     if (company != null)
                     {
                         properties.Dictionary.Add("Name", company.Name);
@@ -87,13 +88,13 @@ namespace API.Providers
                 }
                 else
                 {
-                    ViewPerson person = await unitOfWork.PersonRepository.GetViewPersonByUserId(user.Id);
-                    if (person != null)
+                    //ViewPerson person = await unitOfWork.PersonRepository.GetViewPersonByUserId(user.Id);
+                    if (company != null)
                     {
-                        properties.Dictionary.Add("Name", person.Name);
-                        properties.Dictionary.Add("UserId", person.Id.ToString());
-                        properties.Dictionary.Add("Image", person.ImageUrl.ToString());
-                        properties.Dictionary.Add("Role", roles != "User" ? "Person" : "User");
+                        properties.Dictionary.Add("Name", company.FullName);
+                        properties.Dictionary.Add("UserId", company.Id.ToString());
+                        properties.Dictionary.Add("Image", string.IsNullOrEmpty(company.ImageUrl) ? "" : company.ImageUrl.ToString());
+                        properties.Dictionary.Add("Role",   "User");
                         //   properties.Dictionary.Add("EmployeeId", employee.Id.ToString());
 
                     }

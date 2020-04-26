@@ -59,5 +59,6 @@ namespace API.Models
         public string CompanyLocation { get; set; }
         public Nullable<int> CompanyId { get; set; }
         public string CompanyZIPCode { get; set; }
+        public Nullable<bool> IsUser { get; set; }
     }
 }

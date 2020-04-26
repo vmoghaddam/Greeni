@@ -36,5 +36,6 @@ namespace API.Models
         public Nullable<double> Discount { get; set; }
         public decimal Transport { get; set; }
         public string UserId { get; set; }
+        public Nullable<bool> IsUser { get; set; }
     }
 }

@@ -130,6 +130,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.City' does not have a primary 
           <Property Name="Phone2" Type="nvarchar" MaxLength="255" />
           <Property Name="Phone3" Type="nvarchar" MaxLength="255" />
           <Property Name="NID" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsUser" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'greenim1_greeni.dbo.Country' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -344,6 +345,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewCompany' does not have a p
           <Property Name="Phone3" Type="nvarchar" MaxLength="255" />
           <Property Name="NID" Type="nvarchar" MaxLength="255" />
           <Property Name="UserId" Type="nvarchar" MaxLength="256" />
+          <Property Name="IsUser" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'greenim1_greeni.dbo.ViewCountry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -425,6 +427,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewOrder' does not have a pri
           <Property Name="CompanyLocation" Type="nvarchar" MaxLength="1514" />
           <Property Name="CompanyId" Type="int" />
           <Property Name="CompanyZIPCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsUser" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'greenim1_greeni.dbo.ViewOrderItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -460,6 +463,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewOrderItem' does not have a
           <Property Name="Discount" Type="float" />
           <Property Name="Transport" Type="decimal" Precision="18" Scale="8" Nullable="false" />
           <Property Name="UserId" Type="varchar" MaxLength="500" />
+          <Property Name="IsUser" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -710,7 +714,8 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
     [ViewCompany].[Phone2] AS [Phone2], 
     [ViewCompany].[Phone3] AS [Phone3], 
     [ViewCompany].[NID] AS [NID], 
-    [ViewCompany].[UserId] AS [UserId]
+    [ViewCompany].[UserId] AS [UserId], 
+    [ViewCompany].[IsUser] AS [IsUser]
     FROM [dbo].[ViewCompany] AS [ViewCompany]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ViewCountry" EntityType="Self.ViewCountry" store:Type="Views" store:Schema="dbo">
@@ -775,7 +780,8 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
     [ViewOrder].[CompanyState] AS [CompanyState], 
     [ViewOrder].[CompanyLocation] AS [CompanyLocation], 
     [ViewOrder].[CompanyId] AS [CompanyId], 
-    [ViewOrder].[CompanyZIPCode] AS [CompanyZIPCode]
+    [ViewOrder].[CompanyZIPCode] AS [CompanyZIPCode], 
+    [ViewOrder].[IsUser] AS [IsUser]
     FROM [dbo].[ViewOrder] AS [ViewOrder]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ViewOrderItem" EntityType="Self.ViewOrderItem" store:Type="Views" store:Schema="dbo">
@@ -801,7 +807,8 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
     [ViewOrderItem].[OrderDiscount] AS [OrderDiscount], 
     [ViewOrderItem].[Discount] AS [Discount], 
     [ViewOrderItem].[Transport] AS [Transport], 
-    [ViewOrderItem].[UserId] AS [UserId]
+    [ViewOrderItem].[UserId] AS [UserId], 
+    [ViewOrderItem].[IsUser] AS [IsUser]
     FROM [dbo].[ViewOrderItem] AS [ViewOrderItem]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ViewPerson" EntityType="Self.ViewPerson" store:Type="Views" store:Schema="dbo">
@@ -899,7 +906,6 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="Companies" EntityType="EPAGRIFFINModel.Company" />
           <EntitySet Name="Orders" EntityType="EPAGRIFFINModel.Order" />
           <AssociationSet Name="fk_order_person" Association="EPAGRIFFINModel.fk_order_person">
             <End Role="Person" EntitySet="People" />
@@ -909,6 +915,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderItem" EntitySet="OrderItems" />
           </AssociationSet>
+          <EntitySet Name="Companies" EntityType="EPAGRIFFINModel.Company" />
           <EntitySet Name="ViewCompanies" EntityType="EPAGRIFFINModel.ViewCompany" />
           <EntitySet Name="ViewOrders" EntityType="EPAGRIFFINModel.ViewOrder" />
           <EntitySet Name="ViewOrderItems" EntityType="EPAGRIFFINModel.ViewOrderItem" />
@@ -1210,37 +1217,6 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
           <End Type="EPAGRIFFINModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="EPAGRIFFINModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityType Name="Company">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Website" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Url" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="DateVerified" Type="DateTime" Precision="3" />
-          <Property Name="Twitter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="LinkedIn" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="PersonId" Type="Int32" />
-          <Property Name="DateJoin" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ZIPCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="CountryId" Type="Int32" />
-          <Property Name="Network" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Phone2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Phone3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="NID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="Id" />
@@ -1302,6 +1278,38 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="DateVerified" Type="DateTime" Precision="3" />
+          <Property Name="Twitter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LinkedIn" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="DateJoin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ZIPCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="Network" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsUser" Type="Boolean" />
+        </EntityType>
         <EntityType Name="ViewCompany">
           <Key>
             <PropertyRef Name="Id" />
@@ -1344,6 +1352,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="Phone3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="NID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="UserId" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IsUser" Type="Boolean" />
         </EntityType>
         <EntityType Name="ViewOrder">
           <Key>
@@ -1396,6 +1405,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="CompanyLocation" Type="String" MaxLength="1514" FixedLength="false" Unicode="true" />
           <Property Name="CompanyId" Type="Int32" />
           <Property Name="CompanyZIPCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsUser" Type="Boolean" />
         </EntityType>
         <EntityType Name="ViewOrderItem">
           <Key>
@@ -1429,6 +1439,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
           <Property Name="Discount" Type="Double" />
           <Property Name="Transport" Type="Decimal" Nullable="false" Precision="18" Scale="8" />
           <Property Name="UserId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsUser" Type="Boolean" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1710,38 +1721,6 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Companies">
-            <EntityTypeMapping TypeName="EPAGRIFFINModel.Company">
-              <MappingFragment StoreEntitySet="Company">
-                <ScalarProperty Name="NID" ColumnName="NID" />
-                <ScalarProperty Name="Phone3" ColumnName="Phone3" />
-                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Network" ColumnName="Network" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="ZIPCode" ColumnName="ZIPCode" />
-                <ScalarProperty Name="DateJoin" ColumnName="DateJoin" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
-                <ScalarProperty Name="LinkedIn" ColumnName="LinkedIn" />
-                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
-                <ScalarProperty Name="DateVerified" ColumnName="DateVerified" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="EPAGRIFFINModel.Order">
               <MappingFragment StoreEntitySet="Order">
@@ -1778,9 +1757,43 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="EPAGRIFFINModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="IsUser" ColumnName="IsUser" />
+                <ScalarProperty Name="NID" ColumnName="NID" />
+                <ScalarProperty Name="Phone3" ColumnName="Phone3" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Network" ColumnName="Network" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZIPCode" ColumnName="ZIPCode" />
+                <ScalarProperty Name="DateJoin" ColumnName="DateJoin" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="LinkedIn" ColumnName="LinkedIn" />
+                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+                <ScalarProperty Name="DateVerified" ColumnName="DateVerified" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ViewCompanies">
             <EntityTypeMapping TypeName="EPAGRIFFINModel.ViewCompany">
               <MappingFragment StoreEntitySet="ViewCompany">
+                <ScalarProperty Name="IsUser" ColumnName="IsUser" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="NID" ColumnName="NID" />
                 <ScalarProperty Name="Phone3" ColumnName="Phone3" />
@@ -1821,6 +1834,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
           <EntitySetMapping Name="ViewOrders">
             <EntityTypeMapping TypeName="EPAGRIFFINModel.ViewOrder">
               <MappingFragment StoreEntitySet="ViewOrder">
+                <ScalarProperty Name="IsUser" ColumnName="IsUser" />
                 <ScalarProperty Name="CompanyZIPCode" ColumnName="CompanyZIPCode" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
                 <ScalarProperty Name="CompanyLocation" ColumnName="CompanyLocation" />
@@ -1872,6 +1886,7 @@ warning 6002: The table/view 'greenim1_greeni.dbo.ViewPerson' does not have a pr
           <EntitySetMapping Name="ViewOrderItems">
             <EntityTypeMapping TypeName="EPAGRIFFINModel.ViewOrderItem">
               <MappingFragment StoreEntitySet="ViewOrderItem">
+                <ScalarProperty Name="IsUser" ColumnName="IsUser" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Transport" ColumnName="Transport" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />

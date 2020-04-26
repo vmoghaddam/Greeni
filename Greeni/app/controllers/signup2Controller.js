@@ -7,10 +7,21 @@ app.controller('signup2Controller', ['$scope', '$rootScope', '$location', 'authS
         lastName: null,
         address: null,
         mobile: null,
+        email:null,
         
 
     };
+    $scope.txt_Email = {
+        hoverStateEnabled: false,
+        width: '100%',
+        height: 45,
+        placeholder: ' ایمیل',
+        rtlEnabled: true,
+        bindingOptions: {
+            value: 'entity.email',
 
+        }
+    };
     $scope.txt_FirstName = {
         hoverStateEnabled: false,
         width: '100%',
@@ -60,7 +71,59 @@ app.controller('signup2Controller', ['$scope', '$rootScope', '$location', 'authS
         }
     };
 
+    $scope.txt_Password = {
+        hoverStateEnabled: false,
+        width: '100%',
+        height: 45,
+        placeholder: 'کلمه عبور',
+        mode: "password",
+        rtlEnabled: true,
+        bindingOptions: {
+            value: 'entity.password',
 
+        }
+    };
+
+    $scope.txt_ConfirmPassword = {
+        hoverStateEnabled: false,
+        width: '100%',
+        height: 45,
+        placeholder: 'تکرار کلمه عبور',
+        mode: "password",
+        rtlEnabled: true,
+        bindingOptions: {
+            value: 'entity.confirmPassword',
+
+        }
+    };
+
+    $scope.passwordValidationRules = {
+        validationGroup: 'signup',
+        validationRules: [{
+
+            type: "required",
+            message: "Password is required"
+        }]
+    };
+
+    $scope.confirmPasswordValidationRules = {
+        validationGroup: 'signup',
+        validationRules: [{
+
+            type: "compare",
+            comparisonTarget: function () {
+                var password = $jq("#password-validation2").dxTextBox("instance");
+                if (password) {
+                    return password.option("value");
+                }
+            },
+            message: "کلمه عبور اشتباه است"
+        },
+        {
+            type: "required",
+            message: "Confirm Password is required"
+        }]
+    };
 
     $scope.btn_signup = {
         text: 'ثبت نام فروشگاه',
@@ -100,7 +163,7 @@ app.controller('signup2Controller', ['$scope', '$rootScope', '$location', 'authS
             }
             /////////
             $scope.loadingVisible = true;
-            authService.registerCompany($scope.entity).then(function (response) {
+            authService.registerUser($scope.entity).then(function (response) {
 
                 // General.ShowNotify(Config.Text_SavedOk, 'success');
 

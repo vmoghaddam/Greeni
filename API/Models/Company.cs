@@ -40,5 +40,6 @@ namespace API.Models
         public string Phone2 { get; set; }
         public string Phone3 { get; set; }
         public string NID { get; set; }
+        public Nullable<bool> IsUser { get; set; }
     }
 }
