@@ -7,55 +7,86 @@
         left: 0 !important;
         text-align: center !important;
     }
+
+    @media (min-width:756px) {
+
+        .sidebar {
+            display: none
+        }
+
+        #baricon {
+            display: none
+        }
+    }
+
+    @media (max-width:756px) {
+        .bigNav {
+            display: none
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+            .sidebar a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 25px;
+                color: #818181;
+                display: block;
+                transition: 0.3s;
+            }
+
+                .sidebar a:hover {
+                    color: #f1f1f1;
+                }
+
+            .sidebar .closebtn {
+                position: absolute;
+                top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+            }
+
+        .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+        }
+
+            .openbtn:hover {
+                background-color: #444;
+            }
+
+        #baricon {
+            transition: margin-right .5s;
+            padding: 40px 20px 0px 0px;
+            background-color: #000;
+            float: right;
+            margin-top: -20px
+        }
+
+        .mainImage {
+            width: 100%;
+            height: auto
+        }
+    }
 </style>
 
 <div class="box home" style="direction:rtl;text-align:right">
-    <!-- Icon Bar (Sidebar - hidden on small screens) -->
-    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" style="overflow:hidden !important">
-
-        <!-- Avatar image in top left corner -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <a class="w3-bar-item w3-button w3-padding-large " style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni1','greeni1',1)">
-            <img src="img/g1.png" style="height:70px" />
-            <img src="img/greeni1.png" style="width:100%" />
-
-        </a>
-
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni2','greeni2',1)">
-            <img src="img/g2.png" style="height:70px" />
-
-            <img src="img/greenimax2.png" style="width:100%" />
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket menu-selected" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/basket','basket',1)">
-            <i class="fas fa-shopping-cart" style="font-size:40px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سبد خرید  </span>
-            <div ng-show="isBasketNoVisible" class="basket-no">{{basketCount}}</div>
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/orders','orders',1)">
-            <i class="fas fa-boxes" style="font-size:40px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سفارش ها  </span>
-
-        </a>
-
-       
-
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
-            <i class="fas fa-pen-fancy" style="font-size:32px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block">وبلاگ</span>
-
-        </a>
-
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important;">
-            <i class="fas fa-info-circle" style="font-size:32px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px;">درباره ما</span>
-
-        </a>
-
-
-
-
-
-    </nav>
 
 
 
@@ -78,7 +109,7 @@
 
                         <th style="width:100px;text-align:center;padding:12px 10px 12px 10px">تعداد</th>
                         <th style="width:150px;text-align:center;padding:12px 10px 12px 10px">تخفیف (درصد)</th>
-                        <th style="width:200px;text-align:center;padding:12px 10px 12px 10px">قیمت (تومان)</th>
+                        <th style="width:200px;text-align:center;padding:12px 10px 12px 10px">قیمت (ریال)</th>
 
                     </tr>
                 </thead>
@@ -119,12 +150,12 @@
 
             </table>
             <div class="w3-content w3-justify w3-text-grey info" style="text-align:center !important;margin-top:40px;display:none">
-            
+
                 <a class="button" href="" ng-click="confirm_order()" ng-show="isSignedIn" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
-                    <span>تایید سفارش</span>
+                    <span>پرداخت</span>
                     <i class="far fa-check-circle" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
                 </a>
-                <a class="button" href=""  ng-click="signIn()" ng-show="SignedBtn" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
+                <a class="button" href="" ng-click="signIn()" ng-show="SignedBtn" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
                     <span>ورود به حساب کاربری</span>
                     <i class="far fa-check-circle" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
                 </a>
@@ -136,7 +167,7 @@
                     ثبت شده است. به زودی کارشناسان بخش فروش ما با شما برای پیگیری تماس خواهند گرفت.
                     از خرید شما متشکریم
                 </p>
-                <a class="button" href="" ng-click="confirm_order()" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
+                <a class="button" href="" ng-click="Track_order()" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
                     <span>پیگیری سفارش ها</span>
                     <i class="fas fa-boxes" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
                 </a>
@@ -150,7 +181,7 @@
                 <p style="color:white;font-size:18px;max-width:600px;margin:0 auto 0 auto;line-height:40px">
                     در حال حاضر سبد خرید شما خالی است.
                 </p>
-                <a class="button" href="" ng-click="confirm_order()" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
+                <a class="button" href="" ng-click="Track_order()" style="overflow:hidden;display:block;width:350px;margin:20px auto 0 auto;border-radius:3px;text-align:center;padding:10px 0 10px 0;font-size:16px;background:#3cb371;color:white;text-decoration:none;position:relative">
                     <span>پیگیری سفارش ها</span>
                     <i class="fas fa-boxes" style="font-size:24px;position:absolute;top:10px;right:26px"></i>
                 </a>
@@ -168,42 +199,15 @@
     <div dx-load-panel="loadPanel"></div>
 
 </div>
+<script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("baricon").style.marginLeft = "0px";
+    }
 
-<div class="navbar w3-hide-large  " style="border-bottom:#3cb371 2px solid;border-top:#3cb371 2px solid;padding:7px 0 7px 0">
-    <table style="width:100%">
-        <tr>
-            <td style="text-align:center;width:22%">
-                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/greeni1','greeni1',1)">
-                    <img src="img/g1.png" style="height:40px" />
-                </a>
-            </td>
-            <td style="text-align:center;width:22%">
-                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/greeni2','greeni1',1)">
-                    <img src="img/g2.png" style="height:40px" />
-                </a>
-            </td>
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("baricon").style.marginLeft = "0";
+    }
+</script>
 
-
-            <td style="text-align:center;width:20%" data-ng-click="navigate2('/basket','basket',1)">
-                <a style="padding: 0px 0px !important;">
-                    <i class="fas fa-shopping-cart" style="font-size:24px;color:white"></i>
-                </a>
-            </td>
-
-
-            <td style="text-align:center;width:18%">
-                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/orders','orders',1)">
-                    <i class="fas fa-pen-fancy" style="font-size:24px;color:white"></i>
-                </a>
-            </td>
-            <td style="text-align:center;width:18%">
-                <a style="padding: 0px 0px !important;">
-                    <i class="fas fa-info-circle" style="font-size:24px;color:white"></i>
-
-
-                </a>
-            </td>
-        </tr>
-
-    </table>
-</div>

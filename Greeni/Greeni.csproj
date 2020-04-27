@@ -105,6 +105,7 @@
     <Content Include="app\controllers\greeni2Controller.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\indexController.js" />
+    <Content Include="app\controllers\lawsController.js" />
     <Content Include="app\controllers\ordersAdminController.js" />
     <Content Include="app\controllers\ordersController.js" />
     <Content Include="app\controllers\paymentResult2Controller.js" />
@@ -125,6 +126,7 @@
     <Content Include="app\views\greeni1.html" />
     <Content Include="app\views\greeni2.html" />
     <Content Include="app\views\home.html" />
+    <Content Include="app\views\laws.html" />
     <Content Include="app\views\oerdersAdmin.html" />
     <Content Include="app\views\orders.html" />
     <Content Include="app\views\paymentResult.html" />

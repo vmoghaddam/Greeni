@@ -1,4 +1,5 @@
-﻿<style>
+﻿﻿
+<style>
     .mobile .dx-placeholder {
         left: 132px;
     }
@@ -8,94 +9,93 @@
         text-align: center !important;
     }
 
-    .bigNav {
-        display: none
-    }
+    @media (min-width:756px) {
 
-
-    .sidebar {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        background-color: #111;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-    }
-
-        .sidebar a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
+        .sidebar {
+            display: none
         }
 
-            .sidebar a:hover {
-                color: #f1f1f1;
+        #baricon {
+            display: none
+        }
+    }
+
+    @media (max-width:756px) {
+        .bigNav {
+            display: none
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+            .sidebar a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 25px;
+                color: #818181;
+                display: block;
+                transition: 0.3s;
             }
 
-        .sidebar .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
+                .sidebar a:hover {
+                    color: #f1f1f1;
+                }
+
+            .sidebar .closebtn {
+                position: absolute;
+                top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+            }
+
+        .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            padding: 10px 15px;
+            border: none;
         }
-    
+
+            .openbtn:hover {
+                background-color: #444;
+            }
+
+        #baricon {
+            transition: margin-right .5s;
+            padding: 40px 20px 0px 0px;
+            background-color: #000;
+            float: right;
+            margin-top: -20px
+        }
+
+        .mainImage {
+            width: 100%;
+            height: auto
+        }
+    }
 </style>
 
 <div class="box home" style="direction:rtl;text-align:right">
-    <nav class="bigNav" style="overflow:hidden;text-align:center !important">
-        <!-- Avatar image in top left corner -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-        <a class="w3-bar-item w3-button " style="position:relative;" data-ng-click="navigate2('/greeni1','greeni1',1)">
-            <span style="font-size:13px;color:white;font-weight:bold;margin-top:5px">گرینی مکس 1</span>
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/greeni2','greeni2',1)">
-            <span style="font-size:13px;color:white;font-weight:bold;margin-top:5px">گرینی مکس 2</span>
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/basket','basket',1)">
-            <span style="font-size:13px;color:white;font-weight:bold;margin-top:5px">سبد خرید  </span>
-            <div ng-show="isBasketNoVisible" class="basket-no">{{basketCount}}</div>
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/orders','orders',1)">
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سفارش ها  </span>
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large centerNav" style="" data-ng-click="navigate2('/sales','sales',1)">
-            <span style="font-size:13px;color:white;font-weight:bold">نمایندگی های فروش</span>
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large centerNav" style="" data-ng-click="navigate2('/about','about',1)">
-            <span style="font-size:13px;color:white;font-weight:bold;margin-top:5px;">درباره ما</span>
-        </a>
-
-    </nav>
-
-    <!--mobile navigation bar-->
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a data-ng-click="navigate2('/greeni1','greeni1',1)">گرینی مکس 1</a>
-        <a data-ng-click="navigate2('/greeni2','greeni2',1)">گرینی مکس 2</a>
-        <a data-ng-click="navigate2('/basket','basket',1)">سبد خرید</a>
-        <a data-ng-click="navigate2('/orders','orders',1)">سفارش ها</a>
-        <a data-ng-click="navigate2('/sales','sales',1)">نمایندگی ها</a>
-        <a data-ng-click="navigate2('/about','about',1)">درباره ما</a>
-    </div>
-    <i id="baricon" onclick="openNav()" class="fas fa-bars openbtn"></i>
 
     <!-- Page Content -->
-    <div class="w3-padding-large" id="main">
+    <div class="w3-padding-large" id="main" style="margin-right:0 !important">
         <!-- Header/Home -->
         <header class="w3-container w3-padding-48 w3-center w3-black" id="home" style="padding-top:20px !important;padding-bottom:20px !important;">
-            
+
             <h1 class="w3-jumbo  hidden-xs">سفارش ها</h1>
         </header>
-
         <div class="col-lg-12" style="padding:0 0px 0 20px;text-align:center">
             <div class="w3-content w3-justify w3-text-grey info" style="text-align:center !important;margin-top:0px;margin-bottom:40px" ng-show="!isSignedIn">
 
@@ -111,7 +111,7 @@
                 شما تا کنون هیچ سفارشی ثبت نکرده اید
             </div>
             <div style="font-size:18px;font-weight:bold;color:white;padding:30px;" ng-show="hasOrders">
-               برای مشاهده جزییات روی هر سفارش کلیک کنید
+                برای مشاهده جزییات روی هر سفارش کلیک کنید
             </div>
             <div ng-repeat='item in orders' style="background:#3cb371;color:white;padding:0;width:100%;max-width:800px;border:1px solid #3cb371;margin:20px auto 0 auto;cursor:pointer " ng-click="goInvoice(item.Order.Id)">
                 <table style="width:100%;background: rgb(60, 179, 113)">
@@ -227,15 +227,3 @@
 
 </div>
 
-
-<script>
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "0px";
-    }
-
-    function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
-    }
-</script>

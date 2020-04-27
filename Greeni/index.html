@@ -78,13 +78,118 @@
                     color: #000 !important;
                 }
         /* Remove margins from "page content" on small screens */
+        @media (min-width:756px) {
+            .Table {
+                color: white;
+                padding: 60px 190px 10px 0px;
+                float: right;
+                text-align: justify;
+                width: 600px;
+            }
+
+            .AboutText {
+                color: white;
+                font-size: 16px;
+                padding: 90px 190px 3px 0px;
+                font-weight: bold;
+                float: right;
+                text-align: justify;
+                width: 600px
+            }
+
+            .mainImage {
+                width: 53%;
+                height: auto;
+                float: left;
+                padding: 40px 0px 5px 10px
+            }
+
+            .sidebar {
+                display: none
+            }
+
+            #iconBar {
+                display: none
+            }
+        }
+
+
         @media only screen and (max-width: 768px) {
             #main {
                 margin-right: 0
             }
 
+            .sidebar_item {
+                color: white;
+            }
+
             .w3-jumbo {
                 font-size: 40px !important;
+            }
+
+            .bigNav {
+                display: none
+            }
+
+            .sidebar {
+                height: 100%;
+                width: 0;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                right: 0;
+                background-color: #111;
+                overflow-x: hidden;
+                transition: 0.5s;
+                padding-top: 60px;
+            }
+
+                .sidebar a {
+                    padding: 8px 8px 8px 32px;
+                    text-decoration: none;
+                    font-size: 25px;
+                    color: #818181;
+                    display: block;
+                    transition: 0.3s;
+                }
+
+                    .sidebar a:hover {
+                        color: #f1f1f1;
+                    }
+
+                .sidebar .closebtn {
+                    position: absolute;
+                    top: 0;
+                    right: 25px;
+                    font-size: 36px;
+                    margin-left: 50px;
+                    color: white;
+                }
+
+            .openbtn {
+                font-size: 20px;
+                cursor: pointer;
+                background-color: #111;
+                color: white;
+                padding: 10px 15px;
+                border: none;
+            }
+
+                .openbtn:hover {
+                    background-color: #444;
+                }
+
+            #main {
+                transition: margin-right .5s;
+                padding: 40px 20px 0px 0px;
+                background-color: #000;
+                float: right;
+                margin-top: -20px
+            }
+
+            .mainImage {
+                width: 100%;
+                height: auto
             }
         }
 
@@ -161,55 +266,54 @@
     <div ng-app="AngularJSApp" style=" height:100%">
         <div id="popup_signin" dx-popup="popup_signin">
             <div style="padding:10px 10px 0 10px" ng-show="isContentVisible">
-                <div style="color:red">TEST TEST TEST</div>
+                <div style="color:red"></div>
             </div>
         </div>
-        <div class="ng-hide" ng-show="isSignedIn">
-            <div class="hidden-xs" style="text-align:left;color:white;position:fixed;top:20px;left:0;padding:0 0 0 20px;direction:ltr;width:100%">
-                <table>
-                    <tr>
-                        <td style="padding:0 10px 0 10px"><a href="" ng-click="logOut()"><i class="fas fa-power-off" style="font-size:26px"></i></a></td>
-                        <td style="font-size:16px;">{{userTitle}}</td>
+        <nav class="bigNav" style="overflow:hidden;text-align:center !important">
+            <!-- Avatar image in top left corner -->
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-                    </tr>
-                </table>
-            </div>
-            <div class="hidden-lg" style="text-align:left;color:white;position:fixed;top:0px;left:0; direction:ltr;width:100%;z-index:1000;padding:7px 0 3px 0;background:#333;color:white;border-bottom:2px solid green">
-                <table>
-                    <tr>
-                        <td style="padding:0 10px 0 10px"><a href="" ng-click="logOut()"><i class="fas fa-power-off" style="font-size:20px"></i></a></td>
-                        <td style="font-size:13px;position:relative;top:-3px">{{userTitle}}</td>
+            <a class="w3-bar-item w3-button " style="position:relative;" data-ng-click="navigate2('/greeni1','greeni1',1)">
+                <span style="font-size:13px;color:white;font-weight:bold;margin-top:5px">گرینی مکس 1</span>
+            </a>
+            <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/greeni2','greeni2',1)">
+                <span style="font-size:13px;color:white;font-weight:bold;margin-top:5px">گرینی مکس 2</span>
+            </a>
+            <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/basket','basket',1)">
+                <span style="font-size:13px;color:white;font-weight:bold;margin-top:5px">سبد خرید  </span>
+                <div ng-show="isBasketNoVisible" class="basket-no">{{basketCount}}</div>
+            </a>
+            <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket centerNav" style="position:relative;" data-ng-click="navigate2('/orders','orders',1)">
+                <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سفارش ها  </span>
+            </a>
+            <a class="w3-bar-item w3-button w3-padding-large centerNav" style="" data-ng-click="navigate2('/sales','sales',1)">
+                <span style="font-size:13px;color:white;font-weight:bold">نمایندگی های فروش</span>
+            </a>
+            <a class="w3-bar-item w3-button w3-padding-large centerNav" style="" data-ng-click="navigate2('/about','about',1)">
+                <span style="font-size:13px;color:white;font-weight:bold;margin-top:5px;">درباره ما</span>
+            </a>
+            <a ng-show="!isSignedIn" class="ng-hide w3-bar-item w3-button w3-padding-large centerNav" style="">
+                <span href="" ng-click="signIn()" style="font-size:13px;color:white;font-weight:bold;margin-top:5px;"><b>حساب کاربری</b></span>
+            </a>
+            <a ng-show="isSignedIn" class="ng-hide w3-bar-item w3-button w3-padding-large centerNav" style="">
+                <span href="" ng-click="logOut()" style="font-size:13px;color:white;font-weight:bold;margin-top:5px;"><b>{{userTitle}}</b></span>
+            </a>
 
-                    </tr>
-                </table>
-            </div>
+        </nav>
+
+        <!--mobile navigation bar-->
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a style="color:white" data-ng-click="navigate2('/greeni1','greeni1',1)">گرینی مکس 1</a>
+            <a style="color:white" data-ng-click="navigate2('/greeni2','greeni2',1)">گرینی مکس 2</a>
+            <a style="color:white" data-ng-click="navigate2('/basket','basket',1)">سبد خرید</a>
+            <a style="color:white" data-ng-click="navigate2('/orders','orders',1)">سفارش ها</a>
+            <a style="color:white" data-ng-click="navigate2('/sales','sales',1)">نمایندگی ها</a>
+            <a style="color:white" data-ng-click="navigate2('/about','about',1)">درباره ما</a>
+            <a style="color:white" ng-show="!isSignedIn" ng-click="signIn()">حساب کاربری</a>
+            <a style="color:white" ng-show="isSignedIn" ng-click="logOut()">{{userTitle}}</a>
         </div>
-        <div class="ng-hide" ng-show="!isSignedIn">
-            <div class="hidden-xs" style="text-align:left;color:white;position:fixed;top:20px;left:0;padding:0 0 0 20px;direction:ltr;width:100%">
-                <a href="" ng-click="signIn()">
-                    <table>
-                        <tr>
-                            <td style="padding:0 10px 0 10px">
-                                <i class="fas fa-user-circle" style="font-size:26px"></i>
-                            </td>
-                            <td style="font-size:16px;">حساب کاربری</td>
-
-                        </tr>
-                    </table>
-                </a>
-            </div>
-            <div class="hidden-lg" style="text-align:left;color:white;position:fixed;top:0px;left:0; direction:ltr;width:100%;z-index:1000;padding:7px 0 3px 0;background:#333;color:white;border-bottom:2px solid green">
-                <a href="" ng-click="signIn()">
-                    <table>
-                        <tr>
-                            <td style="padding:0 10px 0 10px"><i class="fas fa-user-circle" style="font-size:20px"></i> </td>
-                            <td style="font-size:13px;position:relative;top:-3px">حساب کاربری</td>
-
-                        </tr>
-                    </table>
-                </a>
-            </div>
-        </div>
+        <i id="iconBar" onclick="openNav()" class="fas fa-bars openbtn"></i>
 
         <div class="anfade" ng-view>
 

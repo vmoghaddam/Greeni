@@ -3,13 +3,7 @@ app.controller('ordersController', ['$scope', '$rootScope', '$location', '$route
     // $rootScope.setOrderNo(null);
     $scope.hasOrders = true;
 
-    $scope.basketCount = 0;
-    $scope.isBasketNoVisible = $scope.basketCount > 0;
-    $scope.updateBasketCount = function () {
-        $scope.basketCount = $rootScope.getBasketTotalCount();
-        $scope.isBasketNoVisible = $scope.basketCount > 0;
-    };
-    $scope.updateBasketCount();
+   
 
     $scope.dataSource = [];
     $scope.invoice_price = 0;

@@ -1,4 +1,5 @@
-﻿﻿<style>
+﻿﻿
+<style>
     .mobile .dx-placeholder {
         left: 132px;
     }
@@ -7,79 +8,49 @@
         left: 0 !important;
         text-align: center !important;
     }
-    .distbl{
-        background:black;
-        color:white;
 
+    .distbl {
+        background: black;
+        color: white;
     }
-    .distbl tr {
-        border:1px solid #eee;
-        line-height:30px;
-    }
-        .distbl tr td{
+
+        .distbl tr {
             border: 1px solid #eee;
-             
+            line-height: 30px;
         }
+
+            .distbl tr td {
+                border: 1px solid #eee;
+            }
+    @media (min-width:756px) {
+        .style {
+            margin: 10px auto 0 auto;
+            width: 400px;
+            height: 40px;
+            color: black;
+            display: block;
+            border-radius: 8px;
+        }
+        .table {
+            margin: 40px 80px;
+             float:right
+        }
+        #main{
+            margin-right:0 !important
+        }
+    }
+
+    @media (max-width:756px) {
+        .style {
+            margin: 10px auto 0 auto
+        }
+    }
+
+
 </style>
 
 
-<div class="box home" style="direction:rtl;text-align:right">
-
-    <!-- Icon Bar (Sidebar - hidden on small screens) -->
-    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-hide-medium w3-center" style="overflow:hidden !important">
-
-        <!-- Avatar image in top left corner -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <a class="w3-bar-item w3-button w3-padding-large menu-selected" style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni1','greeni1',1)">
-            <img src="img/g1.png" style="height:70px" />
-            <img src="img/greeni1.png" style="width:100%" />
-
-        </a>
-        
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni2','greeni2',1)">
-            <img src="img/g2.png" style="height:70px" />
-
-            <img src="img/greenimax2.png" style="width:100%" />
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/basket','basket',1)">
-            <i class="fas fa-shopping-cart" style="font-size:40px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سبد خرید  </span>
-            <div ng-show="isBasketNoVisible" class="basket-no">{{basketCount}}</div>
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/orders','orders',1)">
-            <i class="fas fa-boxes" style="font-size:40px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سفارش ها  </span>
-
-        </a>
-
-
-        <!--<a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
-            <i class="fas fa-file-alt" style="font-size:32px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block">مجوز ها  </span>
-
-        </a>-->
-
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
-            <i class="fas fa-pen-fancy" style="font-size:32px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block">وبلاگ</span>
-
-        </a>
-
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important;" data-ng-click="navigate2('/about','about',1)">
-            <i class="fas fa-info-circle" style="font-size:32px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px;">درباره ما</span>
-
-        </a>
-
-
-
-
-
-    </nav>
-
-
-
-
+<div class="box home" style="direction:rtl;text-align:right;">
     <!-- Page Content -->
     <div class="w3-padding-large" id="main">
         <!-- Header/Home -->
@@ -87,41 +58,15 @@
             <!--mobile-->
 
             <img src="img/greeni1.png" style="display:block;margin:0 auto 20px auto; width:400px; " class="w3-hide-small" />
-            <img src="img/greeni1.png" style="display:block;margin:0 auto 20px auto; width:250px; " class="w3-hide-large" />
+            <img src="img/greeni1.png" style="display:block;margin:0 auto 20px auto; width:250px; float:left" class="w3-hide-large col-lg-6" />
 
             <!--<img src="https://www.w3schools.com/w3images/man_smoke.jpg" alt="boy" class="w3-image" width="992" height="1108">-->
-            <img src="img/g1.png" alt="boy" class="w3-image" style="width: 400px;  height: auto" data-aos="zoom-in" data-aos-duration="500">
-        </header>
-
-        <!--<button ng-click="click_contact()">ksdlfkajsflkjha</button>
-        <div id="popup_signin" dx-popup="popup_signin">
-            <div style="padding:10px 10px 0 10px">
-                <div style="color:white;font-size:16px">Contact Info</div>
-                <div style="color:white;font-size:16px">Contact Info</div>
-                <div style="color:white;font-size:16px">Contact Info</div>
-                <div style="color:white;font-size:16px">Contact Info</div>
-                <div style="color:white;font-size:16px">Contact Info</div>
-            </div>
-        </div>-->
-
-        <!-- About Section -->
-        <div class="w3-content w3-justify w3-text-grey" id="about" data-aos="fade-up">
-            <div style="color: white ; font-size: 20px;padding: 0 0 10px 0; margin-bottom: 20px; font-weight: bold; border-bottom: 1px solid white">
-
-                کود مایع گیاهان آپارتمانی برگ زینتی
-            </div>
-            <div class="col-lg-8" data-aos-duration="1500" style="padding:5px;">
-                <video>
-
-
-                    <source src="content/video/greenivideo.mp4"
-                            type="video/mp4">
-                    Sorry, your browser doesn't support embedded videos.
-                </video>
-            </div>
-
-            <div class="col-lg-4" style="padding:5px">
-                <table style="background:#3cb371;color:white;padding:0;width:100%;border:1px solid #3cb371;">
+            <img src="img/g1.png" alt="boy" class="w3-image" style="width: 400px;  height: auto; margin:40px auto 0 auto" data-aos="zoom-in" data-aos-duration="500">
+            <div class="col-lg-4 " style="padding:5px; margin:70px 120px">
+                <p dir="rtl" style="color:white;padding:0 0 0 0px;line-height:30px; text-align:right " data-aos="fade-up">
+                    گرینی مکس 1 کود حاوی عناصر پر مصرف نیتروژن،فسفر و پتاسیم به همراه آهن و اسید هیومیک و جلبک دریایی است این کود با ترکیب خاص خود برای بیشتر گیاهان برگ زینتی مناسب است
+                </p>
+                <table style="background:#3cb371;color:white;padding:0;width:100%;border:1px solid #3cb371; margin-top:70px">
                     <thead>
                         <tr>
                             <th style="text-align:right;padding:12px 10px 12px 10px" colspan="2">جدول تجزیه ضمانت شده</th>
@@ -175,15 +120,37 @@
 
                 </table>
             </div>
+        </header>
+
+        <!--<button ng-click="click_contact()">ksdlfkajsflkjha</button>
+    <div id="popup_signin" dx-popup="popup_signin">
+        <div style="padding:10px 10px 0 10px">
+            <div style="color:white;font-size:16px">Contact Info</div>
+            <div style="color:white;font-size:16px">Contact Info</div>
+            <div style="color:white;font-size:16px">Contact Info</div>
+            <div style="color:white;font-size:16px">Contact Info</div>
+            <div style="color:white;font-size:16px">Contact Info</div>
+        </div>
+    </div>-->
+        <!-- About Section -->
+        <div class="w3-content w3-justify w3-text-grey" id="about" data-aos="fade-up">
+            <div style="color: white ; font-size: 20px;padding: 0 0 10px 0; margin-bottom: 20px; font-weight: bold; border-bottom: 1px solid white">
+
+                کود مایع گیاهان آپارتمانی برگ زینتی
+            </div>
+            <div data-aos-duration="1500" style="padding:5px;">
+                <video style="width:100%; max-width:100% !important">
+                    <source src="content/video/greenivideo.mp4"
+                            type="video/mp4">
+                    Sorry, your browser doesn't support embedded videos.
+                </video>
+            </div>
+
             <div style="clear:both"></div>
         </div>
         <div class="w3-padding-32 w3-content w3-text-grey ep-section" id="video" style="text-align:right">
             <div style="padding:0;">
-                <p dir="rtl" style="color:white;padding:0 0 0 0px;line-height:30px" data-aos="fade-up">
-                    گرینی مکس 1 کود حاوی عناصر پر مصرف نیتروژن،فسفر و پتاسیم به همراه آهن و اسید هیومیک و جلبک دریایی است این کود با ترکیب خاص خود برای بیشتر گیاهان برگ زینتی مناسب است    <div style="color: white ; font-size: 16px;padding: 5px 0 10px 15px;  font-weight: bold; text-align:left" data-aos="fade-up">
-                        شماره ثبت کود: 53917
-                    </div>
-                </p>
+
                 <div style="color:white ; font-size: 18px;padding: 10px 0 10px 0; margin-bottom: 10px; font-weight: bold; border-bottom: 1px solid gray" data-aos="fade-up">
 
                     مزایا
@@ -231,9 +198,9 @@
                 سفارش دهید
             </div>
 
-            <table  style="width:100%;margin:0px 0 20px 0" class="distbl" ng-show="role=='Company'">
-                <thead  >
-                    <tr  >
+            <table style="width:100%;margin:0px 0 20px 0" class="distbl" ng-show="role=='Company'">
+                <thead>
+                    <tr>
                         <td colspan="8" style="background:#3cb371;">درصد تخفیف بر اساس کارتن فروش</td>
                     </tr>
                     <tr>
@@ -285,54 +252,16 @@
 
         <!-- Footer -->
         <footer class="w3-content w3-padding-16 w3-text-grey w3-xlarge" style="border-top:1px solid gray;margin-top:20px;margin-bottom:30px;text-align:center">
-            <i class="fab fa-telegram-plane" style="font-size:30px;padding-left:6px"></i>
-            <a href="https://www.instagram.com/greenimax/"><i class="fab fa-instagram" style="font-size:30px;padding-left:6px"></i></a>
-            <i class="fab fa-whatsapp" style="font-size:30px"></i>
+            <div>
+                <a style="float:right" data-ng-click="navigate2('/laws','laws',1)">قوانین و مقررات</a>
+                <div style="float:left">
+                    <i class="fab fa-telegram-plane" style="font-size:30px;padding-left:6px"></i>
+                    <a href="https://www.instagram.com/greenimax/" target="_blank"><i class="fab fa-instagram" style="font-size:30px;padding-left:6px"></i></a>
+                    <i class="fab fa-whatsapp" style="font-size:30px"></i>
+                </div>
+            </div>
         </footer>
 
 
 
     </div>
-
-
-
-
-</div>
-<div class="navbar w3-hide-large  " style="border-bottom:#3cb371 2px solid;border-top:#3cb371 2px solid;padding:7px 0 7px 0">
-    <table style="width:100%">
-        <tr>
-            <td style="text-align:center;width:22%">
-                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/greeni1','greeni1',1)">
-                    <img src="img/g1.png" style="height:40px" />
-                </a>
-            </td>
-            <td style="text-align:center;width:22%">
-                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/greeni2','greeni1',1)">
-                    <img src="img/g2.png" style="height:40px" />
-                </a>
-            </td>
-
-
-            <td style="text-align:center;width:20%" data-ng-click="navigate2('/basket','basket',1)">
-                <a style="padding: 0px 0px !important;">
-                    <i class="fas fa-shopping-cart" style="font-size:24px;color:white"></i>
-                </a>
-            </td>
-
-
-            <td style="text-align:center;width:18%">
-                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/orders','orders',1)">
-                    <i class="fas fa-pen-fancy" style="font-size:24px;color:white"></i>
-                </a>
-            </td>
-            <td style="text-align:center;width:18%" data-ng-click="navigate2('/about','about',1)">
-                <a style="padding: 0px 0px !important;">
-                    <i class="fas fa-info-circle" style="font-size:24px;color:white"></i>
-
-
-                </a>
-            </td>
-        </tr>
-
-    </table>
-</div>

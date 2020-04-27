@@ -145,6 +145,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/paymentResult2.html?v=" + version
     });
 
+     $routeProvider.when("/laws", {
+        controller: "lawsController",
+        templateUrl: "/app/views/laws.html?v=" + version
+    });
+
 
 
     $routeProvider.otherwise({ redirectTo: "/greeni1" });
