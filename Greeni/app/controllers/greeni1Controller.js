@@ -51,7 +51,7 @@ app.controller('greeni1Controller', ['$scope', '$rootScope', '$location', functi
     };
 
     $scope.subscribe = function () {
-        alert('x');
+       // alert('x');
     };
     $scope.addToBasket = function () {
         $rootScope.addToBasket($scope.productId, $scope.orderValue);
