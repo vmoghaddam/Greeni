@@ -110,6 +110,12 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/profile.html?v=" + version
     });
 
+    $routeProvider.when("/profile2", {
+        controller: "profile2Controller",
+        templateUrl: "/app/views/profile2.html?v=" + version
+    });
+
+
 
     $routeProvider.when("/sales", {
         controller: "salesController",

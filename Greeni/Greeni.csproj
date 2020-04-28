@@ -110,6 +110,7 @@
     <Content Include="app\controllers\ordersController.js" />
     <Content Include="app\controllers\paymentResult2Controller.js" />
     <Content Include="app\controllers\paymentResultController.js" />
+    <Content Include="app\controllers\profile2Controller.js" />
     <Content Include="app\controllers\profileController.js" />
     <Content Include="app\controllers\salesController.js" />
     <Content Include="app\controllers\signinController.js" />
@@ -132,6 +133,7 @@
     <Content Include="app\views\paymentResult.html" />
     <Content Include="app\views\paymentResult2.html" />
     <Content Include="app\views\profile.html" />
+    <Content Include="app\views\profile2.html" />
     <Content Include="app\views\sales.html" />
     <Content Include="app\views\signin.html" />
     <Content Include="app\views\signup.html" />

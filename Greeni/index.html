@@ -296,7 +296,8 @@
                 <span href="" ng-click="signIn()" style="font-size:13px;color:white;font-weight:bold;margin-top:5px;"><b>حساب کاربری</b></span>
             </a>
             <a ng-show="isSignedIn" class="ng-hide w3-bar-item w3-button w3-padding-large centerNav" style="">
-                <span href="" ng-click="logOut()" style="font-size:13px;color:white;font-weight:bold;margin-top:5px;"><b>{{userTitle}}</b></span>
+                <span href="" data-ng-click="navigate2('/about','',1)" style="font-size:13px;color:white;font-weight:bold;margin-top:5px;"><b>{{userTitle}}</b></span>
+                <i class="fas fa-power-off" ng-click="logOut()" style="font-size:20px"></i>
             </a>
 
         </nav>
@@ -376,5 +377,6 @@
     <script src="app/controllers/ordersAdminController.js"></script>
     <script src="app/controllers/paymentResultController.js"></script>
     <script src="app/controllers/paymentResult2Controller.js"></script>
+    <script src="app/controllers/profile2Controller.js"></script>
 </body>
 </html>
