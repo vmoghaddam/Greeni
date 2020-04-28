@@ -110,7 +110,7 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/profile.html?v=" + version
     });
 
-    $routeProvider.when("/profile2", {
+    $routeProvider.when("/profile/user/:id", {
         controller: "profile2Controller",
         templateUrl: "/app/views/profile2.html?v=" + version
     });
@@ -198,7 +198,15 @@ app.run(['$rootScope', '$location', '$window', 'authService', function ($rootSco
     authService.fillAuthData();
     $rootScope.logOut = function () { authService.logOut(); };
     $rootScope.signIn = function () { $location.path('/signin'); };
-
+    $rootScope.goProfile = function () {
+        if ($rootScope.role == 'Company') {
+            $location.path('/profile/company/' + $rootScope.userId);
+        }
+        else
+        {
+            $location.path('/profile/user/' + $rootScope.userId);
+        }
+    };
     $rootScope.click_contact = function () {
 
         $rootScope.popup_signin_visible = true;

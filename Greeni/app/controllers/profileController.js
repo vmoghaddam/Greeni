@@ -223,7 +223,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
 
             type: "compare",
             comparisonTarget: function () {
-                var password = $jq("#password-validation-profile").dxTextBox("instance");
+                var password = $("#password-validation-profile").dxTextBox("instance");
                 if (password) {
                     return password.option("value");
                 }
@@ -248,11 +248,11 @@ app.controller('profileController', ['$scope', '$rootScope', '$location', '$rout
         rtlEnabled: true,
         validationGroup: 'profileupdate',
         onClick: function (e) {
-            alert('xxxx');
+            
             var result = e.validationGroup.validate();
 
             if (!result.isValid) {
-                alert('x');
+                alert('لطفا اطلاعات خواسته شده را کامل کنید');
                 return;
 
             }

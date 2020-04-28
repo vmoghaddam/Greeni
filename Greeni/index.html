@@ -240,6 +240,15 @@
             width: 100%;
             margin-bottom: 0 !important;
         }
+
+        .simplebackground{
+            background-color:initial !important;
+            color:white !important;
+        }
+        .simplebackground:hover {
+            background-color: initial !important;
+            color: white !important;
+        }
     </style>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -295,9 +304,13 @@
             <a ng-show="!isSignedIn" class="ng-hide w3-bar-item w3-button w3-padding-large centerNav" style="">
                 <span href="" ng-click="signIn()" style="font-size:13px;color:white;font-weight:bold;margin-top:5px;"><b>حساب کاربری</b></span>
             </a>
-            <a ng-show="isSignedIn" class="ng-hide w3-bar-item w3-button w3-padding-large centerNav" style="">
-                <span href="" data-ng-click="navigate2('/about','',1)" style="font-size:13px;color:white;font-weight:bold;margin-top:5px;"><b>{{userTitle}}</b></span>
-                <i class="fas fa-power-off" ng-click="logOut()" style="font-size:20px"></i>
+            <a ng-show="isSignedIn" class="ng-hide w3-bar-item w3-button w3-padding-large centerNav simplebackground" style="padding-left:5px !important">
+                <span href="" data-ng-click="goProfile()" style="font-size:13px;color:white;font-weight:bold;margin-top:5px;color:white !important"><b>{{userTitle}}</b></span>
+                <!--<i class="fas fa-power-off" ng-click="logOut()" style="font-size:20px"></i>-->
+            </a>
+            <a ng-show="isSignedIn" class="ng-hide w3-bar-item w3-button w3-padding-large centerNav simplebackground" style="padding-left:5px !important;padding-right:5px !important">
+                
+                <i class="fas fa-power-off" ng-click="logOut()" style="font-size:24px;color:#c00000 !important"></i>
             </a>
 
         </nav>
