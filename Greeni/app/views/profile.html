@@ -34,53 +34,6 @@
 
 
 <div class="box home" style="direction:rtl;text-align:right">
-    <!-- Icon Bar (Sidebar - hidden on small screens) -->
-    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center" style="overflow:hidden !important">
-
-        <!-- Avatar image in top left corner -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <a class="w3-bar-item w3-button w3-padding-large " style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni1','greeni1',1)">
-            <img src="img/g1.png" style="height:70px" />
-            <img src="img/greeni1.png" style="width:100%" />
-
-        </a>
-
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 20px 15px !important" data-ng-click="navigate2('/greeni2','greeni2',1)">
-            <img src="img/g2.png" style="height:70px" />
-
-            <img src="img/greenimax2.png" style="width:100%" />
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket menu-selected" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/basket','basket',1)">
-            <i class="fas fa-shopping-cart" style="font-size:40px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سبد خرید  </span>
-            <div ng-show="isBasketNoVisible" class="basket-no">{{basketCount}}</div>
-        </a>
-        <a class="w3-bar-item w3-button w3-padding-large backcolor-transition basket" style="padding: 16px 15px !important;position:relative;" data-ng-click="navigate2('/orders','orders',1)">
-            <i class="fas fa-boxes" style="font-size:40px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px">سفارش ها  </span>
-
-        </a>
-
-
-
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important">
-            <i class="fas fa-pen-fancy" style="font-size:32px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block">وبلاگ</span>
-
-        </a>
-
-        <a class="w3-bar-item w3-button w3-padding-large" style="padding: 16px 15px !important;">
-            <i class="fas fa-info-circle" style="font-size:32px;color:white"></i>
-            <span style="font-size:13px;color:white;font-weight:bold;display:block;margin-top:5px;">درباره ما</span>
-
-        </a>
-
-
-
-
-
-    </nav>
-
 
 
     <!-- Page Content -->
@@ -129,43 +82,6 @@
 
 
 
-
-
-
-
-<div class="navbar w3-hide-large  " style="border-bottom:#3cb371 2px solid;border-top:#3cb371 2px solid;padding:7px 0 7px 0">
-    <table style="width:100%">
-        <tr>
-            <td style="text-align:center;width:22%">
-                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/greeni1','greeni1',1)">
-                    <img src="img/g1.png" style="height:40px" />
-                </a>
-            </td>
-            <td style="text-align: center; width: 22%">
-                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/greeni2','greeni1',1)">
-                    <img src="img/g2.png" style="        height: 40px" />
-                </a>
-            </td>
-            <td style="text-align:center;width:20%" data-ng-click="navigate2('/basket','basket',1)">
-                <a style="        padding: 0px 0px !important;">
-                    <i class="fas fa-shopping-cart" style="font-size:24px;color:white"></i>
-                </a>
-            </td>
-            <td style="text-align:center;width:18%">
-                <a style="padding: 0px 0px !important;" data-ng-click="navigate2('/orders','orders',1)">
-                    <i class="fas fa-pen-fancy" style="font-size:24px;color:white"></i>
-                </a>
-            </td>
-            <td style="text-align:center;width:18%">
-                <a style="padding: 0px 0px !important;">
-                    <i class="fas fa-info-circle" style="        font-size: 24px;
-        color: white"></i>
-                </a>
-            </td>
-        </tr>
-
-    </table>
-</div>
 
 <!--<div class="box home" style="direction:rtl;text-align:center">-->
 <!-- <div dx-text-box="txt_FirstName" dx-validator="{validationGroup:'signup',  validationRules: [{ type: 'required'}]}"></div>-->
